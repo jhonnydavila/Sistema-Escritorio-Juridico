@@ -1,0 +1,49 @@
+.btn, .btn-primary-outline, .btn-add, .btn-filter {
+    border: none;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    align-items: center;
+    border-radius: var(--border-normal);
+    padding: 8px 14px;
+    font-size: 13px;
+    gap: 5px;
+}
+.btn-primary-outline {
+    color: var(--secondary);
+    background-color: white;
+    border: 1px solid var(--body-outline);
+}
+.btn-add {
+    background-color: var(--primary-background);
+    border: 1px solid var(--primary-background);
+    color: white;
+}
+.btn-menu{
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: var(--primary-color);
+}
+
+.btn-table-delete, .btn-table-update, .btn-table-view{
+    border: none;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    align-items: center;
+    border-radius: var(--border-small);
+    padding: 4px 6px;
+    color: white;
+}
+.btn-table-delete{
+    background-color: #ad0000;
+}
+.btn-table-update{
+    background-color: var(--primary);
+}
+.btn-table-view{
+    background-color: var(--secondary);
+}

@@ -1,0 +1,78 @@
+.input-search{
+    outline: none;
+    border: 1px solid var(--body-outline);
+    background-color: var(--neutral-outiline);
+    border-radius: 3px;
+    padding: 8px 14px;
+    min-width: 260px;
+    font-size: 12px;
+    width: 100%;
+}
+
+.form-control, .form-select {
+    border-radius: 3px;
+}
+.modal-content{
+    border: none;
+    border-radius: 6px;
+}
+.modal-header{
+    background-color: #243449;
+    color: var(--neutral);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding: 0.8rem 1.8rem;
+}
+
+/*
+.form-control, .form-select {
+    border-bottom: 2px solid var(--primary-outline) !important;
+}
+.form-control:focus, .form-select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-bottom-color: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+}
+*/
+.form-control, .form-select {
+    margin: 0px !important;
+    padding-left: 6px !important;
+    padding-bottom: 2px !important;
+    border-radius: 0 !important;
+    font-size: 15px;
+    border: none !important;
+    transition: all 0.3s ease;
+    color: var(--secondary) !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid var(--primary-outline) !important;
+    background-position: right 10px top 25px !important;
+}
+.form-control:focus, .form-select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-bottom-color: var(--primary-background) !important;
+    color: var(--primary) !important;
+}
+.form-floating .form-label{
+    align-items: center !important;
+    display: flex !important;
+    padding-bottom: 7px !important;
+    padding-left: 0 !important;
+    font-size: 12px;
+}
+.form-control:focus ~ .form-label, .form-select:focus ~ .form-label {
+    color: var(--primary) !important;
+}
+.form-control.is-invalid, .form-select.is-invalid {
+    border-bottom-color: #ad0000!important;
+}
+.form-control.is-invalid ~ .form-label, .form-select.is-invalid ~ .form-label {
+    color: #ad0000 !important;
+}
+.form-control.is-valid, .form-select.is-valid {
+    border-bottom-color: #366641!important;
+}
+.form-control.is-valid ~ .form-label, .form-select.is-valid ~ .form-label {
+    color: #366641 !important;
+}

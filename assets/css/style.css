@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url(../font/Poppins-Black.ttf);
+
+:root {
+    --primary: #182232;
+    --primary-background: #2e394d;
+    --primary-color: #3d4759;
+    --primary-subtitle: #45474c;
+    --primary-outline: #cfcfcf;
+    
+    --secondary: #586377;
+    --secondary-subtitle: #96a0b5;
+    --secondary-container: #d5e0f7;
+
+    --neutral: #f7fafc;
+    --neutral-container: #ebeef0;
+    --neutral-outline: #f7f7f7;
+
+    --body-background: #f7fafc;
+    --body-outline: #e0e0e0;
+
+    --border-large: 4px;
+    --border-normal: 3px;
+    --border-small: 2px;
+}
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+    user-select: none;
+    text-decoration: none !important;
+    box-sizing: border-box;
+    font-family: 'Inter','Poppins', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p, label, a{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: var(--body-background);
+    color: var(--primary);
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+.main-content {
+    margin-left: 236px;
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* codigo para el perfil logo
+.initials-circle {
+    width: 32px;
+    height: 32px;
+    background-color: var(--secondary-container);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+*/
