@@ -1,9 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-$userName = htmlspecialchars(trim(($_SESSION['user']['nombre'] ?? '') . ' ' . ($_SESSION['user']['apellido'] ?? '')));
-$userRole = htmlspecialchars($_SESSION['user']['role'] ?? 'Sin rol');
+require_once __DIR__ . '/../../lib/Session.php';
+Session::start();
+$user = Session::get('user', []);
+$userName = htmlspecialchars(trim(($user['nombre'] ?? '') . ' ' . ($user['apellido'] ?? '')));
+$userRole = htmlspecialchars($user['role'] ?? 'Sin rol');
 ?>
 <header class="topbar">
     <div class="topbar-actions">

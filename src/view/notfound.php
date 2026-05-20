@@ -5,7 +5,10 @@
     <title>Página no encontrada</title>
 </head>
 <body>
-    <?php if (session_status() === PHP_SESSION_NONE) { session_start(); } ?>
+    <?php
+        require_once __DIR__ . '/../lib/Session.php';
+        Session::start();
+    ?>
     <?php include __DIR__ . '/includes/topbar.php'; ?>
     <main class="main-content" style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f5f6fb; padding:2rem;">
         <section class="page-container" style="max-width:600px; width:100%; text-align:center;">

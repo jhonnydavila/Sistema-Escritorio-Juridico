@@ -1,20 +1,74 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+require_once __DIR__ . '/../../lib/Session.php';
+Session::start();
+$user = Session::get('user', []);
+$role = strtolower($user['role'] ?? '');
+$permissions = $user['permissions'] ?? [];
+
+function isAdmin(): bool {
+    global $role;
+    return $role === 'administrador';
 }
 
-$permissions = $_SESSION['user']['permissions'] ?? [];
-function can($perm) {
+function hasPermission(string $perm): bool {
     global $permissions;
     return in_array($perm, $permissions, true);
 }
-function canAny(array $perms) {
+
+function hasAnyPermission(array $perms): bool {
     foreach ($perms as $perm) {
-        if (in_array($perm, $GLOBALS['permissions'], true)) {
+        if (hasPermission($perm)) {
             return true;
         }
     }
     return false;
+}
+
+function can(string $perm): bool {
+    if (isAdmin()) {
+        return true;
+    }
+
+    global $role;
+    if ($role === 'secretaria' && $perm === 'manage_eventos') {
+        return true;
+    }
+
+    return hasPermission($perm);
+}
+
+function canAny(array $perms): bool {
+    return isAdmin() || hasAnyPermission($perms);
+}
+
+$menuPermissions = [
+    'dashboard' => ['menuInicio', 'view_dashboard'],
+    'casos' => ['menuCaso', 'view_casos', 'manage_casos', 'view_own_casos'],
+    'eventos' => ['menuEventos', 'view_eventos', 'manage_eventos'],
+    'pagos' => ['menuPagos', 'view_pagos', 'manage_pagos'],
+    'clientes' => ['menuCliente', 'view_clientes', 'manage_clientes'],
+    'expedientes' => ['menuExpedientes', 'view_expedientes', 'manage_expedientes'],
+    'documentos' => ['menuDocumento', 'view_documentos', 'manage_documentos'],
+    'abogados' => ['menuAbogado', 'view_abogados', 'manage_abogados'],
+    'usuarios' => ['menuUsuarios', 'view_usuarios', 'manage_users'],
+    'archivadores' => ['menuArchivadores', 'view_archivadores', 'manage_archivadores'],
+    'reportes' => ['menuReportes', 'view_dashboard'],
+];
+
+$roleMenuAccess = [
+    'administrador' => ['dashboard', 'casos', 'clientes', 'documentos', 'abogados', 'usuarios', 'pagos', 'eventos', 'expedientes', 'archivadores', 'reportes'],
+    'secretaria' => ['dashboard', 'casos', 'clientes', 'documentos', 'eventos'],
+    'abogado' => ['dashboard', 'casos', 'clientes', 'documentos'],
+];
+
+function roleCanMenu(string $menu): bool {
+    global $roleMenuAccess, $role;
+    return in_array($menu, $roleMenuAccess[$role] ?? [], true);
+}
+
+function canMenu(string $menu): bool {
+    global $menuPermissions;
+    return isAdmin() || roleCanMenu($menu) || hasAnyPermission($menuPermissions[$menu] ?? []);
 }
 ?>
 <div class="sidebar">
@@ -29,7 +83,7 @@ function canAny(array $perms) {
     </div>
     
     <nav class="sidebar-nav">
-        <?php if (canAny(['view_dashboard', 'view_casos', 'view_clientes', 'view_eventos', 'view_pagos', 'view_abogados', 'view_documentos', 'view_expedientes', 'view_usuarios'])): ?>
+        <?php if (canMenu('dashboard')): ?>
         <a class="sidebar-nav-item" href="index.php?pagina=home">
             <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -38,7 +92,7 @@ function canAny(array $perms) {
         </a>
         <?php endif; ?>
         
-        <?php if (canAny(['view_casos', 'manage_casos', 'view_own_casos'])): ?>
+        <?php if (canMenu('casos')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale-icon lucide-scale">
@@ -61,7 +115,7 @@ function canAny(array $perms) {
             </div>
         </div>
         <?php endif; ?>
-        <?php if (canAny(['view_eventos', 'manage_eventos'])): ?>
+        <?php if (canMenu('eventos')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days-icon lucide-calendar-days">
@@ -90,7 +144,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_pagos', 'manage_pagos'])): ?>
+        <?php if (canMenu('pagos')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet">
@@ -111,7 +165,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_clientes', 'manage_clientes'])): ?>
+        <?php if (canMenu('clientes')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
@@ -132,7 +186,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_expedientes', 'manage_expedientes'])): ?>
+        <?php if (canMenu('expedientes')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive-icon lucide-archive">
@@ -151,7 +205,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_documentos', 'manage_documentos'])): ?>
+        <?php if (canMenu('documentos')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-icon lucide-file">
@@ -172,7 +226,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_abogados', 'manage_abogados'])): ?>
+        <?php if (canMenu('abogados')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gavel-icon lucide-gavel">
@@ -196,7 +250,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_usuarios', 'manage_users'])): ?>
+        <?php if (canMenu('usuarios')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hat-glasses-icon lucide-hat-glasses">
@@ -220,7 +274,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_archivadores', 'manage_archivadores'])): ?>
+        <?php if (canMenu('archivadores')): ?>
         <div class="sidebar-nav-item-dropdown">
             <div class="sidebar-nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server-icon lucide-server">
@@ -240,7 +294,7 @@ function canAny(array $perms) {
         </div>
         <?php endif; ?>
 
-        <?php if (canAny(['view_dashboard', 'view_casos', 'view_clientes', 'view_eventos', 'view_pagos', 'view_expedientes', 'view_documentos'])): ?>
+        <?php if (canMenu('reportes')): ?>
         <a class="sidebar-nav-item" href="index.php?pagina=home">
             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined-icon lucide-chart-no-axes-combined">
                 <path d="M12 16v5"/><path d="M16 14.639V21"/>

@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/../model/usuarioModel.php';
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../lib/Session.php';
+Session::start();
 
 class AuthController {
     private $usuarioModel;
@@ -14,22 +12,28 @@ class AuthController {
 
     private function redirect($pagina, $mensaje = '') {
         if (!empty($mensaje)) {
-            $_SESSION['flash_message'] = $mensaje;
+                Session::flash('flash_message', $mensaje);
         }
-        header('Location: index.php?pagina=' . $pagina);
-        exit;
+        // Ensure session data is written before redirecting
+            Session::writeClose();
+        require_once __DIR__ . '/../lib/App.php';
+        App::redirect($pagina);
     }
 
     public function login() {
         $login = trim($_POST['login'] ?? '');
         $password = $_POST['password'] ?? '';
 
+        error_log('AuthController: login attempt for ' . $login);
+
         if (empty($login) || empty($password)) {
             $this->redirect('login', 'Ingrese correo, cédula o contraseña válidos.');
         }
 
         $user = $this->usuarioModel->obtener_por_login($login);
+        error_log('AuthController: user lookup result: ' . json_encode($user));
         if (empty($user) || !password_verify($password, $user['passwordHash'])) {
+            error_log('AuthController: credential check failed for ' . $login);
             $this->redirect('login', 'Credenciales incorrectas.');
         }
 
@@ -37,17 +41,25 @@ class AuthController {
             $this->redirect('login', 'Usuario inactivo o suspendido.');
         }
 
-        session_regenerate_id(true);
-        $_SESSION['user'] = [
-            'id' => $user['idUsuario'],
-            'nombre' => $user['nombreUsuario'],
-            'apellido' => $user['apellidoUsuario'],
-            'correo' => $user['correoUsuario'],
-            'cedula' => $user['cedulaUsuario'],
-            'role' => $user['nombreRol'],
-            'roleId' => $user['idRol'],
-            'permissions' => json_decode($user['permisosRol'] ?? '[]', true),
-        ];
+            Session::regenerate();
+            $userData = [
+                'id' => $user['idUsuario'],
+                'nombre' => $user['nombreUsuario'],
+                'apellido' => $user['apellidoUsuario'],
+                'correo' => $user['correoUsuario'],
+                'cedula' => $user['cedulaUsuario'],
+                'role' => $user['nombreRol'],
+                'roleId' => $user['idRol'],
+                'permissions' => json_decode($user['permisosRol'] ?? '[]', true),
+            ];
+            Session::set('user', $userData);
++        // persist a copy in session storage to help restoration across requests
++        require_once __DIR__ . '/../lib/SessionStorage.php';
++        SessionStorage::write(Session::id(), ['user' => $userData]);
+
+        error_log('AuthController: user logged in, id=' . $user['idUsuario']);
+            error_log('AuthController: session_id before redirect=' . Session::id());
+            error_log('AuthController: session_cookie_params=' . json_encode(Session::cookieParams()));
 
         $this->redirect('home');
     }

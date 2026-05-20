@@ -14,16 +14,15 @@
                 </div>
             </div>
             <?php
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-            if (!empty($_SESSION['flash_message'])) {
-                echo '<div class="alert alert-info">' . htmlspecialchars($_SESSION['flash_message']) . '</div>';
-                unset($_SESSION['flash_message']);
+            require_once __DIR__ . '/../lib/Session.php';
+            Session::start();
+            $flash = Session::flash('flash_message');
+            if (!empty($flash)) {
+                echo '<div class="alert alert-info">' . htmlspecialchars($flash) . '</div>';
             }
             ?>
             <div class="page-content">
-                <form action="src/controller/authController.php" method="POST" class="auth-form row p-4">
+                <form action="index.php?pagina=auth" method="POST" class="auth-form row p-4">
                     <div class="col-12 mb-3">
                         <label for="login" class="form-label">Correo o Cédula</label>
                         <input id="login" type="text" class="form-control" name="login" placeholder="ejemplo@correo.com o 12345678" required autocomplete="username">
