@@ -6,14 +6,14 @@
 </head>
 <body>
     <main class="auth-page">
-        <section class="auth-card page-container">
-            <div class="page-header">
-                <div class="page-header-titles">
-                    <h2 class="page-header-title">Iniciar Sesión</h2>
-                    <span class="page-header-subtitle">Utiliza tu correo electrónico o cédula para ingresar</span>
+        <section class="auth-card page__container">
+            <div class="page__header">
+                <div class="page__header-titles">
+                    <h2 class="page__header-title">Iniciar Sesión</h2>
+                    <span class="page__header-subtitle">Utiliza tu correo electrónico o cédula para ingresar</span>
                 </div>
             </div>
-            <div class="page-content">
+            <div class="page__content">
                 <form action="index.php?pagina=auth" method="POST" class="auth-form row p-4">
                     <div class="col-12 mb-3">
                         <label for="login" class="form-label">Correo o Cédula</label>

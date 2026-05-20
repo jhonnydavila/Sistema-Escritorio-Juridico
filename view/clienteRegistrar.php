@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/includes/header.php'; ?>
+        <?php include('includes/header.php'); ?>
         <title>Registrar Cliente</title>
     </head>
     <body>
-        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+        <?php include ('includes/sidebar.php'); ?>
         
         <main class="main-content">
-            <?php include __DIR__ . '/includes/topbar.php'; ?>
+            <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Cliente</h2>
-                        <span class="page-header-subtitle">Gestión de Clientes</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Cliente</h2>
+                        <span class="page__header-subtitle">Gestión de Clientes</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <form action="src/controller/clienteController.php" id="form" class="row p-4" method="POST">
-                        <div class="col-lg-6 col-md-6">
+                <div class="page__content">
+                    <form action="controller/clienteController.php" id="form" class="row p-4" method="POST">
+                        <div class="col-12">
                             <div class="form-group form-floating">
-                                <input id="codigoCliente" type="text" class="form-control" name="codigoCliente" placeholder="CLI-001" minlength="3" maxlength="20" autocomplete="off" required>
-                                <label class="form-label" for="codigoCliente">Código del Cliente</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <select class="form-select" id="TipoCliente" name="TipoCliente" required>
+                                <select class="form-select" id="TipoCliente" required>
                                     <option value="">Seleccionar...</option>
                                     <option value="natural">Natural</option>
                                     <option value="juridico">Jurídico</option>
@@ -145,6 +139,6 @@
             </section>
         </main>
 
-        <?php include __DIR__ . '/includes/footer.php'; ?>
+        <?php include ('includes/footer.php'); ?>
     </body>
 </html>

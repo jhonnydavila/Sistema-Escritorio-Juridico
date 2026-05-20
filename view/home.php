@@ -10,11 +10,11 @@
         <main class="main-content">
             <?php include __DIR__ . '/includes/topbar.php'; ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Panel de Control</h2>
-                        <span class="page-header-subtitle">Gestión general del sistema</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Panel de Control</h2>
+                        <span class="page__header-subtitle">Gestión general del sistema</span>
                     </div>
                 </div>
 

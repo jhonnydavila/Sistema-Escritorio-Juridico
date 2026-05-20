@@ -8,15 +8,15 @@
         <?php include __DIR__ . '/includes/sidebar.php'; ?>
         <main class="main-content">
             <?php include __DIR__ . '/includes/topbar.php'; ?>
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Evento</h2>
-                        <span class="page-header-subtitle">Crea un nuevo evento para seguimiento</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Evento</h2>
+                        <span class="page__header-subtitle">Crea un nuevo evento para seguimiento</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <form action="src/controller/eventoController.php" class="row p-4" method="POST">
+                <div class="page__content">
+                    <form action="controller/eventoController.php" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
                                 <input id="nombreEvento" type="text" class="form-control" name="nombreEvento" placeholder="Audiencia" autocomplete="off" required>

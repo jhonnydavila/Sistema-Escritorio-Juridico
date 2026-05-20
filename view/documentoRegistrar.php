@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/includes/header.php'; ?>
+        <?php include('includes/header.php'); ?>
         <title>Registrar Documento</title>
     </head>
     <body>
-        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+        <?php include ('includes/sidebar.php'); ?>
         
         <main class="main-content">
-            <?php include __DIR__ . '/includes/topbar.php'; ?>
+            <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Documento</h2>
-                        <span class="page-header-subtitle">Gestión de Documentos</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Documento</h2>
+                        <span class="page__header-subtitle">Gestión de Documentos</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <form action="src/controller/documentoController.php" id="form" class="row p-4" method="POST">
+                <div class="page__content">
+                    <form action="controller/documentoController.php" id="form" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="TipoDocumento" name="TipoDocumento" required>
+                                <select class="form-select" id="TipoDocumento" required>
                                     <option value="">Seleccionar...</option>
                                     <option value="imagen">Imagen</option>
                                     <option value="documento">Documento</option>
@@ -59,10 +59,10 @@
                         
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="ExpedienteDocumento" name="ExpedienteDocumento" required>
+                                <select class="form-select" id="ExpedienteDocumento" required>
                                     <option value="">Seleccionar...</option>
-                                    <option value="EXP-001">EXP-001</option>
-                                    <option value="EXP-002">EXP-002</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
                                 </select>
                                 <label for="ExpedienteDocumento" class="form-label">Expediente</label>
                             </div>
@@ -77,6 +77,6 @@
             </section>
         </main>
 
-        <?php include __DIR__ . '/includes/footer.php'; ?>
+        <?php include ('includes/footer.php'); ?>
     </body>
 </html>

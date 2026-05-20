@@ -8,14 +8,14 @@
         <?php include __DIR__ . '/includes/sidebar.php'; ?>
         <main class="main-content">
             <?php include __DIR__ . '/includes/topbar.php'; ?>
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Archivador</h2>
-                        <span class="page-header-subtitle">Añade un archivador para documentos y expedientes</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Archivador</h2>
+                        <span class="page__header-subtitle">Añade un archivador para documentos y expedientes</span>
                     </div>
                 </div>
-                <div class="page-content">
+                <div class="page__content">
                     <form action="src/controller/archivadorController.php" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">

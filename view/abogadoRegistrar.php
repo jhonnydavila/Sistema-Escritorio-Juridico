@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/includes/header.php'; ?>
+        <?php include('includes/header.php'); ?>
         <title>Registrar Abogado</title>
     </head>
     <body>
-        <?php include __DIR__ . '/includes/sidebar.php'; ?>
+        <?php include ('includes/sidebar.php'); ?>
         
         <main class="main-content">
-            <?php include __DIR__ . '/includes/topbar.php'; ?>
+            <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Abogado</h2>
-                        <span class="page-header-subtitle">Gestión de Abogados</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Abogado</h2>
+                        <span class="page__header-subtitle">Gestión de Abogados</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <form action="src/controller/abogadoController.php" id="form" class="row p-4" method="POST">
+                <div class="page__content">
+                    <form action="controller/abogadoController.php" id="form" class="row p-4" method="POST">
 
                         <input type="text" name="registrarAbogado" hidden>
 
@@ -68,6 +68,6 @@
             </section>
         </main>
 
-        <?php include __DIR__ . '/includes/footer.php'; ?>
+        <?php include ('includes/footer.php'); ?>
     </body>
 </html>

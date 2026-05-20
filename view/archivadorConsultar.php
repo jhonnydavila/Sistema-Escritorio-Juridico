@@ -8,16 +8,16 @@
         <?php include __DIR__ . '/includes/sidebar.php'; ?>
         <main class="main-content">
             <?php include __DIR__ . '/includes/topbar.php'; ?>
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Archivadores</h2>
-                        <span class="page-header-subtitle">Archivadores y almacenamiento de documentos</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Archivadores</h2>
+                        <span class="page__header-subtitle">Archivadores y almacenamiento de documentos</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <div class="page-table-container">
-                        <table id="table" class="page-table">
+                <div class="page__content">
+                    <div class="page__table-container">
+                        <table id="table" class="page__table">
                             <thead>
                                 <tr>
                                     <th>Código</th>
