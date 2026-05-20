@@ -32,9 +32,9 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Registrar Caso</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Casos en Desarrollo</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Listado de Casos</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=casoRegistrar"><span>Registrar Caso</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=casoDesarrollo"><span>Casos en Desarrollo</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=casoConsultar"><span>Consultar Casos</span></a>
             </div>
         </div>
         <div class="sidebar-nav-item-dropdown">
@@ -57,8 +57,8 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Registrar Evento</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Listado de Eventos</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=eventoRegistrar"><span>Registrar Evento</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=eventoConsultar"><span>Consultar Eventos</span></a>
             </div>
         </div>
 
@@ -74,8 +74,8 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Registrar Pago</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Listado de Pagos</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=pagoRegistrar"><span>Registrar Pago</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=pagoConsultar"><span>Consultar Pagos</span></a>
             </div>
         </div>
 
@@ -92,7 +92,7 @@
             </div>
             <div class="sidebar-nav-dropdown-menu">
                 <a class="sidebar-nav-item" href="index.php?pagina=clienteRegistrar"><span>Registrar Cliente</span></a>
-                <a class="sidebar-nav-item" href="index.php?pagina=clienteConsultar"><span>Listado de Clientes</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=clienteConsultar"><span>Consultar Clientes</span></a>
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Listado de Expedientes</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=expedienteConsultar"><span>Consultar Expedientes</span></a>
             </div>
         </div>
 
@@ -126,7 +126,7 @@
             </div>
             <div class="sidebar-nav-dropdown-menu">
                 <a class="sidebar-nav-item" href="index.php?pagina=documentoRegistrar"><span>Registrar Documento</span></a>
-                <a class="sidebar-nav-item" href="index.php?pagina=documentoConsultar"><span>Listado de Documentos</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=documentoConsultar"><span>Consultar Documentos</span></a>
             </div>
         </div>
 
@@ -146,7 +146,7 @@
             </div>
             <div class="sidebar-nav-dropdown-menu">
                 <a class="sidebar-nav-item" href="index.php?pagina=abogadoRegistrar"><span>Registrar Abogado</span></a>
-                <a class="sidebar-nav-item" href="index.php?pagina=abogadoConsultar"><span>Listado de Abogados</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=abogadoConsultar"><span>Consultar Abogados</span></a>
             </div>
         </div>
 
@@ -165,8 +165,8 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Registrar Usuario</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Listado de Usuarios</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=usuarioRegistrar"><span>Registrar Usuario</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=usuarioConsultar"><span>Consultar Usuarios</span></a>
             </div>
         </div>
 
@@ -183,8 +183,8 @@
                 </svg>
             </div>
             <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="#"><span>Registrar Archivador</span></a>
-                <a class="sidebar-nav-item" href="#"><span>Listado de Archivadores</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=archivadorRegistrar"><span>Registrar Archivador</span></a>
+                <a class="sidebar-nav-item" href="index.php?pagina=archivadorConsultar"><span>Consultar Archivadores</span></a>
             </div>
         </div>
 

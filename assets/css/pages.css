@@ -136,3 +136,77 @@
 }
 /* -------- Fin Configuración Estilos de DataTables -------- */
 /* -------------- Fin Estilos para las tablas -------------- */
+
+
+.page-card{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--body-outline);
+    border-radius: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.page-card-header{
+    color: var(--neutral);
+    padding: 1rem;
+    padding-bottom: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-card-body{
+    flex-direction: column;
+    display: flex;
+    padding: 1rem;
+}
+.page-card-assigned{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.page-card-assigned-avatar{
+    width: 38px;
+    height: 37px;
+    background-color: var(--secondary-container);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--primary);
+}
+.page-card-assigned-info{
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0;
+}
+.page-card-assigned-info span{
+    font-size: 11px;
+    color: var(--secondary);
+}
+.page-card-assigned-info p{
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: -4px;
+}
+.page-card-footer{
+    margin-top: 6px;
+    padding: 0.4rem;
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 6px;
+    border: solid 1px var(--primary);
+    color: var(--primary);
+}
+.page-card-footer:hover{
+    background-color: var(--primary);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.page-card-blue .page-card-header{
+    background: linear-gradient(120deg, #1e82ec, #4071a5);
+}

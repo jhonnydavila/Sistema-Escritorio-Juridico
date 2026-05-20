@@ -4,7 +4,6 @@
 :root {
     --primary: #182232;
     --primary-background: #2e394d;
-    --primary-color: #3d4759;
     --primary-subtitle: #45474c;
     --primary-outline: #cfcfcf;
     
@@ -51,7 +50,9 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
-
+p, a{
+    font-size: 13px;
+}
 
 /* codigo para el perfil logo
 .initials-circle {
