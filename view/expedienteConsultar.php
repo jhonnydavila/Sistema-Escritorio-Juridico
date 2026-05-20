@@ -12,7 +12,7 @@
                 <div class="page-header">
                     <div class="page-header-titles">
                         <h2 class="page-header-title">Expedientes</h2>
-                        <span class="page-header-subtitle">Listado de expedientes y casos asociados</span>
+                        <span class="page-header-subtitle">Listado de expedientes</span>
                     </div>
                 </div>
                 <div class="page-content">

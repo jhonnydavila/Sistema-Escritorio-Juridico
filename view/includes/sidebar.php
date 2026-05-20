@@ -1,100 +1,24 @@
-<?php
-require_once __DIR__ . '/../../lib/Session.php';
-Session::start();
-$user = Session::get('user', []);
-$role = strtolower($user['role'] ?? '');
-$permissions = $user['permissions'] ?? [];
-
-function isAdmin(): bool {
-    global $role;
-    return $role === 'administrador';
-}
-
-function hasPermission(string $perm): bool {
-    global $permissions;
-    return in_array($perm, $permissions, true);
-}
-
-function hasAnyPermission(array $perms): bool {
-    foreach ($perms as $perm) {
-        if (hasPermission($perm)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function can(string $perm): bool {
-    if (isAdmin()) {
-        return true;
-    }
-
-    global $role;
-    if ($role === 'secretaria' && $perm === 'manage_eventos') {
-        return true;
-    }
-
-    return hasPermission($perm);
-}
-
-function canAny(array $perms): bool {
-    return isAdmin() || hasAnyPermission($perms);
-}
-
-$menuPermissions = [
-    'dashboard' => ['menuInicio', 'view_dashboard'],
-    'casos' => ['menuCaso', 'view_casos', 'manage_casos', 'view_own_casos'],
-    'eventos' => ['menuEventos', 'view_eventos', 'manage_eventos'],
-    'pagos' => ['menuPagos', 'view_pagos', 'manage_pagos'],
-    'clientes' => ['menuCliente', 'view_clientes', 'manage_clientes'],
-    'expedientes' => ['menuExpedientes', 'view_expedientes', 'manage_expedientes'],
-    'documentos' => ['menuDocumento', 'view_documentos', 'manage_documentos'],
-    'abogados' => ['menuAbogado', 'view_abogados', 'manage_abogados'],
-    'usuarios' => ['menuUsuarios', 'view_usuarios', 'manage_users'],
-    'archivadores' => ['menuArchivadores', 'view_archivadores', 'manage_archivadores'],
-    'reportes' => ['menuReportes', 'view_dashboard'],
-];
-
-$roleMenuAccess = [
-    'administrador' => ['dashboard', 'casos', 'clientes', 'documentos', 'abogados', 'usuarios', 'pagos', 'eventos', 'expedientes', 'archivadores', 'reportes'],
-    'secretaria' => ['dashboard', 'casos', 'clientes', 'documentos', 'eventos'],
-    'abogado' => ['dashboard', 'casos', 'clientes', 'documentos'],
-];
-
-function roleCanMenu(string $menu): bool {
-    global $roleMenuAccess, $role;
-    return in_array($menu, $roleMenuAccess[$role] ?? [], true);
-}
-
-function canMenu(string $menu): bool {
-    global $menuPermissions;
-    return isAdmin() || roleCanMenu($menu) || hasAnyPermission($menuPermissions[$menu] ?? []);
-}
-?>
-<div class="sidebar">
-    <div class="sidebar-header">
-        <div class="sidebar-header-logo">
+<div class="sidebar__container">
+    <div class="sidebar__header">
+        <div class="sidebar__header-logo">
             EJFJ
         </div>
         <div>
-            <h3 class="sidebar-header-title">Seguimiento</h3>
-            <p class="sidebar-header-subtitle">Casos Jurídicos</p>
+            <h3 class="sidebar__header-title">Seguimiento</h3>
+            <p class="sidebar__header-subtitle">Casos Juridicos</p>
         </div>
     </div>
     
-    <nav class="sidebar-nav">
-        <?php if (canMenu('dashboard')): ?>
-        <a class="sidebar-nav-item" href="index.php?pagina=home">
+    <nav class="sidebar__nav">
+        <a class="sidebar__nav-item" href="index.php?pagina=home">
             <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
             <span>Panel de Control</span>
         </a>
-        <?php endif; ?>
         
-        <?php if (canMenu('casos')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale-icon lucide-scale">
                     <path d="M12 3v18"/>
                     <path d="m19 8 3 8a5 5 0 0 1-6 0zV7"/>
@@ -107,17 +31,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_casos')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=casosRegistrar"><span>Registrar Caso</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=casosConsultar"><span>Listado de Casos</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=casoRegistrar"><span>Registrar Caso</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=casoDesarrollo"><span>Casos en Desarrollo</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=casoConsultar"><span>Consultar Casos</span></a>
             </div>
         </div>
-        <?php endif; ?>
-        <?php if (canMenu('eventos')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days-icon lucide-calendar-days">
                     <path d="M8 2v4"/>
                     <path d="M16 2v4"/>
@@ -135,18 +56,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_eventos')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=eventoRegistrar"><span>Registrar Evento</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=eventoConsultar"><span>Listado de Eventos</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=eventoRegistrar"><span>Registrar Evento</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=eventoConsultar"><span>Consultar Eventos</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('pagos')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet">
                     <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/>
                     <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
@@ -156,18 +73,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_pagos')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=pagoRegistrar"><span>Registrar Pago</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=pagoConsultar"><span>Listado de Pagos</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=pagoRegistrar"><span>Registrar Pago</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=pagoConsultar"><span>Consultar Pagos</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('clientes')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
                     <circle cx="12" cy="7" r="4"/>
@@ -177,18 +90,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_clientes')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=clienteRegistrar"><span>Registrar Cliente</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=clienteConsultar"><span>Listado de Clientes</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=clienteRegistrar"><span>Registrar Cliente</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=clienteConsultar"><span>Consultar Clientes</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('expedientes')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive-icon lucide-archive">
                     <rect width="20" height="5" x="2" y="3" rx="1"/>
                     <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
@@ -199,15 +108,13 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="index.php?pagina=expedienteConsultar"><span>Listado de Expedientes</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=expedienteConsultar"><span>Consultar Expedientes</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('documentos')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-icon lucide-file">
                     <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
                     <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
@@ -217,18 +124,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_documentos')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=documentoRegistrar"><span>Registrar Documento</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=documentoConsultar"><span>Listado de Documentos</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=documentoRegistrar"><span>Registrar Documento</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=documentoConsultar"><span>Consultar Documentos</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('abogados')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gavel-icon lucide-gavel">
                     <path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3l8.384-8.381"/>
                     <path d="m16 16 6-6"/>
@@ -241,18 +144,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_abogados')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=abogadoRegistrar"><span>Registrar Abogado</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=abogadoConsultar"><span>Listado de Abogados</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=abogadoRegistrar"><span>Registrar Abogado</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=abogadoConsultar"><span>Consultar Abogados</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('usuarios')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hat-glasses-icon lucide-hat-glasses">
                     <path d="M14 18a2 2 0 0 0-4 0"/>
                     <path d="m19 11-2.11-6.657a2 2 0 0 0-2.752-1.148l-1.276.61A2 2 0 0 1 12 4H8.5a2 2 0 0 0-1.925 1.456L5 11"/>
@@ -265,18 +164,14 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <?php if (can('manage_users')): ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=usuarioRegistrar"><span>Registrar Usuario</span></a>
-                <?php endif; ?>
-                <a class="sidebar-nav-item" href="index.php?pagina=usuarioConsultar"><span>Listado de Usuarios</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=usuarioRegistrar"><span>Registrar Usuario</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=usuarioConsultar"><span>Consultar Usuarios</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('archivadores')): ?>
-        <div class="sidebar-nav-item-dropdown">
-            <div class="sidebar-nav-dropdown">
+        <div class="sidebar__nav-item-dropdown">
+            <div class="sidebar__nav-dropdown">
                 <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server-icon lucide-server">
                     <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>
                     <line x1="6" x2="6.01" y1="6" y2="6"/>
@@ -287,15 +182,13 @@ function canMenu(string $menu): bool {
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar-nav-dropdown-menu">
-                <a class="sidebar-nav-item" href="index.php?pagina=archivadorRegistrar"><span>Registrar Archivador</span></a>
-                <a class="sidebar-nav-item" href="index.php?pagina=archivadorConsultar"><span>Listado de Archivadores</span></a>
+            <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?pagina=archivadorRegistrar"><span>Registrar Archivador</span></a>
+                <a class="sidebar__nav-item" href="index.php?pagina=archivadorConsultar"><span>Consultar Archivadores</span></a>
             </div>
         </div>
-        <?php endif; ?>
 
-        <?php if (canMenu('reportes')): ?>
-        <a class="sidebar-nav-item" href="index.php?pagina=home">
+        <a class="sidebar__nav-item" href="#">
             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined-icon lucide-chart-no-axes-combined">
                 <path d="M12 16v5"/><path d="M16 14.639V21"/>
                 <path d="M20 10.656V21"/>
@@ -305,6 +198,5 @@ function canMenu(string $menu): bool {
             </svg>
             <span>Reportes</span>
         </a>
-        <?php endif; ?>
     </nav>
 </div>

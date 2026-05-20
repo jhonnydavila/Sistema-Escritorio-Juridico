@@ -35,19 +35,7 @@
 
                         <div class="col-lg-4 col-md-4">
                             <div class="form-group form-floating">
-                                <input id="fechaInicioCaso" type="date" class="form-control" name="fechaInicioCaso" autocomplete="off" required>
-                                <label class="form-label" for="fechaInicioCaso">Fecha de Inicio</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group form-floating">
-                                <input id="fechaFinCaso" type="date" class="form-control" name="fechaFinCaso" autocomplete="off">
-                                <label class="form-label" for="fechaFinCaso">Fecha de Fin</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group form-floating">
-                                <input id="cotizacionInicialCaso" type="text" class="form-control" name="cotizacionInicialCaso" placeholder="john doe" autocomplete="off" required>
+                                <input id="cotizacionInicialCaso" type="text" class="form-control" name="cotizacionInicialCaso" placeholder="john doe" autocomplete="off">
                                 <label class="form-label" for="cotizacionInicialCaso">Cotización Inicial</label>
                             </div>
                         </div>

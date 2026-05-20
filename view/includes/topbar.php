@@ -1,10 +1,3 @@
-<?php
-require_once __DIR__ . '/../../lib/Session.php';
-Session::start();
-$user = Session::get('user', []);
-$userName = htmlspecialchars(trim(($user['nombre'] ?? '') . ' ' . ($user['apellido'] ?? '')));
-$userRole = htmlspecialchars($user['role'] ?? 'Sin rol');
-?>
 <header class="topbar">
     <div class="topbar-actions">
         <button class="btn-menu">
@@ -15,14 +8,13 @@ $userRole = htmlspecialchars($user['role'] ?? 'Sin rol');
             </svg>
         </button>
         <div class="topbar-user">
-            <div>
-                <p class="topbar-user-name"><?php echo $userName; ?></p>
-                <small><?php echo $userRole; ?></small>
+            <div class="d-flex flex-column text-end">
+                <p class="topbar-user-name">John Doe</p>
+                <span class="topbar-user-role">Administrador</span>
             </div>
             <div class="topbar-user-avatar">
                 <img src="assets/img/user.svg" alt="User Avatar">
             </div>
-            <a href="index.php?pagina=logout" class="btn btn-link">Cerrar sesión</a>
         </div>
     </div>
 </header>
