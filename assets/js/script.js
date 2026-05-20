@@ -1,10 +1,10 @@
 // Manejo de Dropdowns en el Sidebar
-const dropdowns = document.querySelectorAll('.sidebar-nav-dropdown');
+const dropdowns = document.querySelectorAll('.sidebar__nav-dropdown');
 dropdowns.forEach(dropdown => {
     dropdown.addEventListener('click', function() {
-        const parent = this.closest('.sidebar-nav-item-dropdown');
+        const parent = this.closest('.sidebar__nav-item-dropdown');
         // Cerrar otros dropdowns (Efecto Acordeón)
-        document.querySelectorAll('.sidebar-nav-item-dropdown').forEach(item => {
+        document.querySelectorAll('.sidebar__nav-item-dropdown').forEach(item => {
             if (item !== parent) {
                 item.classList.remove('active');
             }
@@ -33,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Lógica de Control de Pestañas (Tabs) Activos / Inactivos
 document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".page-tab");
-    const contenedorActivos = document.getElementById("page-active");
-    const contenedorInactivos = document.getElementById("page-inactive");
+    const tabs = document.querySelectorAll(".page__tab");
+    const contenedorActivos = document.getElementById("page__active");
+    const contenedorInactivos = document.getElementById("page__inactive");
     const tabla = document.querySelector('#table-inactive');
     
     function mostrarTab(status) {

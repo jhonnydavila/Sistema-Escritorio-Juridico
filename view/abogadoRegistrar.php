@@ -10,14 +10,14 @@
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Abogado</h2>
-                        <span class="page-header-subtitle">Gestión de Abogados</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Abogado</h2>
+                        <span class="page__header-subtitle">Gestión de Abogados</span>
                     </div>
                 </div>
-                <div class="page-content">
+                <div class="page__content">
                     <form action="controller/abogadoController.php" id="form" class="row p-4" method="POST">
 
                         <input type="text" name="registrarAbogado" hidden>

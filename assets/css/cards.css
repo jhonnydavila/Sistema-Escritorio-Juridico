@@ -1,0 +1,90 @@
+.card__container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--body-outline);
+    border-radius: 7px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.card__header{
+    color: var(--neutral);
+    padding: 1rem;
+    padding-bottom: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card__body{
+    flex-direction: column;
+    display: flex;
+    padding: 1rem;
+}
+.card__assigned{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card__assigned-avatar{
+    width: 38px;
+    height: 37px;
+    background-color: #dfdfdf;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--primary);
+}
+.card__assigned-info{
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0;
+}
+.card__assigned-info span{
+    font-size: 11px;
+    color: var(--secondary);
+}
+.card__assigned-info p{
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: -4px;
+}
+.card__footer{
+    margin-top: 6px;
+    padding: 0.4rem;
+    color: var(--primary);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-radius: 6px;
+    border: solid 1px var(--primary);
+    color: var(--primary);
+}
+.card__footer:hover{
+    background-color: var(--primary);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.card__blue .card__header{
+    background: linear-gradient(170deg, #2a7fb8, #0f649c);
+}
+.card__blue .card__header-badge{
+    background: #1a98ec;
+}
+
+.card__red .card__header{
+    background: linear-gradient(160deg, #d11b1b, #811023);
+}
+.card__red .card__header-badge{
+    background: #df0d0d;
+}
+
+.card__violet .card__header{
+    background: linear-gradient(170deg, #5e13b4, #3e3cb3);
+}
+.card__violet .card__header-badge{
+    background: #822ae7;
+}

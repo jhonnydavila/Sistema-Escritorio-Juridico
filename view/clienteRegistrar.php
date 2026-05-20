@@ -10,14 +10,14 @@
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Registrar Cliente</h2>
-                        <span class="page-header-subtitle">Gestión de Clientes</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Cliente</h2>
+                        <span class="page__header-subtitle">Gestión de Clientes</span>
                     </div>
                 </div>
-                <div class="page-content">
+                <div class="page__content">
                     <form action="controller/clienteController.php" id="form" class="row p-4" method="POST">
                         <div class="col-12">
                             <div class="form-group form-floating">

@@ -8,7 +8,10 @@
             </svg>
         </button>
         <div class="topbar-user">
-            <p class="topbar-user-name">John Doe</p>
+            <div class="d-flex flex-column text-end">
+                <p class="topbar-user-name">John Doe</p>
+                <span class="topbar-user-role">Administrador</span>
+            </div>
             <div class="topbar-user-avatar">
                 <img src="assets/img/user.svg" alt="User Avatar">
             </div>

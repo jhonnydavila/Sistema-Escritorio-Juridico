@@ -12,3 +12,5 @@
 <link rel="stylesheet" href="assets/css/pages.css"/>
 <link rel="stylesheet" href="assets/css/buttons.css"/>
 <link rel="stylesheet" href="assets/css/inputs.css"/>
+<link rel="stylesheet" href="assets/css/cards.css"/>
+<link rel="stylesheet" href="assets/css/tables.css"/>

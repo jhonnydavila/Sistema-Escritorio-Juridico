@@ -10,16 +10,16 @@
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
 
-            <section class="page-container">
-                <div class="page-header">
-                    <div class="page-header-titles">
-                        <h2 class="page-header-title">Consultar de Clientes</h2>
-                        <span class="page-header-subtitle">Gestión de Clientes</span>
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Consultar de Clientes</h2>
+                        <span class="page__header-subtitle">Gestión de Clientes</span>
                     </div>
                 </div>
-                <div class="page-content">
-                    <div class="page-tabs">
-                        <button class="page-tab active" data-status="Activo">
+                <div class="page__content">
+                    <div class="page__tabs">
+                        <button class="page__tab active" data-status="Activo">
                             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive-icon lucide-archive">
                                 <rect width="20" height="5" x="2" y="3" rx="1"/>
                                 <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
@@ -27,7 +27,7 @@
                             </svg>
                             <span>Clientes Activos</span>
                         </button>
-                        <button class="page-tab" data-status="Inactivo">
+                        <button class="page__tab" data-status="Inactivo">
                             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive-x-icon lucide-archive-x">
                                 <rect width="20" height="5" x="2" y="3" rx="1"/>
                                 <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
@@ -36,8 +36,8 @@
                             <span>Clientes Inactivos</span>
                         </button>
                     </div>
-                    <div class="page-table-container">
-                        <table id="table" class="page-table">
+                    <div class="table__container">
+                        <table id="table" class="table__content">
                             <thead>
                                 <tr>
                                     <th>Código</th>
@@ -58,7 +58,7 @@
                                     <td>Quibor</td>
                                     <td><span class="badge rounded-pill text-bg-secondary">Natural</span></td>
                                     <td>
-                                        <div class="page-table-buttons">
+                                        <div class="table__buttons">
                                             <button class="btn-table-view">
                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
                                                     <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
@@ -91,7 +91,7 @@
                                     <td>Av 20 Calle 10</td>
                                     <td><span class="badge rounded-pill text-bg-dark">Juridico</span></td>
                                     <td>
-                                        <div class="page-table-buttons">
+                                        <div class="table__buttons">
                                             <button class="btn-table-view">
                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
                                                     <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>

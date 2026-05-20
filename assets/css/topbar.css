@@ -27,6 +27,11 @@
     font-size: 14px;
     font-weight: 500;
 }
+.topbar-user-role{
+    color: var(--secondary);
+    font-size: 11px;
+    margin-top: -3px;
+}
 .topbar-user-avatar {
     display: flex;
     align-items: center;
