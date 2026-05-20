@@ -1,10 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/usuarioModel.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 class UsuarioController extends Usuario {
     public function __construct() {
         parent::__construct();

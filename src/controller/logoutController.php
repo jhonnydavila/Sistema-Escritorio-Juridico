@@ -1,9 +1,10 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../lib/Session.php';
+Session::start();
 
-session_unset();
-session_destroy();
-header('Location: index.php?pagina=login');
-exit;
+$sid = Session::id();
+require_once __DIR__ . '/../lib/SessionStorage.php';
+SessionStorage::delete($sid);
+Session::destroy();
+require_once __DIR__ . '/../lib/App.php';
+App::redirect('login');

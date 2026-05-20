@@ -14,16 +14,28 @@
                 </div>
             </div>
             <?php
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
+            require_once __DIR__ . '/../lib/Session.php';
+            Session::start();
+            $flash = Session::flash('flash_message');
+            if (!empty($flash)) {
+                echo '<div class="alert alert-info">' . htmlspecialchars($flash) . '</div>';
             }
-            if (!empty($_SESSION['flash_message'])) {
-                echo '<div class="alert alert-info">' . htmlspecialchars($_SESSION['flash_message']) . '</div>';
-                unset($_SESSION['flash_message']);
+
+            // Debug panel when ?debug=1
+            if (!empty($_GET['debug'])) {
+                $cookie = $_COOKIE[session_name()] ?? null;
+                $savePath = ini_get('session.save_path');
+                $writable = is_writable($savePath) ? 'yes' : 'no';
+                echo '<div style="background:#fff3cd;padding:12px;margin:8px 0;border:1px solid #ffeeba;">';
+                echo '<strong>DEBUG sesion</strong><br>';
+                echo 'Session::id() = ' . htmlspecialchars(Session::id()) . '<br>';
+                echo 'Cookie PHPSESSID = ' . htmlspecialchars($cookie ?? 'n/a') . '<br>';
+                echo 'session.save_path = ' . htmlspecialchars($savePath) . ' (writable=' . $writable . ')<br>';
+                echo '</div>';
             }
             ?>
             <div class="page-content">
-                <form action="src/controller/authController.php" method="POST" class="auth-form row p-4">
+                <form action="index.php?pagina=auth" method="POST" class="auth-form row p-4">
                     <div class="col-12 mb-3">
                         <label for="login" class="form-label">Correo o Cédula</label>
                         <input id="login" type="text" class="form-control" name="login" placeholder="ejemplo@correo.com o 12345678" required autocomplete="username">
