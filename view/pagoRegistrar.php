@@ -19,48 +19,55 @@
                     <form action="src/controller/pagoController.php" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="codigoPago" type="text" class="form-control" name="codigoPago" placeholder="PAG-001" autocomplete="off" required>
-                                <label class="form-label" for="codigoPago">Código de Pago</label>
+                                <select class="form-select" id="CasoPago" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <option value="CAS-001">Caso 1</option>
+                                    <option value="CAS-002">Caso 2</option>
+                                </select>
+                                <label for="CasoPago" class="form-label">Caso</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="codigoCasoPago" type="text" class="form-control" name="codigoCaso" placeholder="CAS-001" autocomplete="off" required>
-                                <label class="form-label" for="codigoCasoPago">Código de Caso</label>
+                                <select class="form-select" id="metodoPago" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <option value="transferencia">Transferencia</option>
+                                    <option value="efectivo">Efectivo</option>
+                                </select>
+                                <label for="metodoPago" class="form-label">Método de Pago</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="conceptoPago" type="text" class="form-control" name="conceptoPago" placeholder="Consulta legal" autocomplete="off" required>
-                                <label class="form-label" for="conceptoPago">Concepto</label>
+                                <select class="form-select" id="estatusPago" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <option value="confirmado">Confirmado</option>
+                                    <option value="rechazado">Rechazado</option>
+                                    <option value="pendiente">Pendiente</option>
+                                </select>
+                                <label for="estatusPago" class="form-label">Estatus del Pago</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="form-group form-floating">
                                 <input id="montoPago" type="number" step="0.01" class="form-control" name="montoPago" placeholder="150.00" autocomplete="off" required>
                                 <label class="form-label" for="montoPago">Monto</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-12">
                             <div class="form-group form-floating">
-                                <input id="metodoPago" type="text" class="form-control" name="metodoPago" placeholder="Transferencia" autocomplete="off" required>
-                                <label class="form-label" for="metodoPago">Método de Pago</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <input id="fechaPago" type="date" class="form-control" name="fechaPago" autocomplete="off" required>
-                                <label class="form-label" for="fechaPago">Fecha de Pago</label>
+                                <input id="conceptoPago" type="text" class="form-control" name="conceptoPago" placeholder="Consulta legal" autocomplete="off" required>
+                                <label class="form-label" for="conceptoPago">Concepto</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group form-floating">
-                                <textarea id="observacionesPago" class="form-control" name="observacionesPago" placeholder="Observaciones" style="height: 120px"></textarea>
+                                <input id="observacionesPago" type="text" class="form-control" name="observacionesPago" placeholder="Observaciones" autocomplete="off">
                                 <label class="form-label" for="observacionesPago">Observaciones</label>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn btn-primary">Guardar Pago</button>
+                            <button type="submit" class="btn__primary">Registrar</button>
                         </div>
                     </form>
                 </div>

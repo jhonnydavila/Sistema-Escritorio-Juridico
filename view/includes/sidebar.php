@@ -10,7 +10,7 @@
     </div>
     
     <nav class="sidebar__nav">
-        <a class="sidebar__nav-item" href="index.php?pagina=home">
+        <a class="sidebar__nav-item" href="index.php?page=home">
             <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
@@ -32,9 +32,9 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=casoRegistrar"><span>Registrar Caso</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=casoDesarrollo"><span>Casos en Desarrollo</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=casoConsultar"><span>Consultar Casos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=casoAsignaciones"><span>Asignaciones</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=casoRegistrar"><span>Registrar Caso</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=casoConsultar"><span>Consultar Casos</span></a>
             </div>
         </div>
         <div class="sidebar__nav-item-dropdown">
@@ -57,8 +57,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=eventoRegistrar"><span>Registrar Evento</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=eventoConsultar"><span>Consultar Eventos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=eventoRegistrar"><span>Registrar Evento</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=eventoConsultar"><span>Consultar Eventos</span></a>
             </div>
         </div>
 
@@ -74,8 +74,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=pagoRegistrar"><span>Registrar Pago</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=pagoConsultar"><span>Consultar Pagos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=pagoRegistrar"><span>Registrar Pago</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=pagoConsultar"><span>Consultar Pagos</span></a>
             </div>
         </div>
 
@@ -91,8 +91,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=clienteRegistrar"><span>Registrar Cliente</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=clienteConsultar"><span>Consultar Clientes</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=clienteRegistrar"><span>Registrar Cliente</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=clienteConsultar"><span>Consultar Clientes</span></a>
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=expedienteConsultar"><span>Consultar Expedientes</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=expedienteConsultar"><span>Consultar Expedientes</span></a>
             </div>
         </div>
 
@@ -125,8 +125,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=documentoRegistrar"><span>Registrar Documento</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=documentoConsultar"><span>Consultar Documentos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=documentoRegistrar"><span>Registrar Documento</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=documentoConsultar"><span>Consultar Documentos</span></a>
             </div>
         </div>
 
@@ -145,8 +145,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=abogadoRegistrar"><span>Registrar Abogado</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=abogadoConsultar"><span>Consultar Abogados</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=abogadoRegistrar"><span>Registrar Abogado</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=abogadoConsultar"><span>Consultar Abogados</span></a>
             </div>
         </div>
 
@@ -165,8 +165,8 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=usuarioRegistrar"><span>Registrar Usuario</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=usuarioConsultar"><span>Consultar Usuarios</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=usuarioRegistrar"><span>Registrar Usuario</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=usuarioConsultar"><span>Consultar Usuarios</span></a>
             </div>
         </div>
 
@@ -183,12 +183,12 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?pagina=archivadorRegistrar"><span>Registrar Archivador</span></a>
-                <a class="sidebar__nav-item" href="index.php?pagina=archivadorConsultar"><span>Consultar Archivadores</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=archivadorRegistrar"><span>Registrar Archivador</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=archivadorConsultar"><span>Consultar Archivadores</span></a>
             </div>
         </div>
 
-        <a class="sidebar__nav-item" href="#">
+        <a class="sidebar__nav-item" href="index.php?page=reportes">
             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-no-axes-combined-icon lucide-chart-no-axes-combined">
                 <path d="M12 16v5"/><path d="M16 14.639V21"/>
                 <path d="M20 10.656V21"/>

@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn btn-primary">Guardar Archivador</button>
+                            <button type="submit" class="btn__primary">Registrar</button>
                         </div>
                     </form>
                 </div>

@@ -113,3 +113,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".page__tab");
+    const tabContents = document.querySelectorAll(".tab__panel");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // 1. Remover estado activo de todos los tabs
+            tabs.forEach(t => t.classList.remove("active"));
+            // 2. Ocultar todos los paneles
+            tabContents.forEach(content => content.style.display = "none");
+
+            // 3. Activar el tab clickeado y mostrar su panel
+            tab.classList.add("active");
+            const targetId = tab.getAttribute("data-target");
+            const targetPanel = document.getElementById(targetId);
+            
+            if (targetPanel) {
+                targetPanel.style.display = "flex"; // Usamos flex para mantener el sistema de grillas
+            }
+        });
+    });
+});

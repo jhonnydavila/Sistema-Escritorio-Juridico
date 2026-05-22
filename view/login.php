@@ -25,7 +25,7 @@
                     </div>
                     <input type="hidden" name="loginAction" value="1">
                     <div class="col-12 d-flex justify-content-between align-items-center">
-                        <button type="submit" class="btn btn-primary">Entrar</button>
+                        <button type="submit" class="btn__primary">Entrar</button>
                     </div>
                 </form>
             </div>

@@ -62,7 +62,7 @@
 
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
                             <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Registrar</button>
+                            <button type="submit" class="btn__primary">Registrar</button>
                         </div>
                     </form>
                 </div>

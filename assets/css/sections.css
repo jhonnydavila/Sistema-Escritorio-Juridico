@@ -1,0 +1,54 @@
+.section__container{
+    background: white;
+    border: 1px solid var(--body-outline);
+    border-radius: var(--border-large);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--body-outline);
+    padding: 12px 16px;
+}
+.section__content {
+    padding: 16px;
+}
+.section__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* Componente de lista interactiva (reemplazo de tablas) */
+.data__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.data__list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: var(--neutral-outline);
+    border-radius: var(--border-normal);
+    border-left: 3px solid var(--primary-background);
+}
+.data__list-info {
+    display: flex;
+    flex-direction: column;
+}
+.data__list-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--primary);
+}
+.data__list-subtitle {
+    font-size: 11px;
+    color: var(--secondary);
+}

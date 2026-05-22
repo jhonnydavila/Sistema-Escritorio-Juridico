@@ -35,7 +35,12 @@
     border-color: var(--secondary) !important;
 }
 */
-.form-control, .form-select {
+.form-control[type="text"], 
+.form-control[type="number"], 
+.form-control[type="email"], 
+.form-control[type="date"], 
+.form-control[type="password"], 
+.form-select {
     margin: 0px !important;
     padding-left: 6px !important;
     padding-bottom: 2px !important;
@@ -48,7 +53,12 @@
     border-bottom: 2px solid var(--primary-outline) !important;
     background-position: right 10px top 25px !important;
 }
-.form-control:focus, .form-select:focus {
+.form-control[type="text"]:focus, 
+.form-control[type="number"]:focus, 
+.form-control[type="email"]:focus, 
+.form-control[type="date"]:focus, 
+.form-control[type="password"]:focus,
+.form-select:focus {
     outline: none !important;
     box-shadow: none !important;
     border-bottom-color: var(--primary-background) !important;
@@ -61,18 +71,43 @@
     padding-left: 0 !important;
     font-size: 12px;
 }
-.form-control:focus ~ .form-label, .form-select:focus ~ .form-label {
+.form-control[type="text"]:focus ~ .form-label, 
+.form-control[type="number"]:focus ~ .form-label, 
+.form-control[type="email"]:focus ~ .form-label, 
+.form-control[type="date"]:focus ~ .form-label, 
+.form-control[type="password"]:focus ~ .form-label, 
+.form-select:focus ~ .form-label {
     color: var(--primary) !important;
 }
-.form-control.is-invalid, .form-select.is-invalid {
+.form-control[type="text"].is-invalid, 
+.form-control[type="number"].is-invalid, 
+.form-control[type="email"].is-invalid, 
+.form-control[type="date"].is-invalid, 
+.form-control[type="password"].is-invalid,
+.form-select.is-invalid {
     border-bottom-color: #ad0000!important;
 }
-.form-control.is-invalid ~ .form-label, .form-select.is-invalid ~ .form-label {
+.form-control[type="text"].is-invalid ~ .form-label, 
+.form-control[type="number"].is-invalid ~ .form-label, 
+.form-control[type="email"].is-invalid ~ .form-label, 
+.form-control[type="date"].is-invalid ~ .form-label, 
+.form-control[type="password"].is-invalid ~ .form-label, 
+.form-select.is-invalid ~ .form-label {
     color: #ad0000 !important;
 }
-.form-control.is-valid, .form-select.is-valid {
+.form-control[type="text"].is-valid, 
+.form-control[type="number"].is-valid, 
+.form-control[type="email"].is-valid, 
+.form-control[type="date"].is-valid, 
+.form-control[type="password"].is-valid,
+.form-select.is-valid {
     border-bottom-color: #366641!important;
 }
-.form-control.is-valid ~ .form-label, .form-select.is-valid ~ .form-label {
+.form-control[type="text"].is-valid ~ .form-label, 
+.form-control[type="number"].is-valid ~ .form-label, 
+.form-control[type="email"].is-valid ~ .form-label, 
+.form-control[type="date"].is-valid ~ .form-label, 
+.form-control[type="password"].is-valid ~ .form-label, 
+.form-select.is-valid ~ .form-label {
     color: #366641 !important;
 }

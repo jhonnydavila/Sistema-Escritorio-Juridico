@@ -44,10 +44,25 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-6 col-md-6 mt-4">
                             <input class="form-control" type="file" id="formFile">
                         </div>
 
+                        <div class="d-flex justify-content-center mt-4 gap-2 w-100">
+                            <button type="submit" class="btn__primary">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <?php include ('includes/footer.php'); ?>
+    </body>
+</html>
+
+
+
+                    <!-- 
                         <div class="col">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="checkDefault">
@@ -56,7 +71,6 @@
                                 </label>
                             </div>
                         </div>
-                        
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="ExpedienteDocumento" required>
@@ -67,16 +81,4 @@
                                 <label for="ExpedienteDocumento" class="form-label">Expediente</label>
                             </div>
                         </div>
-
-                        <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Registrar</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <?php include ('includes/footer.php'); ?>
-    </body>
-</html>
+                        -->

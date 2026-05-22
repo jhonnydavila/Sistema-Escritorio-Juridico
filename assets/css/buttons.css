@@ -1,4 +1,4 @@
-.btn, .btn-primary-outline, .btn-add, .btn-filter {
+.btn, .btn__outline, .btn__primary {
     border: none;
     display: flex;
     outline: none;
@@ -6,21 +6,21 @@
     font-weight: 500;
     align-items: center;
     border-radius: var(--border-normal);
-    padding: 8px 14px;
-    font-size: 13px;
+    padding: 7px 14px;
+    font-size: 12px;
     gap: 5px;
 }
-.btn-primary-outline {
+.btn__outline {
     color: var(--secondary);
     background-color: white;
     border: 1px solid var(--body-outline);
 }
-.btn-add {
+.btn__primary {
     background-color: var(--primary-background);
     border: 1px solid var(--primary-background);
     color: white;
 }
-.btn-menu{
+.btn__menu{
     background-color: transparent;
     cursor: pointer;
     outline: none;
@@ -28,22 +28,35 @@
     color: var(--primary-color);
 }
 
-.btn-table-delete, .btn-table-update, .btn-table-view{
+button, .btn__table-delete, .btn__table-update, .btn__table-view, .btn__table-download{
     border: none;
     display: flex;
     outline: none;
     cursor: pointer;
     align-items: center;
+    transition: all 0.2s ease-in-out;
     border-radius: var(--border-small);
     padding: 4px 6px;
     color: white;
 }
-.btn-table-delete{
+.btn__icon{
+    background-color: transparent;
+    color: var(--primary);
+    padding: 6px;
+    border-radius: 50%;
+}
+.btn__icon:hover{
+    background-color: var(--body-outline);
+}
+.btn__table-delete{
     background-color: #ad0000;
 }
-.btn-table-update{
+.btn__table-update{
     background-color: var(--primary);
 }
-.btn-table-view{
+.btn__table-view{
     background-color: var(--secondary);
+}
+.btn__table-download{
+    background-color: #0d9696;
 }

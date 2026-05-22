@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <div class="page__table-container">
+                    <div class="table__container">
                         <table id="table" class="page__table">
                             <thead>
                                 <tr>

@@ -16,11 +16,6 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <?php
-                        require_once __DIR__ . '/../controller/usuarioController.php';
-                        $usuarioController = new UsuarioController();
-                        $roles = $usuarioController->listar_roles_controller();
-                    ?>
                     <form action="src/controller/usuarioController.php" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
@@ -48,42 +43,33 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="fechaNacimientoUsuario" type="date" class="form-control" name="fechaNacimientoUsuario" placeholder="Fecha de Nacimiento" autocomplete="off">
-                                <label class="form-label" for="fechaNacimientoUsuario">Fecha de Nacimiento</label>
+                                <input id="nameUsuario" type="text" class="form-control" name="nameUsuario" placeholder="Nombre" autocomplete="off">
+                                <label class="form-label" for="nameUsuario">Nombre de Usuario</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="direccionUsuario" type="text" class="form-control" name="direccionUsuario" placeholder="Dirección" autocomplete="off">
-                                <label class="form-label" for="direccionUsuario">Dirección</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <input id="contrasenaUsuario" type="password" class="form-control" name="contrasenaUsuario" placeholder="Contraseña" autocomplete="off" required>
-                                <label class="form-label" for="contrasenaUsuario">Contraseña</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <input id="fraseSecretaUsuario" type="password" class="form-control" name="fraseSecretaUsuario" placeholder="Frase secreta" autocomplete="off" required>
-                                <label class="form-label" for="fraseSecretaUsuario">Frase Secreta</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <select id="rolUsuario" class="form-control" name="rolUsuario" required>
+                                <select id="rolUsuario" class="form-select" name="rolUsuario" required>
                                     <option value="">Seleccione un rol</option>
-                                    <?php foreach ($roles as $rol): ?>
-                                        <option value="<?php echo htmlspecialchars($rol['idRol']); ?>"><?php echo htmlspecialchars($rol['nombreRol']); ?></option>
-                                    <?php endforeach; ?>
                                 </select>
                                 <label class="form-label" for="rolUsuario">Rol</label>
                             </div>
                         </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="contrasenaUsuario1" type="password" class="form-control" name="contrasenaUsuario1" placeholder="Contraseña" autocomplete="off" required>
+                                <label class="form-label" for="contrasenaUsuario1">Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="contrasenaUsuario2" type="password" class="form-control" name="contrasenaUsuario2" placeholder="Confirmar Contraseña" autocomplete="off" required>
+                                <label class="form-label" for="contrasenaUsuario2">Confirmar Contraseña</label>
+                            </div>
+                        </div>
                         <div class="col-12 d-flex justify-content-center mt-4 gap-2 w-100">
                             <input type="hidden" name="registrarUsuario" value="1">
-                            <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                            <button type="submit" class="btn__primary">Registrar</button>
                         </div>
                     </form>
                 </div>

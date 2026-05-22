@@ -1,16 +1,14 @@
 <?php
-    $publicPages = ['login', 'recuperarContrasena', 'auth'];
     
-    if (!empty($_GET['pagina'])){ 
-        $pagina = $_GET['pagina'];
+    if (!empty($_GET['page'])){ 
+        $page = $_GET['page'];
     } else {
-        $pagina = 'home';
+        $page = 'home';
     }
-
-    if(is_file("controller/".$pagina."Controller.php")){ 
-        require_once("controller/".$pagina."Controller.php");
-    } else if(is_file("view/".$pagina.".php")){ 
-        require_once("view/".$pagina.".php");
+    if(is_file("controller/".$page."Controller.php")){ 
+        require_once("controller/".$page."Controller.php");
+    } else if(is_file("view/".$page.".php")){ 
+        require_once("view/".$page.".php");
     } else {
-        echo "Error 404: Página no encontrada.";
+        require_once("view/404.php");
     }

@@ -22,7 +22,7 @@
                         <div class="col-12">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="TipoCliente" required>
-                                    <option value="">Seleccionar...</option>
+                                    <option value="" hidden>Seleccionar...</option>
                                     <option value="natural">Natural</option>
                                     <option value="juridico">Jurídico</option>
                                 </select>
@@ -128,11 +128,9 @@
                                 </div>
                             </div>
                         </div>
-
                         
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
-                            <button type="submit" class="btn btn-sm btn-primary">Registrar</button>
+                            <button type="submit" class="btn__primary">Registrar</button>
                         </div>
                     </form>
                 </div>

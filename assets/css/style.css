@@ -50,7 +50,7 @@ body {
     flex-direction: column;
     overflow: hidden;
 }
-p, a{
+p, a, span{
     font-size: 13px;
 }
 

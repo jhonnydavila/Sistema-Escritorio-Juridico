@@ -20,7 +20,7 @@
             </div>
             <div class="page__content">
                 <p>Por favor regresa al panel o inicia sesión nuevamente.</p>
-                <a href="index.php?pagina=home" class="btn btn-primary">Ir al inicio</a>
+                <a href="index.php?pagina=home" class="btn__primary">Ir al inicio</a>
             </div>
         </section>
     </main>
