@@ -70,7 +70,7 @@
 }
 
 .card__blue .card__header{
-    background: linear-gradient(170deg, #2a7fb8, #0f649c);
+    background: linear-gradient(160deg, #187abb, #1a4063);
 }
 .card__blue .card__header-badge{
     background: #1a98ec;
@@ -84,7 +84,7 @@
 }
 
 .card__violet .card__header{
-    background: linear-gradient(170deg, #5e13b4, #3e3cb3);
+    background: linear-gradient(160deg, #681cbe, #381263);
 }
 .card__violet .card__header-badge{
     background: #822ae7;

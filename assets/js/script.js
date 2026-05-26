@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Lógica de Tipo de Cliente
 document.addEventListener('DOMContentLoaded', function() {
-    const tipoCliente = document.getElementById('TipoCliente');
+    const tipoCliente = document.getElementById('tipoCliente');
     
     if (tipoCliente) {
         tipoCliente.addEventListener('change', function() {

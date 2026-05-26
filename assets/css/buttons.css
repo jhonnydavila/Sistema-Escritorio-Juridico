@@ -27,7 +27,21 @@
     border: none;
     color: var(--primary-color);
 }
-
+.btn__primary-rounded{
+    border: none;
+    outline: none;
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 14px;
+    padding: 0.6rem;
+    font-weight: 500;
+    border-radius: px;
+    background: linear-gradient(160deg, var(--primary), #1b5081);
+}
 button, .btn__table-delete, .btn__table-update, .btn__table-view, .btn__table-download{
     border: none;
     display: flex;

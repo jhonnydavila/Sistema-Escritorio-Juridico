@@ -32,9 +32,9 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="index.php?page=casoAsignaciones"><span>Asignaciones</span></a>
                 <a class="sidebar__nav-item" href="index.php?page=casoRegistrar"><span>Registrar Caso</span></a>
                 <a class="sidebar__nav-item" href="index.php?page=casoConsultar"><span>Consultar Casos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=casoAsignaciones"><span>Asignaciones</span></a>
             </div>
         </div>
         <div class="sidebar__nav-item-dropdown">
@@ -59,6 +59,7 @@
             <div class="sidebar__nav-dropdown-menu">
                 <a class="sidebar__nav-item" href="index.php?page=eventoRegistrar"><span>Registrar Evento</span></a>
                 <a class="sidebar__nav-item" href="index.php?page=eventoConsultar"><span>Consultar Eventos</span></a>
+                <a class="sidebar__nav-item" href="index.php?page=eventoCalendario"><span>Calendario de Eventos</span></a>
             </div>
         </div>
 
@@ -109,6 +110,7 @@
                 </svg>
             </div>
             <div class="sidebar__nav-dropdown-menu">
+                <a class="sidebar__nav-item" href="index.php?page=expedienteRegistrar"><span>Registrar Expedientes</span></a>
                 <a class="sidebar__nav-item" href="index.php?page=expedienteConsultar"><span>Consultar Expedientes</span></a>
             </div>
         </div>
