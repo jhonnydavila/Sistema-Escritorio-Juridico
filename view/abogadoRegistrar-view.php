@@ -19,18 +19,18 @@
                 </div>
                 <div class="page__content">
                     <form action="index.php?page=abogadoRegistrar" id="form" class="row p-4" method="POST">
-
                         <input type="text" name="registrar" hidden>
 
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="nombreAbogado" type="text" class="form-control" name="nombreAbogado" placeholder="john doe" minlength="3" maxlength="40" autocomplete="off">
+                                <input id="nombreAbogado" type="text" class="form-control" name="nombreAbogado" placeholder="john doe" minlength="3" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,40}$" autocomplete="off" required>
                                 <label class="form-label" for="nombreAbogado">Nombre</label>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="apellidoAbogado" type="text" class="form-control" name="apellidoAbogado" placeholder="john doe" minlength="3" maxlength="40" autocomplete="off">
+                                <input id="apellidoAbogado" type="text" class="form-control" name="apellidoAbogado" placeholder="john doe" minlength="3" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,40}$" autocomplete="off" required>
                                 <label class="form-label" for="apellidoAbogado">Apellido</label>
                             </div>
                         </div>
@@ -47,25 +47,28 @@
 
                         <div class="col-md-5 col-8">
                             <div class="form-group form-floating">
-                                <input id="cedulaAbogado" type="text" class="form-control" name="cedulaAbogado" placeholder="john doe" minlength="3" maxlength="10" autocomplete="off">
+                                <input id="cedulaAbogado" type="text" class="form-control" name="cedulaAbogado" placeholder="john doe" minlength="3" maxlength="9" pattern="^[0-9]{3,9}$" autocomplete="off" required>
                                 <label class="form-label" for="cedulaAbogado">Cédula de Identidad</label>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="telefonoAbogado" type="text" class="form-control" name="telefonoAbogado" placeholder="john doe" autocomplete="off">
+                                <input id="telefonoAbogado" type="text" class="form-control" name="telefonoAbogado" placeholder="john doe" maxlength="15" pattern="^0[24][0-9]{9}$" autocomplete="off" required>
                                 <label class="form-label" for="telefonoAbogado">Número Teléfonico</label>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="correoAbogado" type="email" class="form-control" name="correoAbogado" placeholder="john doe" autocomplete="off">
+                                <input id="correoAbogado" type="email" class="form-control" name="correoAbogado" placeholder="john doe" maxlength="200" autocomplete="off" required>
                                 <label class="form-label" for="correoAbogado">Correo Electrónico</label>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="direccionAbogado" type="text" class="form-control" name="direccionAbogado" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off">
+                                <input id="direccionAbogado" type="text" class="form-control" name="direccionAbogado" placeholder="john doe" maxlength="200" pattern="^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s.,#\-\/]{3,200}$" autocomplete="off" required>
                                 <label class="form-label" for="direccionAbogado">Dirección de Residencia</label>
                             </div>
                         </div>

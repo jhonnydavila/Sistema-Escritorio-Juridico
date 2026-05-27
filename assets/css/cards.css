@@ -1,12 +1,17 @@
-.card__container{
+.card__case{
     display: flex;
     flex-direction: column;
     border: 1px solid var(--body-outline);
     border-radius: 7px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
 }
-.card__header{
+.card__case:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+.card__case-header{
     color: var(--neutral);
     padding: 1rem;
     padding-bottom: 1.6rem;
@@ -14,17 +19,17 @@
     justify-content: space-between;
     align-items: center;
 }
-.card__body{
+.card__case-body{
     flex-direction: column;
     display: flex;
     padding: 1rem;
 }
-.card__assigned{
+.card__case-assigned{
     display: flex;
     align-items: center;
     gap: 8px;
 }
-.card__assigned-avatar{
+.card__case-assigned-avatar{
     width: 36px;
     height: 35px;
     font-size: 14px;
@@ -36,22 +41,22 @@
     align-items: center;
     display: flex;
 }
-.card__assigned-info{
+.card__case-assigned-info{
     display: flex;
     flex-direction: column;
     padding: 0.6rem 0;
 }
-.card__assigned-info span{
+.card__case-assigned-info span{
     font-size: 11px;
     color: var(--secondary);
 }
-.card__assigned-info p{
+.card__case-assigned-info p{
     font-size: 14px;
     color: var(--primary);
     font-weight: 500;
     margin-top: -4px;
 }
-.card__footer{
+.card__case-footer{
     margin-top: 6px;
     padding: 0.4rem;
     color: var(--primary);
@@ -63,29 +68,104 @@
     border: solid 1px var(--primary);
     color: var(--primary);
 }
-.card__footer:hover{
+.card__case-footer:hover{
     background-color: var(--primary);
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
-.card__blue .card__header{
-    background: linear-gradient(160deg, #187abb, #1a4063);
+.card__case-blue .card__case-header{
+    background: linear-gradient(160deg, #2288cc, #013d75);
 }
-.card__blue .card__header-badge{
-    background: #1a98ec;
+.card__case-blue .card__case-header-badge{
+    background: #2288cc;
 }
 
-.card__red .card__header{
-    background: linear-gradient(160deg, #d11b1b, #811023);
+.card__case-yellow .card__case-header{
+    background: linear-gradient(160deg, #d4d226, #695a00);
 }
-.card__red .card__header-badge{
+.card__case-yellow .card__case-header-badge{
+    background: #c7c41d;
+}
+
+.card__case-red .card__case-header{
+    background: linear-gradient(160deg, #e21e1e, #52000e);
+}
+.card__case-red .card__case-header-badge{
     background: #df0d0d;
 }
 
-.card__violet .card__header{
-    background: linear-gradient(160deg, #681cbe, #381263);
+.card__case-orange .card__case-header{
+    background: linear-gradient(160deg, #ff8d30, #852a00);
 }
-.card__violet .card__header-badge{
-    background: #822ae7;
+.card__case-orange .card__case-header-badge{
+    background: #f17108;
+}
+
+.card__case-violet .card__case-header{
+    background: linear-gradient(160deg, #712ebd, #270041);
+}
+.card__case-violet .card__case-header-badge{
+    background: #6024a5;
+}
+
+.card__case-green .card__case-header{
+    background: linear-gradient(160deg, #069e6b, #004931);
+}
+.card__case-green .card__case-header-badge{
+    background: #0d8b61;
+}
+
+
+.card__home {
+    background-color: #ffffff;
+    border: 1px solid var(--body-outline); /* Borde sutil y minimalista */
+    border-radius: var(--border-large);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+.card__home:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+.card__home-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.card__home-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--neutral-container);
+    border-radius: var(--border-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+.card__home-icon svg {
+    width: 20px;
+    height: 20px;
+}
+.card__home-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.card__home-body .stats {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: -6px 0;
+}
+.card__home-body .stats-label {
+    font-size: 13px;
+    color: var(--secondary);
+    font-weight: 500;
 }

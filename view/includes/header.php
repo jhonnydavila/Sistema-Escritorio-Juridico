@@ -6,7 +6,6 @@
 
 <link rel="stylesheet" href="assets/plugins/dataTables.min.css">
 <link rel="stylesheet" href="assets/plugins/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/style.css"/>
 <link rel="stylesheet" href="assets/css/sidebar.css"/>
 <link rel="stylesheet" href="assets/css/topbar.css"/>
 <link rel="stylesheet" href="assets/css/pages.css"/>
@@ -15,3 +14,4 @@
 <link rel="stylesheet" href="assets/css/cards.css"/>
 <link rel="stylesheet" href="assets/css/tables.css"/>
 <link rel="stylesheet" href="assets/css/sections.css"/>
+<link rel="stylesheet" href="assets/css/style.css"/>

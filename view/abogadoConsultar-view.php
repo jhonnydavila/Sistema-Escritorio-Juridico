@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="table__container">
-                        <?php if (!empty($registros)){ ?> 
+                        <?php if (!empty($data)){ ?> 
                         <table id="table" class="table__content">
                             <thead>
                                 <tr>
@@ -51,7 +51,7 @@
                                 </tr>
                             </thead>
                             <tbody> 
-                            <?php foreach ($registros as $abogado){ ?>
+                            <?php foreach ($data as $abogado){ ?>
                                 <tr>
                                     <td><?php echo $abogado['cedulaAbogado']; ?></td>
                                     <td class="text-capitalize"><?php echo $abogado['nombreAbogado'] . " " . $abogado['apellidoAbogado']; ?></td>

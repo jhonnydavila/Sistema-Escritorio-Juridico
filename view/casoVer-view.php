@@ -64,7 +64,7 @@
                 </div>
                 <div class="page__panels-container mt-3">
 
-                    <div class="row g-3 tab__panel" id="tab-informacion" style="display: flex;">
+                    <div class="row g-3 page__tab-panel" id="tab-informacion" style="display: flex;">
                         <div class="col-8">
                             <div class="section__container">
                                 <div class="section__header">
@@ -182,7 +182,7 @@
                         </div>
                     </div>
 
-                    <div class="row g-3 tab__panel" id="tab-datos" style="display: none;">
+                    <div class="row g-3 page__tab-panel" id="tab-datos" style="display: none;">
                         <div class="col-8">
                             <div class="row g-3">
                                 <div class="col-12">
@@ -304,7 +304,7 @@
                         </div>
                     </div>
 
-                    <div class="row g-3 tab__panel" id="tab-documentos" style="display: none;">
+                    <div class="row g-3 page__tab-panel" id="tab-documentos" style="display: none;">
                         <div class="col-12">
                             <div class="section__container">
                                 <div class="section__header">
@@ -397,7 +397,7 @@
                         </div>
                     </div>
 
-                    <div class="row g-3 tab__panel" id="tab-pagos" style="display: none;">
+                    <div class="row g-3 page__tab-panel" id="tab-pagos" style="display: none;">
                         <div class="col-12">
                             <div class="section__container">
                                 <div class="section__header">
@@ -470,7 +470,7 @@
                         </div>
                     </div>
 
-                    <div class="row g-3 tab__panel" id="tab-eventos" style="display: none;">
+                    <div class="row g-3 page__tab-panel" id="tab-eventos" style="display: none;">
                         <div class="col-12">
                             <div class="section__container">
                                 <div class="section__header">

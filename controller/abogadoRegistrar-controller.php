@@ -7,7 +7,7 @@
     }
     if (isset($_POST['registrar'])) {
         require_once('controller/abogado-controller.php');
-        $ins = new AbogadoController();
-        $response = $ins->registrar_abogado_controller();
+        $objAbogado = new AbogadoController();
+        $response = $objAbogado->registrar_abogado_controller();
         echo $response;
     }

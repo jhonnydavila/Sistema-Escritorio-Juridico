@@ -31,51 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Lógica de Control de Pestañas (Tabs) Activos / Inactivos
-document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll(".page__tab");
-    const contenedorActivos = document.getElementById("page__active");
-    const contenedorInactivos = document.getElementById("page__inactive");
-    const tabla = document.querySelector('#table-inactive');
-    
-    function mostrarTab(status) {
-        tabs.forEach(tab => {
-            tab.classList.toggle("active", tab.getAttribute("data-status") === status);
-        });
-
-        if (status === "Activo") {
-            if (contenedorActivos) {
-                contenedorActivos.style.display = "block";
-            }
-            if (contenedorInactivos) {
-                contenedorInactivos.style.display = "none";
-            }
-        } else if (status === "Inactivo") {
-            if (tabla && !DataTable.isDataTable(tabla)){
-                new DataTable(tabla, {
-                    "language": {
-                        "url": "assets/plugins/dataTables.español.json"
-                    }
-                });
-            }
-            if (contenedorInactivos) contenedorInactivos.style.display = "block";
-            if (contenedorActivos) contenedorActivos.style.display = "none";
-        }
-    }
-
-    // Inicializa la interfaz mostrando los abogados activos por defecto
-    mostrarTab("Activo");
-
-    // Evento click para cambiar dinámicamente entre pestañas
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            const status = tab.getAttribute("data-status");
-            mostrarTab(status);
-        });
-    });
-});
-
-
 // Lógica de Tipo de Cliente
 document.addEventListener('DOMContentLoaded', function() {
     const tipoCliente = document.getElementById('tipoCliente');
@@ -114,24 +69,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Lógica de los tabs de las paginas/secciones
 document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll(".page__tab");
-    const tabContents = document.querySelectorAll(".tab__panel");
+    const tabContents = document.querySelectorAll(".page__tab-panel");
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            // 1. Remover estado activo de todos los tabs
             tabs.forEach(t => t.classList.remove("active"));
-            // 2. Ocultar todos los paneles
             tabContents.forEach(content => content.style.display = "none");
 
-            // 3. Activar el tab clickeado y mostrar su panel
             tab.classList.add("active");
             const targetId = tab.getAttribute("data-target");
             const targetPanel = document.getElementById(targetId);
             
             if (targetPanel) {
-                targetPanel.style.display = "flex"; // Usamos flex para mantener el sistema de grillas
+                targetPanel.style.display = "flex";
             }
         });
     });

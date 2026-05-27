@@ -1,6 +1,6 @@
 <?php
     require_once('model/abogado-model.php');
-
+    
     class AbogadoController extends AbogadoModel {
 
         public function registrar_abogado_controller() {
