@@ -37,7 +37,7 @@
                         </button>
                     </div>
                     <div class="page__panels-container">
-                        <div class="row p-4 g-4 page__tab-panel" id="panel-mis-casos" style="display: flex;">
+                        <div class="row p-4 g-4 page__tab-panel" id="panel-mis-casos" style="display: block;">
                             <div class="col-lg-4 col-md-6">
                                 <div class="card__case card__case-green">
                                     <div class="card__case-header">

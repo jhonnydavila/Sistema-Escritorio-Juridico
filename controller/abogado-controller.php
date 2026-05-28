@@ -4,7 +4,6 @@
     class AbogadoController extends AbogadoModel {
 
         public function registrar_abogado_controller() {
-            $objAbogado = new AbogadoModel();
 
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
@@ -13,17 +12,17 @@
             $strTelefono = $_POST['telefonoAbogado'];
             $strNacionalidad = $_POST['nacionalidadAbogado'];
             $strCorreo = $_POST['correoAbogado'];
+            
+            AbogadoModel::set_Nombre($strNombre);
+            AbogadoModel::set_Apellido($strApellido);
+            AbogadoModel::set_Cedula($strCedula);
+            AbogadoModel::set_Direccion($strDireccion);
+            AbogadoModel::set_Telefono($strTelefono);
+            AbogadoModel::set_Nacionalidad($strNacionalidad);
+            AbogadoModel::set_Correo($strCorreo);
+            AbogadoModel::set_Estatus("Activo");
 
-            $objAbogado->set_Nombre($strNombre);
-            $objAbogado->set_Apellido($strApellido);
-            $objAbogado->set_Cedula($strCedula);
-            $objAbogado->set_Direccion($strDireccion);
-            $objAbogado->set_Telefono($strTelefono);
-            $objAbogado->set_Nacionalidad($strNacionalidad);
-            $objAbogado->set_Correo($strCorreo);
-            $objAbogado->set_Estatus("Activo");
-
-            $response = $objAbogado->registrar_abogado_model();
+            $response = AbogadoModel::registrar_abogado_model();
             if ($response){
                 return '
                     <script>
@@ -32,7 +31,8 @@
                             icon: "success",
                             draggable: true
                         });
-                    </script>';
+                    </script>
+                ';
             }else {
                 return '
                     <script>
@@ -41,13 +41,13 @@
                         title: "Error...",
                         text: "No se pudo registrar el Abogado"
                     });
-                    </script>';
+                    </script>
+                ';
             }   
         }
 
         public function consultar_abogado_controller() {
-            $objAbogado = new AbogadoModel();
-            $response = $objAbogado->consultar_abogado_model();
+            $response = AbogadoModel::consultar_abogado_model();
             return $response;
         }
     }

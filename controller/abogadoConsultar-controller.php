@@ -8,12 +8,5 @@
 
         require_once('view/'.$page.'-view.php');
     }else{
-        echo '
-            <script>
-                Swal.fire({
-                    icon: "error",
-                    title: "Error...",
-                    text: "No se pudo acceder a la página"
-                });
-            </script>';
+        echo "Error... Pagina en Construcción";
     }

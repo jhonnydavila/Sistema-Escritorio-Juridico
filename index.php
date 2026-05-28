@@ -2,7 +2,7 @@
     if (!empty($_GET['page'])){ 
         $page = $_GET['page'];
     } else {
-        $page = 'home';
+        $page = 'login';
     }
     if(is_file("controller/".$page."-controller.php")){ 
         require_once("controller/".$page."-controller.php");

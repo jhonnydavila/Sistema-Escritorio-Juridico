@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetPanel = document.getElementById(targetId);
             
             if (targetPanel) {
-                targetPanel.style.display = "flex";
+                targetPanel.style.display = "block";
             }
         });
     });

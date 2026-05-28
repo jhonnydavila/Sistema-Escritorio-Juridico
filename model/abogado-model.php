@@ -39,7 +39,7 @@
             try {
                 $registro = "SELECT * FROM tbl_abogados";
                 $consulta = $this->conexion->prepare($registro);
-                $resul = $consulta->execute();
+                $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
             } catch (PDOException $e) {

@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-1 col-4">
+                        <div class="col-md-2 col-4">
                             <div class="form-group form-floating">
                                 <select class="form-select" name="nacionalidadAbogado" id="nacionalidadAbogado" required>
                                     <option value="V" selected>V</option>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-5 col-8">
+                        <div class="col-md-4 col-8">
                             <div class="form-group form-floating">
                                 <input id="cedulaAbogado" type="text" class="form-control" name="cedulaAbogado" placeholder="john doe" minlength="3" maxlength="9" pattern="^[0-9]{3,9}$" autocomplete="off" required>
                                 <label class="form-label" for="cedulaAbogado">Cédula de Identidad</label>
@@ -54,7 +54,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <input id="telefonoAbogado" type="text" class="form-control" name="telefonoAbogado" placeholder="john doe" maxlength="15" pattern="^0[24][0-9]{9}$" autocomplete="off" required>
+                                <input id="telefonoAbogado" type="text" class="form-control" name="telefonoAbogado" placeholder="john doe" maxlength="12" pattern="^0[24][0-9]{9}$" autocomplete="off" required>
                                 <label class="form-label" for="telefonoAbogado">Número Teléfonico</label>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const submitBtn = form.querySelector('button[type="submit"]');
     
-    const inputs = form.querySelectorAll(".form-control, .form-select");
+    const inputs = form.querySelectorAll(".form-control");
 
     // Función para validar un input individual y cambiar sus estilos
     function validarInput(input) {
