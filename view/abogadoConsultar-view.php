@@ -87,8 +87,6 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-inactivos" style="display: none;">
                             <table id="table" class="table__content">
                                 <thead>

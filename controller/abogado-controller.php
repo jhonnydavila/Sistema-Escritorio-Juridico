@@ -1,10 +1,19 @@
 <?php
     require_once('model/abogado-model.php');
+    $objAbogado = new AbogadoModel();
     
-    class AbogadoController extends AbogadoModel {
-
-        public function registrar_abogado_controller() {
-
+    if (isset($_POST['abogadoConsultar'])) {
+        $page = 'abogadoConsultar';
+        if(is_file('view/'.$page.'-view.php')){ 
+            $data = $objAbogado->consultar_abogado_model();
+            require_once('view/'.$page.'-view.php');
+        }
+    }else if(isset($_POST['abogadoRegistrar']) || isset($_POST['registrar'])){
+        $page = 'abogadoRegistrar';
+        if (is_file('view/'.$page.'-view.php')){ 
+            require_once('view/'.$page.'-view.php');
+        }
+        if (isset($_POST['registrar'])) {
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
             $strCedula = $_POST['cedulaAbogado'];
@@ -13,18 +22,18 @@
             $strNacionalidad = $_POST['nacionalidadAbogado'];
             $strCorreo = $_POST['correoAbogado'];
             
-            AbogadoModel::set_Nombre($strNombre);
-            AbogadoModel::set_Apellido($strApellido);
-            AbogadoModel::set_Cedula($strCedula);
-            AbogadoModel::set_Direccion($strDireccion);
-            AbogadoModel::set_Telefono($strTelefono);
-            AbogadoModel::set_Nacionalidad($strNacionalidad);
-            AbogadoModel::set_Correo($strCorreo);
-            AbogadoModel::set_Estatus("Activo");
+            $objAbogado->set_Nombre($strNombre);
+            $objAbogado->set_Apellido($strApellido);
+            $objAbogado->set_Cedula($strCedula);
+            $objAbogado->set_Direccion($strDireccion);
+            $objAbogado->set_Telefono($strTelefono);
+            $objAbogado->set_Nacionalidad($strNacionalidad);
+            $objAbogado->set_Correo($strCorreo);
+            $objAbogado->set_Estatus("Activo");
 
-            $response = AbogadoModel::registrar_abogado_model();
+            $response = $objAbogado->registrar_abogado_model();
             if ($response){
-                return '
+                echo '
                     <script>
                         Swal.fire({
                             title: "Abogado Registrado Exitosamente",
@@ -34,7 +43,7 @@
                     </script>
                 ';
             }else {
-                return '
+                echo '
                     <script>
                         Swal.fire({
                         icon: "error",
@@ -43,11 +52,8 @@
                     });
                     </script>
                 ';
-            }   
+            }
         }
-
-        public function consultar_abogado_controller() {
-            $response = AbogadoModel::consultar_abogado_model();
-            return $response;
-        }
+    }else{
+        echo "Error... Pagina en Construcción";
     }

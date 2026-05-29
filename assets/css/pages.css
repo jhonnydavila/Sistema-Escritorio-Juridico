@@ -4,6 +4,17 @@
     min-height: 0;
     overflow-y: auto;
 }
+.page__container::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+.page__container::-webkit-scrollbar-track {
+    background: var(--neutral-container);
+}
+.page__container::-webkit-scrollbar-thumb {
+    background-color: #707788;
+    border: 1px solid var(--neutral-container);
+}
 .page__header {
     padding-bottom: 20px;
     display: flex;
@@ -39,7 +50,7 @@
     border: 1px solid var(--body-outline);
     border-radius: var(--border-large);
     overflow: hidden;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 .page__tabs {

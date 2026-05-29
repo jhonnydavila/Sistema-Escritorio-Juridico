@@ -8,8 +8,6 @@
         <?php include ('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
-
-            
             <section class="page__container">
                 <div class="page__content">
                     <div class="page__tabs">

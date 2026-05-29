@@ -1,10 +1,11 @@
 .sidebar__container {
     width: 236px;
-    background-color: var(--primary);
-    display: flex;
-    flex-direction: column;
-    position: fixed;
     height: 100%;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    background-color: var(--primary);
+    transition: transform 0.3s ease-in-out;
 }
 .sidebar__header {
     background: var(--primary-background);
@@ -43,6 +44,7 @@
     overflow-y: auto;
 }
 .sidebar__nav-item, .sidebar__nav-dropdown {
+    background: none;
     gap: 8px;
     font-size: 13px;
     font-weight: 500;
@@ -97,4 +99,11 @@
 }
 .sidebar__nav::-webkit-scrollbar-thumb {
     background-color: #3d4963;
+}
+
+.sidebar__container.collapsed {
+    transform: translateX(-100%);
+}
+.main-content.expanded {
+    margin-left: 0;
 }

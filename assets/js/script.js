@@ -1,4 +1,18 @@
-// Manejo de Dropdowns en el Sidebar
+// Lógica del toggle para ocultar/mostrar el Sidebar (menu)
+document.addEventListener("DOMContentLoaded", () => {
+    const btnMenu = document.querySelector('.btn__menu');
+    const sidebar = document.querySelector('.sidebar__container');
+    const mainContent = document.querySelector('.main-content');
+
+    if (btnMenu && sidebar && mainContent) {
+        btnMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+        });
+    }
+});
+
+// Lógica de Dropdowns en el Sidebar
 const dropdowns = document.querySelectorAll('.sidebar__nav-dropdown');
 dropdowns.forEach(dropdown => {
     dropdown.addEventListener('click', function() {
@@ -21,11 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const tablas = document.querySelectorAll('#table');
     
     tablas.forEach(tabla => {
+        // Asegurarnos de usar la variable correcta para verificar si es DataTable
         if (!window.$.fn.DataTable.isDataTable(tabla)) {
             new DataTable(tabla, {
                 "language": {
                     "url": "assets/plugins/dataTables.español.json"
-                }
+                },
+                "width": "100%" // Asegura que tome el 100%
             });
         }
     });
@@ -85,6 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
             
             if (targetPanel) {
                 targetPanel.style.display = "block";
+                
+                // --- Mostrar Tablas ---
+                const tablaVisible = targetPanel.querySelector('.table__content');
+                if (tablaVisible && window.$.fn.DataTable.isDataTable(tablaVisible)) {
+                    $(tablaVisible).DataTable().columns.adjust();
+                }
             }
         });
     });

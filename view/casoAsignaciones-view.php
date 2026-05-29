@@ -37,160 +37,190 @@
                         </button>
                     </div>
                     <div class="page__panels-container">
-                        <div class="row p-4 g-4 page__tab-panel" id="panel-mis-casos" style="display: block;">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-green">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                EJ
-                                            </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Dra. Elena Jiménez</p>
-                                            </div>
+                        <div class="page__tab-panel" id="panel-mis-casos" style="display: block;">
+                            <div class="row p-4 g-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-green">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
                                         </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-blue">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                EJ
-                                            </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Dra. Elena Jiménez</p>
-                                            </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-blue">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
                                         </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-violet">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">Pendiente</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                EJ
-                                            </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Dra. Elena Jiménez</p>
-                                            </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-violet">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">Pendiente</span>
                                         </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row p-4 g-4 page__tab-panel" id="panel-sin-asignacion" style="display: none;">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-red">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">Sin Asignación</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                ?
-                                            </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Sin Asignación</p>
-                                            </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-violet">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">Pendiente</span>
                                         </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row p-4 g-4 page__tab-panel" id="panel-otros-casos" style="display: none;">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-yellow">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                EJ
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
                                             </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Dra. Elena Jiménez</p>
-                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
                                         </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card__case card__case-orange">
-                                    <div class="card__case-header">
-                                        <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
-                                        <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
-                                    </div>
-                                    <div class="card__case-body">
-                                        <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
-                                        <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
-                                        
-                                        <div class="card__case-assigned">
-                                            <div class="card__case-assigned-avatar">
-                                                EJ
-                                            </div>
-                                            <div class="card__case-assigned-info">
-                                                <span>Abogado asignado</span>
-                                                <p>Dra. Elena Jiménez</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="page__tab-panel" id="panel-sin-asignacion" style="display: none;">
+                            <div class="row p-4 g-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-red">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">Sin Asignación</span>
+                                        </div>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    ?
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Sin Asignación</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page__tab-panel" id="panel-otros-casos" style="display: none;">
+                            <div class="row p-4 g-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-yellow">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Asesoría</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
+                                        </div>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card__case card__case-orange">
+                                        <div class="card__case-header">
+                                            <span class="badge bg-dark rounded-pill bg-opacity-75 shadow">Gestión Jurídica</span>
+                                            <span class="card__case-header-badge badge rounded-pill shadow">En Desarrollo</span>
+                                        </div>
+                                        <div class="card__case-body">
+                                            <p class="text-muted" style="font-size: 12px;">Código: CAS-2026-001</p>
+                                            <h5 class="fs-6 fw-bold text-dark pb-2 border-bottom w-100">María Alejandra Pérez</h5>
+                                            
+                                            <div class="card__case-assigned">
+                                                <div class="card__case-assigned-avatar">
+                                                    EJ
+                                                </div>
+                                                <div class="card__case-assigned-info">
+                                                    <span>Abogado asignado</span>
+                                                    <p>Dra. Elena Jiménez</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
-
         <?php (include 'view/includes/footer.php'); ?>
     </body>
 </html>

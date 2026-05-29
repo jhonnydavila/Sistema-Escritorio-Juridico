@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="index.php?page=abogadoRegistrar" id="form" class="row p-4" method="POST">
+                    <form action="?page=abogado" id="form" class="row p-4" method="POST">
                         <input type="text" name="registrar" hidden>
 
                         <div class="col-md-6">

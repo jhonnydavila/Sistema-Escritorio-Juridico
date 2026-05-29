@@ -29,11 +29,10 @@
             try {
                 $numeroAleatorio = random_int(0, 999999);
             } catch (\Exception $e) {
-                // Respaldo en caso de que el sistema no soporte random_int (raro en PHP 7+)
                 $numeroAleatorio = mt_rand(0, 999999);
             }
             
-            $numeroFormateado = str_pad($numeroAleatorio, 6, "0", STR_PAD_LEFT);
+            $numeroFormateado = str_pad($numeroAleatorio, 5, "0", STR_PAD_LEFT);
             
             return "{$prefijo}-{$numeroFormateado}";
         }
