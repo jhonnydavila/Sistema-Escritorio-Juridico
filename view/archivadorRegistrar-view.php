@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <?php include ('includes/header.php'); ?>
+        <?php include ('view/includes/header.php'); ?>
+        <?php include __DIR__ . '/includes/header.php'; ?>
         <title>Registrar Archivador</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include ('view/includes/sidebar.php'); ?>
+        
+        <?php include __DIR__ . '/includes/sidebar.php'; ?>
         <main class="main-content">
+            <?php include ('view/includes/topbar.php'); ?>
+            
+            <section class="page__container">
+                <div class="page__header">
+                    <div class="page__header-titles">
+                        <h2 class="page__header-title">Registrar Archivador</h2>
+                        <span class="page__header-subtitle">Añade un archivador para documentos y expedientes</span>
             <?php include __DIR__ . '/includes/topbar.php'; ?>
             <section class="page__container">
                 <div class="page__header">
@@ -16,6 +26,8 @@
                     </div>
                 </div>
                 <div class="page__content">
+                    <form action="index.php?page=archivadorRegistrar" class="row p-4" method="POST">
+                <div class="page-content">
                     <form action="src/controller/archivadorController.php" class="row p-4" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
@@ -23,12 +35,15 @@
                                 <label class="form-label" for="numeroArchivador">Número de Archivador</label>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-group form-floating">
-                                <input id="nombreArchivador" type="text" class="form-control" name="nombreArchivador" placeholder="Archivador Central" autocomplete="off" required>
-                                <label class="form-label" for="nombreArchivador">Nombre</label>
-                            </div>
+                        <div class="col-lg-6">
+                        <div class="form-group form-floating">
+                            <select class="form-select" name="estatusArchivador" id="estatusArchivador">
+                                <option value="Activo">Activo</option>
+                                <option value="Archivado">Archivado</option>
+                            </select>
+                            <label for="estatusArchivador">Estatus</label>
                         </div>
+                    </div>
                         <div class="col-lg-12">
                             <div class="form-group form-floating">
                                 <input id="descripcionArchivador" type="text" class="form-control" name="descripcionArchivador" placeholder="Descripción" autocomplete="off" required>
@@ -42,6 +57,8 @@
                 </div>
             </section>
         </main>
-        <?php include ('includes/footer.php'); ?>
+        
+        <?php include ('view/includes/footer.php'); ?>
+        <?php include __DIR__ . '/includes/footer.php'; ?>
     </body>
 </html>
