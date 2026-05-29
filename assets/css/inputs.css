@@ -1,6 +1,3 @@
-.form-control, .form-select {
-    border-radius: 3px;
-}
 .modal-content{
     border: none;
     border-radius: 6px;
@@ -20,7 +17,7 @@
 .form-control[type="password"], 
 .form-select {
     margin: 0px;
-    padding-left: 6px;
+    padding-left: 0.3rem;
     border-radius: 0;
     font-size: 15px;
     border: none;
@@ -29,6 +26,9 @@
     background-color: transparent;
     border-bottom: 2px solid var(--primary-outline);
     background-position: right 10px top 25px;
+}
+.form-floating>.form-select {
+    padding-left: 0.3rem;
 }
 .form-control[type="text"]:focus, 
 .form-control[type="number"]:focus, 

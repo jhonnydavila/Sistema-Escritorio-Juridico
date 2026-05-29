@@ -1,9 +1,9 @@
 <?php
-    require_once('model/abogado-model.php');
-    $objAbogado = new AbogadoModel();
+    require_once('model/caso-model.php');
+    $objCaso = new CasoModel();
     
-    if(isset($_POST['abogadoRegistrar']) || isset($_POST['registrar'])){
-        require_once('view/abogadoRegistrar-view.php');
+    if(isset($_POST['casoRegistrar']) || isset($_POST['registrar'])){
+        require_once('view/casoRegistrar-view.php');
         if (isset($_POST['registrar'])) {
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
@@ -13,16 +13,16 @@
             $strNacionalidad = $_POST['nacionalidadAbogado'];
             $strCorreo = $_POST['correoAbogado'];
             
-            $objAbogado->set_Nombre($strNombre);
-            $objAbogado->set_Apellido($strApellido);
-            $objAbogado->set_Cedula($strCedula);
-            $objAbogado->set_Direccion($strDireccion);
-            $objAbogado->set_Telefono($strTelefono);
-            $objAbogado->set_Nacionalidad($strNacionalidad);
-            $objAbogado->set_Correo($strCorreo);
-            $objAbogado->set_Estatus("Activo");
+            $objCaso->set_Nombre($strNombre);
+            $objCaso->set_Apellido($strApellido);
+            $objCaso->set_Cedula($strCedula);
+            $objCaso->set_Direccion($strDireccion);
+            $objCaso->set_Telefono($strTelefono);
+            $objCaso->set_Nacionalidad($strNacionalidad);
+            $objCaso->set_Correo($strCorreo);
+            $objCaso->set_Estatus("Activo");
 
-            $response = $objAbogado->registrar_abogado_model();
+            $response = $objCaso->registrar_caso_model();
             if ($response){
                 echo '
                     <script>
@@ -46,10 +46,12 @@
             }
         }
 
-    }else if (isset($_POST['abogadoConsultar'])) {
-        $data = $objAbogado->consultar_abogado_model();
-        require_once('view/abogadoConsultar-view.php');
+    }else if (isset($_POST['casoConsultar'])) {
+        $data = $objCaso->consultar_caso_model();
+        require_once('view/casoConsultar-view.php');
 
+    }else if(isset($_POST['casoAsignacion'])){
+        require_once('view/casoAsignacion-view.php');
     }else{
         echo "Error... Pagina en Construcción";
     }

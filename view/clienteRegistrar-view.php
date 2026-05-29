@@ -82,13 +82,13 @@
                         </div>
 
                         <div id="campos-juridicos" class="row d-none p-0 m-0">
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-5 col-md-6">
                                 <div class="form-group form-floating">
                                     <input id="razonSocialCliente" type="text" class="form-control" name="razonSocialCliente" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off" required>
                                     <label class="form-label" for="razonSocialCliente">Razón Social</label>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-2 col-4">
+                            <div class="col-lg-1 col-md-2 col-3">
                                 <div class="form-group form-floating">
                                     <select class="form-select" name="tipoRifCliente" id="tipoRifCliente" required>
                                         <option value="J" selected>J</option>
@@ -97,19 +97,28 @@
                                     <label for="tipoRifCliente" class="form-label">Tipo</label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-8">
+                            <div class="col-lg-3 col-md-4 col-9">
                                 <div class="form-group form-floating">
                                     <input id="rifCliente" type="text" class="form-control" name="rifCliente" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off" required>
                                     <label class="form-label" for="rifCliente">RIF</label>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-3 col-md-6">
                                 <div class="form-group form-floating">
                                     <input id="fechaConstitucionCliente" type="date" class="form-control" name="fechaConstitucionCliente" placeholder="john doe" minlength="3" maxlength="10" autocomplete="off" required>
-                                    <label class="form-label" for="fechaConstitucionCliente">Fecha de Nacimiento</label>
+                                    <label class="form-label" for="fechaConstitucionCliente">Fecha de Constitución</label>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-1 col-md-2 col-3">
+                                <div class="form-group form-floating">
+                                    <select class="form-select" name="nacionalidadRepresentanteCliente" id="nacionalidadRepresentanteCliente" required>
+                                        <option value="J" selected>V</option>
+                                        <option value="C">E</option>
+                                    </select>
+                                    <label for="nacionalidadRepresentanteCliente" class="form-label">Nac.</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-9">
                                 <div class="form-group form-floating">
                                     <input id="cedulaRepresentanteCliente" type="text" class="form-control" name="cedulaRepresentanteCliente" placeholder="john doe" minlength="3" maxlength="10" autocomplete="off" required>
                                     <label class="form-label" for="cedulaRepresentanteCliente">Cédula del Representante Legal</label>

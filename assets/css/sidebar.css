@@ -55,6 +55,9 @@
     cursor: pointer;
     display: flex;
 }
+.sidebar__nav-item button{
+    background-color: transparent;
+}
 .sidebar__nav-dropdown-menu .sidebar__nav-item{
     padding: 12px 26px;
 }

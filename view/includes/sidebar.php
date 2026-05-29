@@ -31,11 +31,11 @@
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="?page=casoRegistrar"><span>Registrar Caso</span></a>
-                <a class="sidebar__nav-item" href="?page=casoConsultar"><span>Consultar Casos</span></a>
-                <a class="sidebar__nav-item" href="?page=casoAsignaciones"><span>Asignaciones</span></a>
-            </div>
+            <form action="?page=caso" method="POST" class="sidebar__nav-dropdown-menu">
+                <button type="submit" class="sidebar__nav-item" name="casoRegistrar"><span>Registrar Caso</span></button>
+                <button type="submit" class="sidebar__nav-item" name="casoConsultar"><span>Consultar Casos</span></button>
+                <button type="submit" class="sidebar__nav-item" name="casoAsignaciones"><span>Asignaciones</span></button>
+            </form>
         </div>
         <div class="sidebar__nav-item-dropdown">
             <div class="sidebar__nav-dropdown">
