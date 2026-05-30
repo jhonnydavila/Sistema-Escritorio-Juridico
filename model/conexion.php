@@ -23,7 +23,7 @@
             return  $this->conexion; 
         }
 
-        protected function generarCodigoAleatorio(string $letras) {
+        public function generarCodigoAleatorio(string $letras) {
             $prefijo = strtoupper(substr(trim($letras), 0, 3));
             
             try {

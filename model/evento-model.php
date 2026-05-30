@@ -17,6 +17,7 @@
 
         public function registrar_evento_model() {
             try {
+                $this->codigo = conexion::generarCodigoAleatorio("EVE");
                 $registro = "INSERT INTO tbl_eventos (codigoEvento, tituloEvento, tipoEvento, descripcionEvento, estatusEvento, fechaEvento, codigoCaso) VALUES (:codigo, :titulo, :tipo, :descripcion, :estatus, :fecha, :caso)";
                 $strExec = $this->conexion->prepare($registro);
                 $strExec->bindParam(':codigo', $this->codigo);

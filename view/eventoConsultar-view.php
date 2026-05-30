@@ -14,8 +14,8 @@
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
-                        <h2 class="page__header-title">Consultar Abogados</h2>
-                        <span class="page__header-subtitle">Gestión de Abogados</span>
+                        <h2 class="page__header-title">Consultar Eventos</h2>
+                        <span class="page__header-subtitle">Gestión de Eventos</span>
                     </div>
                 </div>
                 <div class="page__content">
@@ -37,7 +37,6 @@
                             <span>Eventos Suspendidos</span>
                         </button>
                     </div>
-
                     
                     <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-activos" style="display: block;">

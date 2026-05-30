@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include ('includes/header.php'); ?>
+        <?php include('includes/header.php'); ?>
         <title>Registrar Evento</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
-            <?php include('/includes/topbar.php'); ?>
+            <?php include('includes/topbar.php'); ?>
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -16,10 +16,12 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="controller/eventoController.php" class="row p-4" method="POST">
+                    <form action="?page=evento" class="row p-4" method="POST">
+                        <input type="text" name="registrar" hidden>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="casoEvento" required>
+                                <select class="form-select" id="casoEvento" name="casoEvento" required>
                                     <option value="" hidden>Seleccionar...</option>
                                     <option value="CAS-001">Caso 1</option>
                                     <option value="CAS-002">Caso 2</option>
@@ -27,45 +29,51 @@
                                 <label for="casoEvento" class="form-label">Caso</label>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group form-floating">
                                 <input id="tituloEvento" type="text" class="form-control" name="tituloEvento" placeholder="Audiencia" autocomplete="off" required>
                                 <label class="form-label" for="tituloEvento">Título/Nombre del Evento</label>
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="tipoEvento" required>
+                                <select class="form-select" id="tipoEvento" name="tipoEvento" required>
                                     <option value="" hidden>Seleccionar...</option>
-                                    <option value="">Cita</option>
-                                    <option value="">Reunión</option>
-                                    <option value="">Audiencia</option>
+                                    <option value="Cita">Cita</option>
+                                    <option value="Reunión">Reunión</option>
+                                    <option value="Audiencia">Audiencia</option>
                                 </select>
                                 <label for="tipoEvento" class="form-label">Tipo de Evento</label>
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group form-floating">
                                 <input id="fechaEvento" type="date" class="form-control" name="fechaEvento" autocomplete="off" required>
                                 <label class="form-label" for="fechaEvento">Fecha del Evento</label>
                             </div>
                         </div>
+
                         <div class="col-md-4">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="estatusEvento" required>
+                                <select class="form-select" id="estatusEvento" name="estatusEvento" required>
                                     <option value="" hidden>Seleccionar...</option>
-                                    <option value="">Confirmado</option>
-                                    <option value="">En Espera</option>
+                                    <option value="Confirmado">Confirmado</option>
+                                    <option value="En Espera">En Espera</option>
                                 </select>
                                 <label for="estatusEvento" class="form-label">Estatus del Evento</label>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div class="form-group form-floating">
                                 <input id="descripcionEvento" type="text" class="form-control" name="descripcionEvento" placeholder="Descripción del evento">
                                 <label class="form-label" for="descripcionEvento">Descripción</label>
                             </div>
                         </div>
+
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
                             <button type="submit" class="btn__primary">Registrar</button>
                         </div>
