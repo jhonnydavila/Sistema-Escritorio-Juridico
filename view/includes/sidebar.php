@@ -56,11 +56,11 @@
                     <path d="m6 9 6 6 6-6"/>
                 </svg>
             </div>
-            <div class="sidebar__nav-dropdown-menu">
-                <a class="sidebar__nav-item" href="?page=eventoRegistrar"><span>Registrar Evento</span></a>
-                <a class="sidebar__nav-item" href="?page=eventoConsultar"><span>Consultar Eventos</span></a>
-                <a class="sidebar__nav-item" href="?page=eventoCalendario"><span>Calendario de Eventos</span></a>
-            </div>
+            <form action="?page=evento" method="POST" class="sidebar__nav-dropdown-menu">
+                <button type="submit" class="sidebar__nav-item" name="eventoRegistrar"><span>Registrar Evento</span></button>
+                <button type="submit" class="sidebar__nav-item" name="eventoConsultar"><span>Consultar Eventos</span></button>
+                <button type="submit" class="sidebar__nav-item" name="eventoCalendario"><span>Calendario de Eventos</span></button>
+            </form>
         </div>
 
         <div class="sidebar__nav-item-dropdown">

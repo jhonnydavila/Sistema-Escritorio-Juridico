@@ -1,9 +1,9 @@
 <?php
-    require_once('model/caso-model.php');
-    $objCaso = new CasoModel();
+    require_once('model/evento-model.php');
+    $objEvento = new EventoModel();
     
-    if(isset($_POST['casoRegistrar']) || isset($_POST['registrar'])){
-        require_once('view/casoRegistrar-view.php');
+    if(isset($_POST['eventoRegistrar']) || isset($_POST['registrar'])){
+        require_once('view/eventoRegistrar-view.php');
         if (isset($_POST['registrar'])) {
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
@@ -13,16 +13,16 @@
             $strNacionalidad = $_POST['nacionalidadAbogado'];
             $strCorreo = $_POST['correoAbogado'];
             
-            $objCaso->set_Nombre($strNombre);
-            $objCaso->set_Apellido($strApellido);
-            $objCaso->set_Cedula($strCedula);
-            $objCaso->set_Direccion($strDireccion);
-            $objCaso->set_Telefono($strTelefono);
-            $objCaso->set_Nacionalidad($strNacionalidad);
-            $objCaso->set_Correo($strCorreo);
-            $objCaso->set_Estatus("Activo");
+            $objEvento->set_Nombre($strNombre);
+            $objEvento->set_Apellido($strApellido);
+            $objEvento->set_Cedula($strCedula);
+            $objEvento->set_Direccion($strDireccion);
+            $objEvento->set_Telefono($strTelefono);
+            $objEvento->set_Nacionalidad($strNacionalidad);
+            $objEvento->set_Correo($strCorreo);
+            $objEvento->set_Estatus("Activo");
 
-            $response = $objCaso->registrar_caso_model();
+            $response = $objEvento->registrar_evento_model();
             if ($response){
                 echo '
                     <script>
@@ -46,12 +46,12 @@
             }
         }
 
-    }else if (isset($_POST['casoConsultar'])) {
-        $data = $objCaso->consultar_caso_model();
-        require_once('view/casoConsultar-view.php');
+    }else if (isset($_POST['eventoConsultar'])) {
+        $data = $objEvento->consultar_evento_model();
+        require_once('view/eventoConsultar-view.php');
 
-    }else if(isset($_POST['casoAsignaciones'])){
-        require_once('view/casoAsignaciones-view.php');
+    }else if(isset($_POST['eventoCalendario'])){
+        require_once('view/eventoCalendario-view.php');
 
     }else{
         echo "Error... Pagina en Construcción";
