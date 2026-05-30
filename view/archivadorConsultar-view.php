@@ -44,31 +44,42 @@
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ARC-001</td>
-                                    <td>Archivador Central</td>
-                                    <td>Documentos importantes y expedientes actuales</td>
-                                    <td class="text-center">
-                                        <div class="table__buttons">
-                                            <button class="btn__table-update" title="Modificar Archivador">
-                                                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/>
-                                                    <path d="m15 5 4 4"/>
-                                                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
-                                                </svg>
-                                            </button>
-                                            <button class="btn__table-delete" title="Eliminar Archivador">
-                                                <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
-                                                    <path d="M10 11v6"/>
-                                                    <path d="M14 11v6"/>
-                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
-                                                    <path d="M3 6h18"/>
-                                                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                           <tbody>
+                                <?php if(isset($data) && !empty($data)): ?>
+                                    <?php foreach($data as $row): ?>
+                                        <tr data-status="<?= htmlspecialchars($row['estatusArchivador']) ?>">
+                                            <td><?= htmlspecialchars($row['numeroArchivador']) ?></td>
+                                            <td><?= htmlspecialchars($row['nombreArchivador']) ?></td>
+                                            <td><?= htmlspecialchars($row['descripcionArchivador']) ?></td>
+                                            <td class="text-center">
+                                                <div class="table__buttons">
+                                                    <button class="btn__table-update" title="Modificar Archivador" 
+                                                            onclick="editarArchivador('<?= htmlspecialchars($row['numeroArchivador']) ?>')">
+                                                        <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line">
+                                                            <path d="M13 21h8"/>
+                                                            <path d="m15 5 4 4"/>
+                                                            <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="btn__table-delete" title="Eliminar Archivador"
+                                                            onclick="eliminarArchivador('<?= htmlspecialchars($row['numeroArchivador']) ?>')">
+                                                        <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                            <path d="M10 11v6"/>
+                                                            <path d="M14 11v6"/>
+                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+                                                            <path d="M3 6h18"/>
+                                                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4">No hay archivadores registrados</td>
+                                    </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
