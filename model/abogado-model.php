@@ -35,7 +35,7 @@
             }
         }
 
-        public function  consultar_abogado_model() {
+        public function consultar_abogado_model() {
             try {
                 $registro = "SELECT * FROM tbl_abogados";
                 $consulta = $this->conexion->prepare($registro);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <?php include('includes/header.php'); ?>
         <title>Consultar Eventos</title>
@@ -147,7 +147,6 @@
                 </div>
             </section>
         </main>
-
         <?php (include 'view/includes/footer.php'); ?>
     </body>
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <?php include ('includes/header.php'); ?>
+        <?php include('includes/header.php'); ?>
         <title>Consultar Pagos</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include __DIR__ . '/includes/topbar.php'; ?>
             <section class="page__container">
@@ -94,6 +94,6 @@
                 </div>
             </section>
         </main>
-        <?php include ('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>

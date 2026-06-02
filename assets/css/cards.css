@@ -120,7 +120,7 @@
 
 .card__home {
     background-color: #ffffff;
-    border: 1px solid var(--body-outline); /* Borde sutil y minimalista */
+    border: 1px solid var(--body-outline);
     border-radius: var(--border-large);
     padding: 18px 16px;
     display: flex;
@@ -160,7 +160,7 @@
     color: var(--primary);
 }
 .card__home-body .stats {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
     margin: -6px 0;

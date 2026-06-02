@@ -8,7 +8,7 @@
         private $descripcion;
         private $estatus;
         private $fecha;
-        private $caso;
+        private $codigoCaso;
 
         public function __construct(){
             $this->conexion = new Conexion();
@@ -26,7 +26,7 @@
                 $strExec->bindParam(':descripcion', $this->descripcion);
                 $strExec->bindParam(':estatus', $this->estatus);
                 $strExec->bindParam(':fecha', $this->fecha);
-                $strExec->bindParam(':caso', $this->caso);
+                $strExec->bindParam(':caso', $this->codigoCaso);
                 return $strExec->execute();
             } catch (PDOException $e) {
                 error_log('Error en registrar_evento_model(): ' . $e->getMessage());
@@ -89,10 +89,10 @@
             return $this->fecha; 
         }
 
-        public function set_Caso($caso) { 
-            $this->caso = $caso; 
+        public function set_CodigoCaso($codigoCaso) { 
+            $this->codigoCaso = $codigoCaso; 
         }
-        public function get_Caso() { 
-            return $this->caso; 
+        public function get_CodigoCaso() { 
+            return $this->codigoCaso; 
         }
     }

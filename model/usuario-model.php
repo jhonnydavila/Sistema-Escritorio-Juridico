@@ -1,14 +1,13 @@
 <?php
     require_once('conexion.php');
 
-    class CasoModel extends Conexion {
+    class UsuarioModel extends Conexion {
         private $nombre;
         private $apellido;
         private $cedula;
-        private $direccion;
-        private $telefono;
-        private $nacionalidad;
-        private $correo;
+        private $rol;
+        private $clave;
+        private $fechaRegistro;
         private $estatus;
 
         public function __construct(){
@@ -16,34 +15,33 @@
             $this->conexion = $this->conexion->Conexion();
         }
 
-        public function registrar_caso_model() {
+        public function registrar_usuario_model() {
             try {
-                $registro = "INSERT INTO tbl_abogados (nombreAbogado, apellidoAbogado, cedulaAbogado, direccionAbogado, telefonoAbogado, nacionalidadAbogado, correoAbogado, estatusAbogado) VALUES (:nombre, :apellido, :cedula, :direccion, :telefono, :nacionalidad, :correo, :estatus)";
+                $registro = "INSERT INTO tbl_usuarios (nombreUsuario, apellidoUsuario, cedulaUsuario, rolUsuario, claveUsuario, fechaRegistroUsuario, estatusUsuario) VALUES (:nombre, :apellido, :cedula, :rol, :clave, :fechaRegistro, :estatus)";
                 $strExec = $this->conexion->prepare($registro);
                 $strExec->bindParam(':nombre', $this->nombre);
                 $strExec->bindParam(':apellido', $this->apellido);
                 $strExec->bindParam(':cedula', $this->cedula);
-                $strExec->bindParam(':direccion', $this->direccion);
-                $strExec->bindParam(':telefono', $this->telefono);
-                $strExec->bindParam(':nacionalidad', $this->nacionalidad);
-                $strExec->bindParam(':correo', $this->correo);
+                $strExec->bindParam(':rol', $this->rol);
+                $strExec->bindParam(':clave', $this->clave);
+                $strExec->bindParam(':fechaRegistro', $this->fechaRegistro);
                 $strExec->bindParam(':estatus', $this->estatus);
                 return $strExec->execute();
             } catch (PDOException $e) {
-                error_log('Error en registrar_abogado_model(): ' . $e->getMessage());
+                error_log('Error en registrar_usuario_model(): ' . $e->getMessage());
                 exit();
             }
         }
 
-        public function consultar_caso_model() {
+        public function consultar_usuario_model() {
             try {
-                $registro = "SELECT * FROM tbl_casos";
+                $registro = "SELECT * FROM tbl_usuarios";
                 $consulta = $this->conexion->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
             } catch (PDOException $e) {
-                error_log('Error en consultar_caso_model(): ' . $e->getMessage());
+                error_log('Error en consultar_usuario_model(): ' . $e->getMessage());
                 exit();
             }
         }
@@ -69,25 +67,25 @@
             return $this->cedula; 
         }
 
-        public function set_Direccion($direccion) { 
-            $this->direccion = $direccion; 
+        public function set_Rol($rol) { 
+            $this->rol = $rol; 
         }
-        public function get_Direccion() { 
-            return $this->direccion; 
-        }
-
-        public function set_Telefono($telefono) { 
-            $this->telefono = $telefono; 
-        }
-        public function get_Telefono() { 
-            return $this->telefono; 
+        public function get_Rol() { 
+            return $this->rol; 
         }
         
-        public function set_Correo($correo) { 
-            $this->correo = $correo; 
+        public function set_Clave($clave) { 
+            $this->clave = $clave; 
         }
-        public function get_Correo() { 
-            return $this->correo; 
+        public function get_Clave() { 
+            return $this->clave; 
+        }
+        
+        public function set_FechaRegistro($fechaRegistro) { 
+            $this->fechaRegistro = $fechaRegistro; 
+        }
+        public function get_FechaRegistro() { 
+            return $this->fechaRegistro; 
         }
     
         public function set_Estatus($estatus) { 
@@ -95,12 +93,5 @@
         }
         public function get_Estatus() { 
             return $this->estatus; 
-        }
-
-        public function set_Nacionalidad($nacionalidad) { 
-            $this->nacionalidad = $nacionalidad; 
-        }
-        public function get_Nacionalidad() { 
-            return $this->nacionalidad; 
         }
     }
