@@ -2,6 +2,7 @@
     require_once('conexion.php');
 
     class AbogadoModel extends Conexion {
+        private $conex;
         private $nombre;
         private $apellido;
         private $cedula;
@@ -12,14 +13,14 @@
         private $estatus;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_abogado_model() {
             try {
                 $registro = "INSERT INTO tbl_abogados (nombreAbogado, apellidoAbogado, cedulaAbogado, direccionAbogado, telefonoAbogado, nacionalidadAbogado, correoAbogado, estatusAbogado) VALUES (:nombre, :apellido, :cedula, :direccion, :telefono, :nacionalidad, :correo, :estatus)";
-                $strExec = $this->conexion->prepare($registro);
+                $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':nombre', $this->nombre);
                 $strExec->bindParam(':apellido', $this->apellido);
                 $strExec->bindParam(':cedula', $this->cedula);
@@ -29,22 +30,48 @@
                 $strExec->bindParam(':correo', $this->correo);
                 $strExec->bindParam(':estatus', $this->estatus);
                 return $strExec->execute();
+                
             } catch (PDOException $e) {
                 error_log('Error en registrar_abogado_model(): ' . $e->getMessage());
-                exit();
+                return false;
             }
         }
 
         public function consultar_abogado_model() {
             try {
-                $registro = "SELECT * FROM tbl_abogados";
-                $consulta = $this->conexion->prepare($registro);
+                $registro = "SELECT 
+                                tbl_abogados.cedulaAbogado, 
+                                tbl_abogados.nombreAbogado, 
+                                tbl_abogados.apellidoAbogado, 
+                                tbl_abogados.direccionAbogado, 
+                                tbl_abogados.telefonoAbogado, 
+                                tbl_abogados.nacionalidadAbogado, 
+                                tbl_abogados.correoAbogado, 
+                                tbl_abogados.estatusAbogado, 
+                                COUNT(tbl_casosabogados.codigoCaso) AS totalCasos 
+                            FROM 
+                                tbl_abogados 
+                            LEFT JOIN 
+                                tbl_casosabogados 
+                            ON 
+                                tbl_abogados.cedulaAbogado = tbl_casosabogados.cedulaAbogado
+                            GROUP BY 
+                                tbl_abogados.cedulaAbogado, 
+                                tbl_abogados.nombreAbogado, 
+                                tbl_abogados.apellidoAbogado, 
+                                tbl_abogados.direccionAbogado, 
+                                tbl_abogados.telefonoAbogado, 
+                                tbl_abogados.nacionalidadAbogado, 
+                                tbl_abogados.correoAbogado, 
+                                tbl_abogados.estatusAbogado
+                            ";
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
             } catch (PDOException $e) {
                 error_log('Error en consultar_abogado_model(): ' . $e->getMessage());
-                exit();
+                return [];
             }
         }
 

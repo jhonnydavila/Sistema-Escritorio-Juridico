@@ -1,8 +1,8 @@
 <?php
-    require_once ('config/config.php');
+    require_once('config/config.php');
 
     class Conexion extends PDO {
-        private $conexion;
+        private $conex;
         
         public function __construct(){
             try {
@@ -11,7 +11,7 @@
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_EMULATE_PREPARES => false,
                 ];
-                $this->conexion = new PDO($strConexion, _DB_USER_, _DB_PASS_, $options);
+                $this->conex = new PDO($strConexion, _DB_USER_, _DB_PASS_, $options);
             }
             catch (PDOException $e) {
                 error_log("Conexión Fallida".$e->getMessage());
@@ -19,21 +19,7 @@
             }
         }
 
-        protected function Conexion(){
-            return  $this->conexion; 
-        }
-
-        public function generarCodigoAleatorio(string $letras) {
-            $prefijo = strtoupper(substr(trim($letras), 0, 3));
-            
-            try {
-                $numeroAleatorio = random_int(0, 999999);
-            } catch (\Exception $e) {
-                $numeroAleatorio = mt_rand(0, 999999);
-            }
-            
-            $numeroFormateado = str_pad($numeroAleatorio, 5, "0", STR_PAD_LEFT);
-            
-            return "{$prefijo}-{$numeroFormateado}";
+        protected function Conex(){
+            return  $this->conex; 
         }
     }

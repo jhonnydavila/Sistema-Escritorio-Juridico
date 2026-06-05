@@ -46,7 +46,7 @@
                         </button>
                     </div>
                     <div class="table__container">
-                        <table id="table" class="table__content">
+                        <table id="table" class="table__content" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Código</th>

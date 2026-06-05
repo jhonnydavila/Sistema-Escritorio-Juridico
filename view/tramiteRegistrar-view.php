@@ -18,7 +18,8 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=tramite" id="form" class="row p-4" method="POST">
+                    <form action="tramite" id="form" class="row p-4 gy-1" method="POST">
+                        
                         <input type="text" name="registrarTramite" hidden>
 
                         <div class="col-md-8">
@@ -31,7 +32,7 @@
                         <div class="col-md-4">
                             <div class="form-group form-floating">
                                 <input id="montoBaseTramite" type="number" step="0.01" min="0" class="form-control" name="montoBaseTramite" placeholder="0.00" title="Ingrese el monto base en formato numérico. Puede usar decimales." required>
-                                <label for="montoBaseTramite" class="form-label">Monto Base ($)</label>
+                                <label for="montoBaseTramite" class="form-label">Monto Base</label>
                             </div>
                         </div>
 
@@ -42,10 +43,24 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 mt-4">
-                            <h5>Asignar Requisitos</h5>
-                            <p class="text-muted small mb-3">Seleccione los requisitos exigidos para este trámite y marque si su entrega es de carácter obligatorio.</p>
-                            
+                        
+                        <div class="col-md-10">
+                            <div class="form-group form-floating">
+                                <select class="form-select" name="agregarRequisito" id="agregarRequisito" required>
+                                    <option value="" hidden>Seleccione un requisito</option>
+                                    <option value="REQ-001">Copia de Cédula de Identidad</option>
+                                    <option value="REQ-002">Formulario de Solicitud</option>
+                                </select>
+                                <label for="agregarRequisito" class="form-label">Agregar Requisito</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 d-flex justify-content-between align-items-end gap-2">
+                            <button type="button" id="btnAnadirRequisito" class="btn__primary w-100">Añadir</button>
+                            <button type="button" id="btnAnadirRequisito" class="btn__outline w-100">Nuevo</button>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
                             <div class="row">
                                 <?php 
                                     // if (!empty($dataRequisitos)) {
@@ -53,11 +68,10 @@
                                 ?>
                                 
                                 <div class="col-lg-4">
-                                    <div class="card p-2 shadow-sm border-0 bg-light">
-                                        <div class="form-check mb-1">
+                                    <div class="card px-3 py-2 shadow-sm border-0 bg-light">
+                                        <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="requisitos[]" value="REQ-001" id="req_REQ-001">
-                                            <label class="form-check-label fw-bolder" for="req_REQ-001">
-                                                Copia de Cédula de Identidad </label>
+                                            <label class="form-check-label fw-bolder" for="req_REQ-001">Copia de Cédula de Identidad </label>
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" name="obligatorio_REQ-001" id="obl_REQ-001">
@@ -72,7 +86,6 @@
                                 ?>
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-center mt-4 w-100">
                             <button type="submit" class="btn__primary">Registrar</button>
                         </div>

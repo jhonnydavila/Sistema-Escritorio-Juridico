@@ -17,23 +17,23 @@
                         Bienvenido</h2>
                         <span class="small text-muted">Por favor, ingrese sus credenciales de acceso</span>
                     </div>
-                    <form class="row mt-2" action="index.php?pagina=auth" method="POST">
+                    <form action="login" class="row mt-2" method="POST">
                         <div class="col-12 pt-0">
                             <div class="form-group form-floating">
-                                <input id="login" type="text" class="form-control" name="login" placeholder="12345678" required autocomplete="username">
-                                <label for="login" class="form-label">Correo o Cédula</label>
+                                <input id="cedulaUsuario" type="text" class="form-control" name="cedulaUsuario" placeholder="12345678" required autocomplete="username">
+                                <label for="cedulaUsuario" class="form-label">Cédula de Identidad</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group form-floating">
-                                <input id="password" type="password" class="form-control" name="password" placeholder="********" required autocomplete="current-password">
-                                <label for="password" class="form-label">Contraseña</label>
+                                <input id="claveUsuario" type="password" class="form-control" name="claveUsuario" placeholder="********" required autocomplete="current-password">
+                                <label for="claveUsuario" class="form-label">Contraseña</label>
                             </div>
                         </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn__primary-rounded">Iniciar Sesión</button>
+                        </div>
                     </form>
-                    <div class="col-12 mt-4">
-                        <button type="submit" class="btn__primary-rounded">Iniciar Sesión</button>
-                    </div>
                 </div>
                 <div class="w-100 text-center">
                     <p class="text-muted small m-0">&copy; <?php echo date('Y'); ?> Todos los derechos reservados.</p>

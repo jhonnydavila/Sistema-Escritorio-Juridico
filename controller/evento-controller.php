@@ -1,25 +1,38 @@
 <?php
     require_once('model/evento-model.php');
-    
+    require_once('model/caso-model.php');
+
     $objEvento = new EventoModel();
+    $objCaso = new CasoModel();
     
-    if(isset($_POST['eventoRegistrar']) || isset($_POST['registrar'])){
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secrertaria') {
+        require_once('view/403.php');
+
+    }else if (isset($_POST['eventoRegistrar']) || isset($_POST['registrarEvento'])){
+        $dataCaso = $objCaso->consultar_caso_model();
         require_once('view/eventoRegistrar-view.php');
 
-        if (isset($_POST['registrar'])) {
-            $codigoCaso = $_POST['casoEvento'];
-            $Titulo = $_POST['tituloEvento'];
-            $Tipo = $_POST['tipoEvento'];
-            $Descripcion = $_POST['descripcionEvento'];
-            $Estatus = $_POST['estatusEvento'];
-            $Fecha = $_POST['fechaEvento'];
+        if (isset($_POST['registrarEvento'])) {
+            $codigoCaso = $_POST['codigoCaso'];
+            $titulo = $_POST['tituloEvento'];
+            $tipo = $_POST['tipoEvento'];
+            $estatus = $_POST['estatusEvento'];
+            $dia = $_POST['diaEvento'];
 
+            if (isset($_POST['horaEvento']) && !empty($_POST['horaEvento'])) {
+                $hora = $_POST['horaEvento'];
+                $objEvento->set_Hora($hora);
+            }
+            if (isset($_POST['descripcionEvento']) && !empty($_POST['descripcionEvento'])) {
+                $descripcion = $_POST['descripcionEvento'];
+                $objEvento->set_Descripcion($descripcion);
+            }
+            
             $objEvento->set_CodigoCaso($codigoCaso);
-            $objEvento->set_Titulo($Titulo);
-            $objEvento->set_Tipo($Tipo);
-            $objEvento->set_Descripcion($Descripcion);
-            $objEvento->set_Estatus($Estatus);
-            $objEvento->set_Fecha($Fecha);
+            $objEvento->set_Titulo($titulo);
+            $objEvento->set_Tipo($tipo);
+            $objEvento->set_Estatus($estatus);
+            $objEvento->set_Dia($dia);
 
             $response = $objEvento->registrar_evento_model();
             if ($response){
@@ -50,6 +63,9 @@
         require_once('view/eventoConsultar-view.php');
         
 
-    }else{
-        echo "Error... Pagina en Construcción";
+    }else {
+        $data = $objEvento->consultar_evento_model();
+        require_once('view/eventoConsultar-view.php');
+        
+
     }

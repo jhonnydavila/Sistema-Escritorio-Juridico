@@ -40,14 +40,15 @@
                     
                     <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-activos" style="display: block;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Código Evento</th>
                                         <th>Código Caso</th>
                                         <th>Título/Nombre</th>
                                         <th>Tipo</th>
-                                        <th>Fecha</th>
+                                        <th>Día</th>
+                                        <th>Hora</th>
                                         <th>Descripción</th>
                                         <th>Estatus</th>
                                         <th class="text-center">Acciones</th>
@@ -62,8 +63,20 @@
                                                     <td><?php echo $evento['codigoCaso']?></td>
                                                     <td><?php echo $evento['tituloEvento']?></td>
                                                     <td><?php echo $evento['tipoEvento']?></td>
-                                                    <td><?php echo $evento['fechaEvento']?></td>
-                                                    <td><?php echo $evento['descripcionEvento']?></td>
+                                                    <td><?php echo $evento['diaEvento']?></td>
+                                                    
+                                                    <?php if (isset($evento['horaEvento']) && !empty($evento['horaEvento'])) { ?>
+                                                        <td><?php echo $evento['horaEvento']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">N/A</span></td>
+                                                    <?php } ?>
+
+                                                    <?php if (isset($evento['descripcionEvento']) && !empty($evento['descripcionEvento'])) { ?>
+                                                        <td><?php echo $evento['descripcionEvento']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">No especificada</span></td>
+                                                    <?php } ?>
+
                                                     <td><span class="badge rounded-pill <?php if ($evento['estatusEvento']=="Confirmado") {echo "text-bg-primary";}else{ echo "text-bg-secondary";} ?>"><?php echo $evento['estatusEvento']?></span></td>
                                                     <td>
                                                         <div class="table__buttons">
@@ -92,14 +105,15 @@
                             </table>
                         </div>
                         <div class="table__container page__tab-panel w-100" id="panel-suspendidos" style="display: none;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Código Evento</th>
                                         <th>Código Caso</th>
                                         <th>Título/Nombre</th>
                                         <th>Tipo</th>
-                                        <th>Fecha</th>
+                                        <th>Día</th>
+                                        <th>Hora</th>
                                         <th>Descripción</th>
                                         <th>Estatus</th>
                                         <th class="text-center">Acciones</th>
@@ -114,8 +128,20 @@
                                                     <td><?php echo $evento['codigoCaso']?></td>
                                                     <td><?php echo $evento['tituloEvento']?></td>
                                                     <td><?php echo $evento['tipoEvento']?></td>
-                                                    <td><?php echo $evento['fechaEvento']?></td>
-                                                    <td><?php echo $evento['descripcionEvento']?></td>
+                                                    <td><?php echo $evento['diaEvento']?></td>
+
+                                                    <?php if (isset($evento['horaEvento']) && !empty($evento['horaEvento'])) { ?>
+                                                        <td><?php echo $evento['horaEvento']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">No especificada</span></td>
+                                                    <?php } ?>
+
+                                                    <?php if (isset($evento['descripcionEvento']) && !empty($evento['descripcionEvento'])) { ?>
+                                                        <td><?php echo $evento['descripcionEvento']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">No especificada</span></td>
+                                                    <?php } ?>
+
                                                     <td><span class="badge rounded-pill text-bg-danger"><?php echo $evento['estatusEvento']?></span></td>
                                                     <td>
                                                         <div class="table__buttons">

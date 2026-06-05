@@ -2,6 +2,7 @@
     require_once('conexion.php');
 
     class PagoModel extends Conexion {
+        private $conex;
         private $codigo;
         private $metodo;
         private $estatus;
@@ -9,10 +10,10 @@
         private $concepto;
         private $observaciones;
         private $codigoHonorario;
-
+        
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_pago_model() {
@@ -20,7 +21,7 @@
                 $this->generar_codigo_pago();
 
                 $registro = "INSERT INTO tbl_honorariopagos (codigoPago, conceptoPago, metodoPago, montoPago, observacionesPago, estatusPago, codigoHonorario) VALUES (:codigoPago, :concepto, :metodo, :monto, :observaciones, :estatus, :codigoHonorario)";
-                $strExec = $this->conexion->prepare($registro);
+                $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':codigoPago', $this->codigo);
                 $strExec->bindParam(':concepto', $this->concepto);
                 $strExec->bindParam(':monto', $this->monto);
@@ -37,7 +38,7 @@
         public function consultar_pago_model() {
             try {
                 $sql = "SELECT * FROM tbl_honorariopagos";
-                $consulta = $this->conexion->prepare($sql);
+                $consulta = $this->conex->prepare($sql);
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
@@ -47,7 +48,7 @@
 
         private function generar_codigo_pago() {
             $sql = "SELECT codigoPago FROM tbl_honorariopagos ORDER BY codigoPago DESC LIMIT 1";
-            $consulta = $this->conexion->prepare($sql);
+            $consulta = $this->conex->prepare($sql);
             $consulta->execute();
             $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
             if ($ultimo) {

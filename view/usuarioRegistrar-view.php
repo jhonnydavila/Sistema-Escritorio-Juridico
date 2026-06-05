@@ -16,8 +16,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=usuario" id="form" class="row p-4" method="POST">
-                        <input type="text" name="registrar" hidden>
+                    <form action="usuario" id="form" class="row p-4 gy-1" method="POST">
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
@@ -44,9 +43,9 @@
                             <div class="form-group form-floating">
                                 <select id="rolUsuario" class="form-select" name="rolUsuario" required>
                                     <option value="" hidden>Seleccionar</option>
-                                    <option value="Administrador">Administrador</option>
-                                    <option value="Abogado">Abogado</option>
-                                    <option value="Secretaria">Secretaria</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="abogado">Abogado</option>
+                                    <option value="secretaria">Secretaria</option>
                                 </select>
                                 <label class="form-label" for="rolUsuario">Rol</label>
                             </div>
@@ -67,7 +66,7 @@
                         </div>
                         
                         <div class="col-12 d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarUsuario">Registrar</button>
                         </div>
                     </form>
                 </div>

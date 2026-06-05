@@ -2,6 +2,8 @@
     require_once('conexion.php');
 
     class UsuarioModel extends Conexion {
+        private $conex;
+        private $codigo;
         private $nombre;
         private $apellido;
         private $cedula;
@@ -11,14 +13,17 @@
         private $estatus;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_usuario_model() {
             try {
-                $registro = "INSERT INTO tbl_usuarios (nombreUsuario, apellidoUsuario, cedulaUsuario, rolUsuario, claveUsuario, fechaRegistroUsuario, estatusUsuario) VALUES (:nombre, :apellido, :cedula, :rol, :clave, :fechaRegistro, :estatus)";
-                $strExec = $this->conexion->prepare($registro);
+                $this->generar_codigo_usuario();
+
+                $registro = "INSERT INTO tbl_usuarios (codigoUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, rolUsuario, claveUsuario, fechaRegistroUsuario, estatusUsuario) VALUES (:codigo, :nombre, :apellido, :cedula, :rol, :clave, :fechaRegistro, :estatus)";
+                $strExec = $this->conex->prepare($registro);
+                $strExec->bindParam(':codigo', $this->codigo);
                 $strExec->bindParam(':nombre', $this->nombre);
                 $strExec->bindParam(':apellido', $this->apellido);
                 $strExec->bindParam(':cedula', $this->cedula);
@@ -36,7 +41,7 @@
         public function consultar_usuario_model() {
             try {
                 $registro = "SELECT * FROM tbl_usuarios";
-                $consulta = $this->conexion->prepare($registro);
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -44,6 +49,41 @@
                 error_log('Error en consultar_usuario_model(): ' . $e->getMessage());
                 exit();
             }
+        }
+
+        private function generar_codigo_usuario() {
+            $sql = "SELECT codigoUsuario FROM tbl_usuarios ORDER BY codigoUsuario DESC LIMIT 1";
+            $consulta = $this->conex->prepare($sql);
+            $consulta->execute();
+            $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
+            if ($ultimo) {
+                $partes = explode('-', $ultimo['codigoUsuario']);
+                $nuevoNumero = (int)$partes[1] + 1;
+                $this->codigo = 'USU-' . str_pad($nuevoNumero, 3, '0', STR_PAD_LEFT);
+            } else {
+                $this->codigo = 'USU-001';
+            }
+        }
+
+        public function buscar_usuario_model($cedula) {
+            try {
+                $registro = "SELECT * FROM tbl_usuarios WHERE cedulaUsuario = :cedula";
+                $consulta = $this->conex->prepare($registro);
+                $consulta->bindParam(':cedula', $cedula);
+                $consulta->execute();
+                $datos = $consulta->fetch(PDO::FETCH_ASSOC);
+                return $datos;
+            } catch (PDOException $e) {
+                error_log('Error en buscar_usuario_model(): ' . $e->getMessage());
+                exit();
+            }
+        }
+
+        public function set_Codigo($codigo) { 
+            $this->codigo = $codigo; 
+        }
+        public function get_Codigo() { 
+            return $this->codigo; 
         }
 
         public function set_Nombre($nombre) { 

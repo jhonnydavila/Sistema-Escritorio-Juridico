@@ -2,17 +2,22 @@
     require_once('model/archivador-model.php');
     $objArchivador = new ArchivadorModel();
 
-    if(isset($_POST['archivadorRegistrar']) || isset($_POST['registrar'])){
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secrertaria') {
+        require_once('view/403.php');
+
+    }else if (isset($_POST['archivadorRegistrar']) || isset($_POST['registrarArchivador'])){
         require_once('view/archivadorRegistrar-view.php');
         
-        if (isset($_POST['registrar'])) {
-            $strNumero = $_POST['numeroArchivador'];
-            $strNombre = $_POST['nombreArchivador'];
-            $strDescripcion = $_POST['descripcionArchivador'];
+        if (isset($_POST['registrarArchivador'])) {
+            
+            $nombre = $_POST['nombreArchivador'];
 
-            $objArchivador->set_Numero($strNumero);
-            $objArchivador->set_Nombre($strNombre);
-            $objArchivador->set_Descripcion($strDescripcion);
+            if (isset($_POST['descripcionArchivador']) && !empty($_POST['descripcionArchivador'])) {
+                $descripcion = $_POST['descripcionArchivador'];
+                $objArchivador->set_Descripcion($descripcion);
+            }
+
+            $objArchivador->set_Nombre($nombre);
             $objArchivador->set_Estatus("Activo");
 
             $response = $objArchivador->registrar_archivador_model();
@@ -34,9 +39,13 @@
                 </script>';
             }
         }
+        
     } else if (isset($_POST['archivadorConsultar'])) {
         $data = $objArchivador->consultar_archivador_model();
         require_once('view/archivadorConsultar-view.php');
+
     } else {
-        echo "Error... Página en Construcción";
+        $data = $objArchivador->consultar_archivador_model();
+        require_once('view/archivadorConsultar-view.php');
+
     }

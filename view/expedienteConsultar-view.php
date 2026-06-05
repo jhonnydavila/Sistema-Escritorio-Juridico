@@ -17,7 +17,7 @@
                 </div>
                 <div class="page__content">
                     <div class="table__container">
-                        <table id="table" class="table__content">
+                        <table id="table" class="table__content" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Identificador</th>

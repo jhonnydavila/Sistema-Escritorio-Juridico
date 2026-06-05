@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=tramite" id="form" class="row p-4" method="POST">
+                    <form action="tramite" id="form" class="row p-4 gy-1" method="POST">
                         
                         <input type="text" name="registrarTramite" hidden>
 

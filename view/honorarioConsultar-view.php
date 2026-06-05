@@ -17,7 +17,7 @@
                 </div>
                 <div class="page__content">
                     <div class="table__container">
-                        <table id="table" class="table__content">
+                        <table id="table" class="table__content" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th>Código Honorario</th>
@@ -37,12 +37,15 @@
                                             <td><?php echo $honorario['codigoHonorario']; ?></td>
                                             <td><?php echo $honorario['codigoCaso']; ?></td>
                                             <td><?php echo $honorario['fechaAcuerdoHonorario']; ?></td>
-                                            <td><?php echo number_format($honorario['montoTotalPactado'], 2); ?></td>
-                                                <?php if ($honorario['montoRestante'] < 0 ) { ?>
-                                            <td>0</td>
-                                                <?php } else { ?>
-                                                    <?php echo number_format($honorario['montoRestante'], 2); ?></span>
-                                                <?php } ?>
+                                            <td><?php echo number_format($honorario['montoInicialHonorario'], 2); ?></td>
+                                            <td>
+                                                <?php if ($honorario['montoRestante'] < 0 ) { 
+                                                echo "0";
+                                                } else { 
+                                                    echo number_format($honorario['montoRestante'], 2);
+                                                } ?>
+                                            </td>
+                                            
                                             <td><?php echo number_format($honorario['montoPagado'], 2); ?></td>
                                             <td>
                                                 <?php if ($honorario['estatusHonorario'] == 'Confirmado') { ?>

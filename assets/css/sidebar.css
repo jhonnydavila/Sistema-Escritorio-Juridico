@@ -1,5 +1,5 @@
 .sidebar__container {
-    width: 236px;
+    width: 246px;
     height: 100%;
     display: flex;
     position: fixed;
@@ -66,7 +66,7 @@
     color: white;
 }
 .sidebar__nav-item.active {
-    background-color: var(--secondary-container);
+    background-color: rgba(255, 255, 255, 0.1);
     color: var(--secondary-container);
 }
 .sidebar__nav-item-dropdown {

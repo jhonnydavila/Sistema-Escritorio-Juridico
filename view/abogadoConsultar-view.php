@@ -40,14 +40,15 @@
                     
                     <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-activos" style="display: block;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Cédula de Identidad</th>
                                         <th>Nombre</th>
-                                        <th>Teléfono</th>
+                                        <th>Número Teléfonico</th>
                                         <th>Correo Electrónico</th>
                                         <th>Dirección</th>
+                                        <th class="text-center">Casos Asociados</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
@@ -56,11 +57,12 @@
                                         foreach ($data as $abogado){ 
                                             if($abogado['estatusAbogado'] == "Activo"){ ?>
                                                 <tr>
-                                                    <td><?php echo $abogado['cedulaAbogado']?></td>
+                                                    <td><?php echo $abogado['nacionalidadAbogado'].'-'.$abogado['cedulaAbogado']?></td>
                                                     <td class="text-capitalize"><?php echo $abogado['nombreAbogado'] . " " . $abogado['apellidoAbogado']?></td>
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
                                                     <td><?php echo $abogado['direccionAbogado']?></td>
+                                                    <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Abogado">
@@ -88,14 +90,15 @@
                             </table>
                         </div>
                         <div class="table__container page__tab-panel w-100" id="panel-inactivos" style="display: none;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Cédula de Identidad</th>
                                         <th>Nombre</th>
-                                        <th>Teléfono</th>
+                                        <th>Número Teléfonico</th>
                                         <th>Correo Electrónico</th>
                                         <th>Dirección</th>
+                                        <th class="text-center">Casos Asociados</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
@@ -104,11 +107,12 @@
                                         foreach ($data as $abogado){ 
                                             if($abogado['estatusAbogado'] == "Inactivo"){ ?>
                                                 <tr>
-                                                    <td><?php echo $abogado['cedulaAbogado']?></td>
+                                                    <td><?php echo $abogado['nacionalidadAbogado'].'-'.$abogado['cedulaAbogado']?></td>
                                                     <td class="text-capitalize"><?php echo $abogado['nombreAbogado'] . " " . $abogado['apellidoAbogado']?></td>
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
                                                     <td><?php echo $abogado['direccionAbogado']?></td>
+                                                    <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Abogado">

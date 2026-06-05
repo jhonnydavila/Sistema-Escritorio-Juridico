@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="controller/clienteController.php" id="form" class="row p-4" method="POST">
+                    <form action="controller/clienteController.php" id="form" class="row p-4 gy-1" method="POST">
                         <div class="col-12">
                             <div class="form-group form-floating">
                                 <select class="form-select" name="tipoCliente" id="tipoCliente" required>
@@ -154,7 +154,7 @@
                             <div class="col-12">
                                 <div class="form-group form-floating">
                                     <input id="direccionCliente" type="text" class="form-control" name="direccionCliente" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off" required>
-                                    <label class="form-label" for="direccionCliente">Dirección de Residencia</label>
+                                    <label class="form-label" for="direccionCliente">Dirección</label>
                                 </div>
                             </div>
                         </div>

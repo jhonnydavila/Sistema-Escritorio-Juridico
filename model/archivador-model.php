@@ -2,21 +2,24 @@
     require_once('conexion.php');
     
     class ArchivadorModel extends Conexion {
-        private $numero;
+        private $conex;
+        private $codigo;
         private $nombre;
         private $descripcion;
         private $estatus;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_archivador_model() {
             try {
-                $registro = "INSERT INTO tbl_archivadores (numeroArchivador, nombreArchivador, descripcionArchivador, estatusArchivador) VALUES (:numero, :nombre, :descripcion, :estatus)";
-                $strExec = $this->conexion->prepare($registro);
-                $strExec->bindParam(':numero', $this->numero);
+                $this->generar_codigo_archivador();
+                
+                $registro = "INSERT INTO tbl_archivadores (codigoArchivador, nombreArchivador, descripcionArchivador, estatusArchivador) VALUES (:codigo, :nombre, :descripcion, :estatus)";
+                $strExec = $this->conex->prepare($registro);
+                $strExec->bindParam(':codigo', $this->codigo);
                 $strExec->bindParam(':nombre', $this->nombre);
                 $strExec->bindParam(':descripcion', $this->descripcion);
                 $strExec->bindParam(':estatus', $this->estatus);
@@ -29,8 +32,25 @@
 
         public function consultar_archivador_model() {
             try {
-                $registro = "SELECT * FROM tbl_archivadores";
-                $consulta = $this->conexion->prepare($registro);
+                $registro = "SELECT 
+                                tbl_archivadores.codigoArchivador, 
+                                tbl_archivadores.nombreArchivador, 
+                                tbl_archivadores.descripcionArchivador, 
+                                tbl_archivadores.estatusArchivador, 
+                                COUNT(tbl_expedientes.codigoExpediente) AS totalExpedientes 
+                            FROM 
+                                tbl_archivadores 
+                            LEFT JOIN 
+                                tbl_expedientes 
+                            ON 
+                                tbl_archivadores.codigoArchivador = tbl_expedientes.codigoArchivador 
+                            GROUP BY 
+                                tbl_archivadores.codigoArchivador, 
+                                tbl_archivadores.nombreArchivador, 
+                                tbl_archivadores.descripcionArchivador, 
+                                tbl_archivadores.estatusArchivador
+                            ";
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -40,11 +60,25 @@
             }
         }
 
-        public function set_Numero($numero) { 
-            $this->numero = $numero; 
+        private function generar_codigo_archivador() {
+            $sql = "SELECT codigoArchivador FROM tbl_archivadores ORDER BY codigoArchivador DESC LIMIT 1";
+            $consulta = $this->conex->prepare($sql);
+            $consulta->execute();
+            $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
+            if ($ultimo) {
+                $partes = explode('-', $ultimo['codigoArchivador']);
+                $nuevoNumero = (int)$partes[1] + 1;
+                $this->codigo = 'ARC-' . str_pad($nuevoNumero, 5, '0', STR_PAD_LEFT);
+            } else {
+                $this->codigo = 'ARC-00001';
+            }
         }
-        public function get_Numero() { 
-            return $this->numero; 
+
+        public function set_Codigo($codigo) { 
+            $this->codigo = $codigo; 
+        }
+        public function get_Codigo() { 
+            return $this->codigo; 
         }
 
         public function set_Nombre($nombre) { 

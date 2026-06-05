@@ -8,6 +8,7 @@
         <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
+            
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -16,9 +17,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=honorario&action=registrar-pago" id="form" class="row p-4" method="POST">
-                        <input type="text" name="registrarPago" hidden>
-
+                    <form action="pago" id="form" class="row p-4 gy-1" method="POST">
                         <div class="col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="honorarioPago" name="honorarioPago" required title="Seleccione el código del acuerdo de honorario correspondiente">
@@ -75,12 +74,12 @@
                         <div class="col-12">
                             <div class="form-group form-floating">
                                 <input id="observacionesPago" type="text" class="form-control" name="observacionesPago" placeholder="Observaciones" pattern="^[A-ZÁÉÍÓÚÑa-záéíóúñ0-9 .,#\-]*$" title="Las observaciones solo pueden contener letras, números, espacios y los caracteres especiales (.,#-)">
-                                <label class="form-label" for="observacionesPago">Observaciones Adicionales</label>
+                                <label class="form-label" for="observacionesPago">Observaciones (Opcional)</label>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center mt-4 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarPago">Registrar</button>
                         </div>
                     </form>
                 </div>

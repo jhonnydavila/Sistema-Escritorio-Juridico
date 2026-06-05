@@ -1,4 +1,5 @@
 <?php
+
     if (isset($_POST['clienteRegistrar'])) {
         require_once('view/clienteRegistrar-view.php');
 

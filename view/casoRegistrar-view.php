@@ -6,7 +6,6 @@
     </head>
     <body>
         <?php include('includes/sidebar.php'); ?>
-        
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
 
@@ -18,7 +17,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="src/controller/casoController.php" id="form" class="row p-4" method="POST">
+                    <form action="src/controller/casoController.php" id="form" class="row p-4 gy-1" method="POST">
                         <input type="text" name="registrar" hidden required>
                         
                         <div class="col-lg-4 col-md-6">
@@ -40,13 +39,6 @@
                                     <option value="Gestion Juridica">Gestión Jurídica</option>
                                 </select>
                                 <label for="tipoCaso" class="form-label">Tipo de Caso</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4">
-                            <div class="form-group form-floating">
-                                <input id="cotizacionInicialCaso" type="text" class="form-control" name="cotizacionInicialCaso" placeholder="john doe" autocomplete="off">
-                                <label class="form-label" for="cotizacionInicialCaso">Cotización Inicial (Opcional)</label>
                             </div>
                         </div>
 

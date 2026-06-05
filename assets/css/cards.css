@@ -61,10 +61,12 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    background-color: transparent;
     border: solid 1px var(--primary);
     color: var(--primary);
     color: var(--primary);
     border-radius: 6px;
+    font-size: 0.8rem;
     font-weight: 500;
     padding: 0.35rem;
     margin-top: 3px;
@@ -116,7 +118,6 @@
 .card__case-green .card__case-header-badge{
     background: #0d8b61;
 }
-
 
 .card__home {
     background-color: #ffffff;

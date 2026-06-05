@@ -6,7 +6,6 @@
     </head>
     <body>
         <?php include ('includes/sidebar.php'); ?>
-        
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
 
@@ -18,7 +17,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="controller/documentoController.php" id="form" class="row p-4" method="POST">
+                    <form action="controller/documentoController.php" id="form" class="row p-4 gy-1" method="POST">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="TipoDocumento" required>
@@ -49,7 +48,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarDocumento">Registrar</button>
                         </div>
                     </form>
                 </div>

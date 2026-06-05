@@ -1,5 +1,8 @@
 <?php
-    if (isset($_POST['tramiteRegistrar'])) {
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria'){
+        require_once('view/403.php');
+
+    }else if (isset($_POST['tramiteRegistrar'])) {
         require_once('view/tramiteRegistrar-view.php');
         
         if (isset($_POST['registrarTramite'])) {
@@ -37,7 +40,9 @@
         $data = $objHonorario->consultar_honorarios_model();
         require_once('view/honorarioConsultar-view.php');
 
-    } else{
-        echo "Error... Pagina en Construcción";
+    } else {
+        $data = $objHonorario->consultar_honorarios_model();
+        require_once('view/honorarioConsultar-view.php');
+
     }
 ?>

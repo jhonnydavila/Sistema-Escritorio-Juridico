@@ -17,9 +17,7 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=abogado" id="form" class="row p-4" method="POST">
-                        <input type="text" name="registrar" hidden>
-
+                    <form action="abogado" id="form" class="row p-4 gy-1" method="POST">
                         <div class="col-md-6">
                             <div class="form-group form-floating">
                                 <input id="nombreAbogado" type="text" class="form-control" name="nombreAbogado" placeholder="john doe" minlength="3" maxlength="40" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,40}$" title="El nombre debe contener solo letras y espacios, con una longitud de entre 3 y 40 caracteres." autocomplete="off" required>
@@ -73,7 +71,7 @@
                         </div>
                         
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarAbogado">Registrar</button>
                         </div>
                     </form>
                 </div>

@@ -38,12 +38,13 @@
                     
                     <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-activos" style="display: block;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Número de Archivador</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
+                                        <th class="text-center">Total de Expedientes</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
@@ -51,10 +52,11 @@
                                     <?php if(!empty($data)){ ?>
                                         <?php foreach($data as $archivador){
                                             if($archivador['estatusArchivador'] == "Activo"){ ?>
-                                                <tr data-status="<?= htmlspecialchars($archivador['estatusArchivador']) ?>">
-                                                    <td><?= htmlspecialchars($archivador['numeroArchivador']) ?></td>
-                                                    <td><?= htmlspecialchars($archivador['nombreArchivador']) ?></td>
-                                                    <td><?= htmlspecialchars($archivador['descripcionArchivador']) ?></td>
+                                                <tr>
+                                                    <td><?php echo $archivador['codigoArchivador'] ?></td>
+                                                    <td><?php echo $archivador['nombreArchivador'] ?></td>
+                                                    <td><?php echo $archivador['descripcionArchivador'] ?></td>
+                                                    <td class="text-center"><?php echo $archivador['totalExpedientes'] ?></td>
                                                     <td class="text-center">
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Archivador">
@@ -83,12 +85,13 @@
                             </table>
                         </div>
                         <div class="table__container page__tab-panel w-100" id="panel-inactivos" style="display: none;">
-                            <table id="table" class="table__content">
+                            <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Número de Archivador</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
+                                        <th class="text-center">Total de Expedientes</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
@@ -96,10 +99,11 @@
                                     <?php if(!empty($data)){ ?>
                                         <?php foreach($data as $archivador){
                                             if($archivador['estatusArchivador'] == "Inactivo"){ ?>
-                                                <tr data-status="<?= htmlspecialchars($archivador['estatusArchivador']) ?>">
-                                                    <td><?= htmlspecialchars($archivador['numeroArchivador']) ?></td>
-                                                    <td><?= htmlspecialchars($archivador['nombreArchivador']) ?></td>
-                                                    <td><?= htmlspecialchars($archivador['descripcionArchivador']) ?></td>
+                                                <tr>
+                                                    <td><?php echo $archivador['codigoArchivador'] ?></td>
+                                                    <td><?php echo $archivador['nombreArchivador'] ?></td>
+                                                    <td><?php echo $archivador['descripcionArchivador'] ?></td>
+                                                    <td class="text-center"><?php echo $archivador['totalExpedientes'] ?></td>
                                                     <td class="text-center">
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Archivador">

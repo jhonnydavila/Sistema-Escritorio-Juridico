@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <?php include ('includes/header.php'); ?>
+        <?php include('includes/header.php'); ?>
         <title>Sistema - Panel de Control</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         
         <main class="main-content">
-            <?php include ('includes/topbar.php'); ?>
+            <?php include('includes/topbar.php'); ?>
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles" data-usal="fade-r duration-500">
-                        <h2 class="page__header-title">Panel de Control</h2>
-                        <span class="page__header-subtitle">Bienvenido "John Doe"</span>
+                        <h2 class="page__header-title">Panel de 
+                            <?php 
+                                if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
+                                    echo 'Control';
+                                } else if(isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
+                                    echo 'Abogado';
+                                } else {
+                                    echo 'Secretaria';
+                                }
+                            ?> 
+                        </h2>
+                        <span class="page__header-subtitle text-capitalize">Bienvenido "<?php echo $_SESSION['nombreUsuario'] . ' ' . $_SESSION['apellidoUsuario']; ?>"</span>
                     </div>
                 </div>
                 <div class="row g-3" data-usal="split-item split-fade-r split-delay-100">
+
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card__home">
                             <div class="card__home-header">
@@ -51,7 +62,7 @@
                             </div>
                             <div class="card__home-body">
                                 <p class="stats">12</p>
-                                <span class="stats-label">Procesos Activos</span>
+                                <span class="stats-label">Procesos en Desarrollo</span>
                             </div>
                         </div>
                     </div>
@@ -60,21 +71,45 @@
                         <div class="card__home">
                             <div class="card__home-header">
                                 <div class="card__home-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect width="20" height="5" x="2" y="3" rx="1"/>
-                                        <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
-                                        <path d="M10 12h4"/>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list-icon lucide-clipboard-list">
+                                        <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+                                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                        <path d="M12 11h4"/>
+                                        <path d="M12 16h4"/>
+                                        <path d="M8 11h.01"/>
+                                        <path d="M8 16h.01"/>
                                     </svg>
                                 </div>
-                                <h3>Expedientes</h3>
+                                <h3>Trámites</h3>
                             </div>
                             <div class="card__home-body">
                                 <p class="stats">45</p>
-                                <span class="stats-label">Archivados en el sistema</span>
+                                <span class="stats-label">Registrados en el sistema</span>
                             </div>
                         </div>
                     </div>
 
+                    <?php if (isset($_SESSION['rolUsuario']) && ($_SESSION['rolUsuario'] === 'administrador' || $_SESSION['rolUsuario'] === 'abogado')) { ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card__home">
+                            <div class="card__home-header">
+                                <div class="card__home-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
+                                        <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
+                                    </svg>
+                                </div>
+                                <h3>Documentos</h3>
+                            </div>
+                            <div class="card__home-body">
+                                <p class="stats">120</p>
+                                <span class="stats-label">Archivos subidos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+
+                    <?php if (isset($_SESSION['rolUsuario']) && ($_SESSION['rolUsuario'] === 'administrador' || $_SESSION['rolUsuario'] === 'abogado')) { ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card__home">
                             <div class="card__home-header">
@@ -94,7 +129,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
 
+                    <?php if (isset($_SESSION['rolUsuario']) && ($_SESSION['rolUsuario'] === 'administrador' || $_SESSION['rolUsuario'] === 'abogado')) { ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card__home">
                             <div class="card__home-header">
@@ -104,7 +141,7 @@
                                         <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
                                     </svg>
                                 </div>
-                                <h3>Pagos</h3>
+                                <h3>Honorarios</h3>
                             </div>
                             <div class="card__home-body">
                                 <p class="stats">10</p>
@@ -112,24 +149,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="card__home">
-                            <div class="card__home-header">
-                                <div class="card__home-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/>
-                                        <path d="M14 2v5a1 1 0 0 0 1 1h5"/>
-                                    </svg>
-                                </div>
-                                <h3>Documentos</h3>
-                            </div>
-                            <div class="card__home-body">
-                                <p class="stats">120</p>
-                                <span class="stats-label">Archivos subidos</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
 
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card__home">
@@ -152,6 +172,7 @@
                         </div>
                     </div>
 
+                    <?php if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') { ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="card__home">
                             <div class="card__home-header">
@@ -172,6 +193,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </section>
         </main>

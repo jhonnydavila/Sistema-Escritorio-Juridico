@@ -2,9 +2,10 @@
     require_once('model/caso-model.php');
     $objCaso = new CasoModel();
     
-    if(isset($_POST['casoRegistrar']) || isset($_POST['registrar'])){
+    if(isset($_POST['casoRegistrar']) || isset($_POST['registrarCaso'])){
         require_once('view/casoRegistrar-view.php');
-        if (isset($_POST['registrar'])) {
+        
+        if (isset($_POST['registrarCaso'])) {
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
             $strCedula = $_POST['cedulaAbogado'];
@@ -50,9 +51,8 @@
         $data = $objCaso->consultar_caso_model();
         require_once('view/casoConsultar-view.php');
 
-    }else if(isset($_POST['casoAsignaciones'])){
-        require_once('view/casoAsignaciones-view.php');
-
-    }else{
-        echo "Error... Pagina en Construcción";
+    }else {
+        $data = $objCaso->consultar_caso_model();
+        require_once('view/casoConsultar-view.php');
+        
     }

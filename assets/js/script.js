@@ -30,6 +30,25 @@ dropdowns.forEach(dropdown => {
     });
 });
 
+// Lógica de Dropdowns en el Topbar (Cerrar Sesion)
+document.addEventListener('DOMContentLoaded', function() {
+    const avatarToggle = document.querySelector('.avatar-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-logout');
+
+    // Muestra u oculta el botón de logout al dar clic en el avatar
+    avatarToggle.addEventListener('click', function(event) {
+        dropdownMenu.classList.toggle('show');
+        event.stopPropagation(); // Evita que el clic se detecte en todo el documento inmediatamente
+    });
+
+    // Cierra el menú automáticamente si el usuario hace clic en cualquier otro lado de la pantalla
+    document.addEventListener('click', function(event) {
+        if (!avatarToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+});
+
 // Inicialización de DataTables
 document.addEventListener("DOMContentLoaded", () => {
     const tablas = document.querySelectorAll('#table');

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <?php include ('includes/header.php'); ?>
-        <title>Asignaciones</title>
+        <?php include('includes/header.php'); ?>
+        <title>Tablero de Asignaciones</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
-        
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
-            <?php include ('includes/topbar.php'); ?>
+            <?php include('includes/topbar.php'); ?>
 
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
-                        <h2 class="page__header-title">Asignaciones de Casos</h2>
-                        <span class="page__header-subtitle">Gestión de Casos</span>
+                        <h2 class="page__header-title">Tablero de Asignaciones</h2>
+                        <span class="page__header-subtitle">Gestionar Asignaciones</span>
                     </div>
                 </div>
                 <div class="page__content">
@@ -36,7 +35,7 @@
                             <span>Otros Casos</span>
                         </button>
                     </div>
-                    <div class="page__panels-container">
+                    <form action="caso" class="page__panels-container" method="POST">
                         <div class="page__tab-panel" id="panel-mis-casos" style="display: block;">
                             <div class="row p-4 g-4">
                                 <div class="col-lg-4 col-md-6">
@@ -59,7 +58,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +82,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +106,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +130,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +158,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +186,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
@@ -211,13 +210,13 @@
                                                 </div>
                                             </div>
                                             
-                                            <a href="index.php?page=casoVer" class="card__case-footer">Ver Caso</a>
+                                            <button type="submit" name="casoVer" value="Ver Caso" class="card__case-footer">Ver Caso</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
         </main>

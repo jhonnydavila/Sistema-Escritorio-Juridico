@@ -2,30 +2,34 @@
     require_once('conexion.php');
 
     class EventoModel extends Conexion {
+        private $conex;
         private $codigo;
         private $titulo;
         private $tipo;
         private $descripcion;
         private $estatus;
-        private $fecha;
+        private $dia;
+        private $hora;
         private $codigoCaso;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_evento_model() {
             try {
-                $this->codigo = conexion::generarCodigoAleatorio("EVE");
-                $registro = "INSERT INTO tbl_eventos (codigoEvento, tituloEvento, tipoEvento, descripcionEvento, estatusEvento, fechaEvento, codigoCaso) VALUES (:codigo, :titulo, :tipo, :descripcion, :estatus, :fecha, :caso)";
-                $strExec = $this->conexion->prepare($registro);
+                $this->generar_codigo_evento();
+
+                $registro = "INSERT INTO tbl_casoeventos (codigoEvento, tituloEvento, tipoEvento, descripcionEvento, estatusEvento, diaEvento, horaEvento, codigoCaso) VALUES (:codigo, :titulo, :tipo, :descripcion, :estatus, :dia, :hora, :caso)";
+                $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':codigo', $this->codigo);
                 $strExec->bindParam(':titulo', $this->titulo);
                 $strExec->bindParam(':tipo', $this->tipo);
                 $strExec->bindParam(':descripcion', $this->descripcion);
                 $strExec->bindParam(':estatus', $this->estatus);
-                $strExec->bindParam(':fecha', $this->fecha);
+                $strExec->bindParam(':dia', $this->dia);
+                $strExec->bindParam(':hora', $this->hora);
                 $strExec->bindParam(':caso', $this->codigoCaso);
                 return $strExec->execute();
             } catch (PDOException $e) {
@@ -36,14 +40,28 @@
 
         public function  consultar_evento_model() {
             try {
-                $registro = "SELECT * FROM tbl_eventos";
-                $consulta = $this->conexion->prepare($registro);
+                $registro = "SELECT * FROM tbl_casoeventos";
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
             } catch (PDOException $e) {
                 error_log('Error en consultar_evento_model(): ' . $e->getMessage());
                 exit();
+            }
+        }
+
+        private function generar_codigo_evento() {
+            $sql = "SELECT codigoEvento FROM tbl_casoeventos ORDER BY codigoEvento DESC LIMIT 1";
+            $consulta = $this->conex->prepare($sql);
+            $consulta->execute();
+            $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
+            if ($ultimo) {
+                $partes = explode('-', $ultimo['codigoEvento']);
+                $nuevoNumero = (int)$partes[1] + 1;
+                $this->codigo = 'EVE-' . str_pad($nuevoNumero, 5, '0', STR_PAD_LEFT);
+            } else {
+                $this->codigo = 'EVE-00001';
             }
         }
 
@@ -82,11 +100,18 @@
             return $this->estatus; 
         }
 
-        public function set_fecha($fecha) { 
-            $this->fecha = $fecha; 
+        public function set_Dia($dia) { 
+            $this->dia = $dia; 
         }
-        public function get_fecha() { 
-            return $this->fecha; 
+        public function get_Dia() { 
+            return $this->dia; 
+        }
+
+        public function set_Hora($hora) { 
+            $this->hora = $hora; 
+        }
+        public function get_Hora() { 
+            return $this->hora; 
         }
 
         public function set_CodigoCaso($codigoCaso) { 

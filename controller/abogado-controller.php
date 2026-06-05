@@ -2,9 +2,13 @@
     require_once('model/abogado-model.php');
     $objAbogado = new AbogadoModel();
     
-    if(isset($_POST['abogadoRegistrar']) || isset($_POST['registrar'])){
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secrertaria') {
+        require_once('view/403.php');
+
+    }else if (isset($_POST['abogadoRegistrar']) || isset($_POST['registrarAbogado'])){
         require_once('view/abogadoRegistrar-view.php');
-        if (isset($_POST['registrar'])) {
+
+        if (isset($_POST['registrarAbogado'])) {
             $strNombre = $_POST['nombreAbogado'];
             $strApellido = $_POST['apellidoAbogado'];
             $strCedula = $_POST['cedulaAbogado'];
@@ -50,6 +54,8 @@
         $data = $objAbogado->consultar_abogado_model();
         require_once('view/abogadoConsultar-view.php');
 
-    }else{
-        echo "Error... Pagina en Construcción";
+    }else {
+        $data = $objAbogado->consultar_abogado_model();
+        require_once('view/abogadoConsultar-view.php');
+
     }

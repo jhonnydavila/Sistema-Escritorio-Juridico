@@ -2,29 +2,31 @@
     require_once('conexion.php');
 
     class CasoModel extends Conexion {
-        private $nombre;
-        private $apellido;
-        private $cedula;
-        private $direccion;
-        private $telefono;
+        private $conex;
+        private $codigo;
+        private $fechaRegistro;
+        private $fechaInicio;
+        private $fechaFin;
+        private $modalidad;
+        
         private $nacionalidad;
         private $correo;
         private $estatus;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_caso_model() {
             try {
-                $registro = "INSERT INTO tbl_abogados (nombreAbogado, apellidoAbogado, cedulaAbogado, direccionAbogado, telefonoAbogado, nacionalidadAbogado, correoAbogado, estatusAbogado) VALUES (:nombre, :apellido, :cedula, :direccion, :telefono, :nacionalidad, :correo, :estatus)";
-                $strExec = $this->conexion->prepare($registro);
-                $strExec->bindParam(':nombre', $this->nombre);
-                $strExec->bindParam(':apellido', $this->apellido);
-                $strExec->bindParam(':cedula', $this->cedula);
-                $strExec->bindParam(':direccion', $this->direccion);
-                $strExec->bindParam(':telefono', $this->telefono);
+                $registro = "INSERT INTO tbl_casos (codigoCaso, fechaRegistroCaso, fechaInicioCaso, fechaFinCaso, modalidadCaso, nacionalidadCaso, correoCaso, estatusCaso) VALUES (:codigo, :fechaRegistro, :fechaInicio, :fechaFin, :modalidad, :nacionalidad, :correo, :estatus)";
+                $strExec = $this->conex->prepare($registro);
+                $strExec->bindParam(':codigo', $this->codigo);
+                $strExec->bindParam(':fechaRegistro', $this->fechaRegistro);
+                $strExec->bindParam(':fechaInicio', $this->fechaInicio);
+                $strExec->bindParam(':fechaFin', $this->fechaFin);
+                $strExec->bindParam(':modalidad', $this->modalidad);
                 $strExec->bindParam(':nacionalidad', $this->nacionalidad);
                 $strExec->bindParam(':correo', $this->correo);
                 $strExec->bindParam(':estatus', $this->estatus);
@@ -38,7 +40,7 @@
         public function consultar_caso_model() {
             try {
                 $registro = "SELECT * FROM tbl_casos";
-                $consulta = $this->conexion->prepare($registro);
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;
@@ -48,39 +50,39 @@
             }
         }
 
-        public function set_Nombre($nombre) { 
-            $this->nombre = $nombre; 
+        public function set_Codigo($codigo) { 
+            $this->codigo = $codigo; 
         }
-        public function get_Nombre() { 
-            return $this->nombre; 
-        }
-
-        public function set_Apellido($apellido) { 
-            $this->apellido = $apellido; 
-        }
-        public function get_Apellido() { 
-            return $this->apellido; 
+        public function get_Codigo() { 
+            return $this->codigo; 
         }
 
-        public function set_Cedula($cedula) { 
-            $this->cedula = $cedula; 
+        public function set_FechaRegistro($fechaRegistro) { 
+            $this->fechaRegistro = $fechaRegistro; 
         }
-        public function get_Cedula() { 
-            return $this->cedula; 
-        }
-
-        public function set_Direccion($direccion) { 
-            $this->direccion = $direccion; 
-        }
-        public function get_Direccion() { 
-            return $this->direccion; 
+        public function get_FechaRegistro() { 
+            return $this->fechaRegistro; 
         }
 
-        public function set_Telefono($telefono) { 
-            $this->telefono = $telefono; 
+        public function set_FechaInicio($fechaInicio) { 
+            $this->fechaInicio = $fechaInicio; 
         }
-        public function get_Telefono() { 
-            return $this->telefono; 
+        public function get_FechaInicio() { 
+            return $this->fechaInicio; 
+        }
+
+        public function set_FechaFin($fechaFin) { 
+            $this->fechaFin = $fechaFin; 
+        }
+        public function get_FechaFin() { 
+            return $this->fechaFin; 
+        }
+
+        public function set_Modalidad($modalidad) { 
+            $this->modalidad = $modalidad; 
+        }
+        public function get_Modalidad() { 
+            return $this->modalidad; 
         }
         
         public function set_Correo($correo) { 

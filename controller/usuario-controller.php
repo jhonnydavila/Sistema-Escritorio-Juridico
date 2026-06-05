@@ -1,8 +1,10 @@
 <?php
     require_once('model/usuario-model.php');
     $objUsuario = new UsuarioModel();
-    
-    if(isset($_POST['usuarioRegistrar']) || isset($_POST['registrar'])){
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] !== 'administrador'){
+        require_once('view/403.php');
+
+    }else if(isset($_POST['usuarioRegistrar']) || isset($_POST['registrar'])){
         require_once('view/usuarioRegistrar-view.php');
         if (isset($_POST['registrar'])) {
             $strNombre = $_POST['nombreUsuario'];
@@ -65,5 +67,6 @@
         require_once('view/usuarioConsultar-view.php');
 
     }else{
-        echo "Error... Pagina en Construcción";
+        $data = $objUsuario->consultar_usuario_model();
+        require_once('view/usuarioConsultar-view.php');
     }

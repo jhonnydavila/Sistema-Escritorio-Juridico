@@ -16,17 +16,20 @@
                     </div>
                 </div>
                 <div class="page__content">
-                    <form action="?page=evento" class="row p-4" method="POST">
-                        <input type="text" name="registrar" hidden>
-
+                    <form action="evento" id="form" class="row p-4 gy-1" method="POST">
                         <div class="col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="casoEvento" name="casoEvento" required>
-                                    <option value="" hidden>Seleccionar...</option>
-                                    <option value="CAS-001">Caso 1</option>
-                                    <option value="CAS-002">Caso 2</option>
+                                <select class="form-select" id="codigoCaso" name="codigoCaso" required title="Seleccione el caso legal vinculado a este acuerdo de honorarios">
+                                    <option value="" hidden>Seleccionar Caso...</option>
+                                    <?php 
+                                        if (!empty($dataCaso)) {
+                                            foreach($dataCaso as $caso){
+                                                echo '<option value="'.$caso['codigoCaso'].'">'.$caso['codigoCaso'].'</option>';
+                                            }
+                                        } 
+                                    ?>
                                 </select>
-                                <label for="casoEvento" class="form-label">Caso</label>
+                                <label for="codigoCaso" class="form-label">Caso Vinculado</label>
                             </div>
                         </div>
 
@@ -37,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-lg-3 col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="tipoEvento" name="tipoEvento" required>
                                     <option value="" hidden>Seleccionar...</option>
@@ -49,14 +52,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group form-floating">
-                                <input id="fechaEvento" type="date" class="form-control" name="fechaEvento" autocomplete="off" required>
-                                <label class="form-label" for="fechaEvento">Fecha del Evento</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
+                        <div class="col-lg-3 col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="estatusEvento" name="estatusEvento" required>
                                     <option value="" hidden>Seleccionar...</option>
@@ -67,15 +63,29 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="diaEvento" type="date" class="form-control" name="diaEvento" autocomplete="off" required>
+                                <label class="form-label" for="diaEvento">Día del Evento</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="horaEvento" type="time" class="form-control" name="horaEvento" autocomplete="off" required>
+                                <label class="form-label" for="horaEvento">Hora del Evento</label>
+                            </div>
+                        </div>
+
                         <div class="col-12">
                             <div class="form-group form-floating">
                                 <input id="descripcionEvento" type="text" class="form-control" name="descripcionEvento" placeholder="Descripción del evento">
-                                <label class="form-label" for="descripcionEvento">Descripción</label>
+                                <label class="form-label" for="descripcionEvento">Descripción (Opcional)</label>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center mt-4 gap-2 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarEvento">Registrar</button>
                         </div>
                     </form>
                 </div>

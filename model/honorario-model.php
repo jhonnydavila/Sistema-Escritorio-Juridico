@@ -1,23 +1,24 @@
 <?php
     require_once('conexion.php');
-
+    
     class HonorarioModel extends Conexion {
+        private $conex;
         private $codigo;
         private $monto;
         private $estatus;
         private $codigoCaso;
 
         public function __construct(){
-            $this->conexion = new Conexion();
-            $this->conexion = $this->conexion->Conexion();
+            $this->conex = new Conexion();
+            $this->conex = $this->conex->Conex();
         }
 
         public function registrar_honorario_model() {
             try {
                 $this->generar_codigo_honorario();
-                $sql = "INSERT INTO tbl_honorarios (codigoHonorario, montoInicialHonorario, estatusHonorario, codigoCaso) VALUES (:codigo, :monto, :estatus, :caso)";
+                $registro = "INSERT INTO tbl_honorarios (codigoHonorario, montoInicialHonorario, estatusHonorario, codigoCaso) VALUES (:codigo, :monto, :estatus, :caso)";
                 
-                $strExec = $this->conexion->prepare($sql);
+                $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':codigo', $this->codigo);
                 $strExec->bindParam(':monto', $this->monto);
                 $strExec->bindParam(':estatus', $this->estatus);
@@ -25,44 +26,77 @@
                 
                 return $strExec->execute();
             } catch (PDOException $e) {
+                error_log('Error en registrar_honorario_model(): ' . $e->getMessage());
                 return false;
             }
         }
 
         public function consultar_honorarios_model() {
             try {
-                $sql = "
-                        SELECT 
-                            h.codigoHonorario, 
-                            h.codigoCaso, 
-                            h.fechaAcuerdoHonorario, 
-                            h.montoInicialHonorario AS montoTotalPactado, 
-                            COALESCE(SUM(p.montoPago), 0) AS montoPagado, 
-                            (h.montoInicialHonorario - COALESCE(SUM(p.montoPago), 0)) AS montoRestante, 
-                            h.estatusHonorario 
-                        FROM 
-                            tbl_honorarios h 
-                        LEFT JOIN 
-                            tbl_honorariopagos p ON h.codigoHonorario = p.codigoHonorario 
-                        GROUP BY 
-                            h.codigoHonorario, 
-                            h.codigoCaso, 
-                            h.montoInicialHonorario, 
-                            h.estatusHonorario
-                        ORDER BY 
-                            h.codigoHonorario DESC
-                    ";
-                $consulta = $this->conexion->prepare($sql);
+                if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
+                    $registro = "SELECT 
+                                honorario.codigoHonorario, 
+                                honorario.codigoCaso, 
+                                honorario.montoInicialHonorario, 
+                                honorario.fechaAcuerdoHonorario, 
+                                honorario.estatusHonorario,
+                                COALESCE(SUM(pago.montoPago), 0) AS montoPagado, 
+                                (honorario.montoInicialHonorario - COALESCE(SUM(pago.montoPago), 0)) AS montoRestante
+                            FROM 
+                                tbl_honorarios honorario 
+                            LEFT JOIN 
+                                tbl_honorariopagos pago 
+                            ON 
+                                honorario.codigoHonorario = pago.codigoHonorario 
+                            WHERE 
+                                honorario.codigoCaso IN 
+                                    (SELECT codigoCaso FROM tbl_casosabogados WHERE cedulaAbogado = :cedula)
+                            GROUP BY 
+                                honorario.codigoHonorario, 
+                                honorario.codigoCaso, 
+                                honorario.montoInicialHonorario, 
+                                honorario.fechaAcuerdoHonorario, 
+                                honorario.estatusHonorario
+                        ";
+                    $consulta = $this->conex->prepare($registro);
+
+                    $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
+                } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
+                    $registro = "SELECT 
+                                honorario.codigoHonorario, 
+                                honorario.codigoCaso, 
+                                honorario.montoInicialHonorario, 
+                                honorario.fechaAcuerdoHonorario, 
+                                honorario.estatusHonorario,
+                                COALESCE(SUM(pago.montoPago), 0) AS montoPagado, 
+                                (honorario.montoInicialHonorario - COALESCE(SUM(pago.montoPago), 0)) AS montoRestante
+                            FROM 
+                                tbl_honorarios honorario 
+                            LEFT JOIN 
+                                tbl_honorariopagos pago 
+                            ON 
+                                honorario.codigoHonorario = pago.codigoHonorario 
+                            GROUP BY 
+                                honorario.codigoHonorario, 
+                                honorario.codigoCaso, 
+                                honorario.montoInicialHonorario, 
+                                honorario.fechaAcuerdoHonorario, 
+                                honorario.estatusHonorario
+                            ";
+                    $consulta = $this->conex->prepare($registro);
+                }
+                
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
+                error_log('Error en consultar_honorario_model(): ' . $e->getMessage());
                 return [];
             }
         }
 
         private function generar_codigo_honorario() {
-            $sql = "SELECT codigoHonorario FROM tbl_honorarios ORDER BY codigoHonorario DESC LIMIT 1";
-            $consulta = $this->conexion->prepare($sql);
+            $registro = "SELECT codigoHonorario FROM tbl_honorarios ORDER BY codigoHonorario DESC LIMIT 1";
+            $consulta = $this->conex->prepare($registro);
             $consulta->execute();
             $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
             if ($ultimo) {
