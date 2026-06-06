@@ -5,11 +5,9 @@
         <title>Consultar Abogados</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
-        
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
-            <?php include ('includes/topbar.php'); ?>
-
+            <?php include('includes/topbar.php'); ?>
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -36,7 +34,6 @@
                             <span>Abogados Inactivos</span>
                         </button>
                     </div>
-
                     
                     <div class="page__panels-container w-100">
                         <div class="table__container page__tab-panel w-100" id="panel-activos" style="display: block;">
@@ -61,7 +58,7 @@
                                                     <td class="text-capitalize"><?php echo $abogado['nombreAbogado'] . " " . $abogado['apellidoAbogado']?></td>
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
-                                                    <td><?php echo $abogado['direccionAbogado']?></td>
+                                                    <td class="text-capitalize"><?php echo $abogado['direccionAbogado']?></td>
                                                     <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
@@ -89,6 +86,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="table__container page__tab-panel w-100" id="panel-inactivos" style="display: none;">
                             <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
@@ -111,7 +109,7 @@
                                                     <td class="text-capitalize"><?php echo $abogado['nombreAbogado'] . " " . $abogado['apellidoAbogado']?></td>
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
-                                                    <td><?php echo $abogado['direccionAbogado']?></td>
+                                                    <td class="text-capitalize"><?php echo $abogado['direccionAbogado']?></td>
                                                     <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
@@ -143,6 +141,6 @@
                 </div>
             </section>
         </main>
-        <?php include ('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>

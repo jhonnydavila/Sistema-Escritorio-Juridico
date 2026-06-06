@@ -67,7 +67,7 @@
 }
 .sidebar__nav-item.active {
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--secondary-container);
+    color: white;
 }
 .sidebar__nav-item-dropdown {
     flex-direction: column;

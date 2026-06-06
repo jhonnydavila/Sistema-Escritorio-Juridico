@@ -8,7 +8,6 @@
         <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
-
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -53,10 +52,10 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $usuario){ 
                                             if($usuario['estatusUsuario'] == "Activo"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $usuario['codigoUsuario']?></td>
                                                     <td><?php echo $usuario['cedulaUsuario']?></td>
-                                                    <td class="text-capitalize"><?php echo $usuario['nombreUsuario'] . " " . $usuario['apellidoUsuario']?></td>
+                                                    <td><?php echo $usuario['nombreUsuario'] . " " . $usuario['apellidoUsuario']?></td>
                                                     <?php if ($usuario['rolUsuario'] == "secretaria") { 
                                                         echo "<td><span class='badge rounded-pill text-bg-secondary'>Secretaria</span></td>";
                                                     } else if ($usuario['rolUsuario'] == "administrador") {
@@ -108,10 +107,10 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $usuario){ 
                                             if($usuario['estatusUsuario'] == "Inactivo"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $usuario['codigoUsuario']?></td>
                                                     <td><?php echo $usuario['cedulaUsuario']?></td>
-                                                    <td class="text-capitalize"><?php echo $usuario['nombreUsuario'] . " " . $usuario['apellidoUsuario']?></td>
+                                                    <td><?php echo $usuario['nombreUsuario'] . " " . $usuario['apellidoUsuario']?></td>
                                                     <?php if ($usuario['rolUsuario'] == "secretaria") { 
                                                         echo "<td><span class='badge rounded-pill text-bg-secondary'>Secretaria</span></td>";
                                                     } else if ($usuario['rolUsuario'] == "administrador") {

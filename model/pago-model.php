@@ -37,8 +37,8 @@
 
         public function consultar_pago_model() {
             try {
-                $sql = "SELECT * FROM tbl_honorariopagos";
-                $consulta = $this->conex->prepare($sql);
+                $registro = "SELECT * FROM tbl_honorariopagos";
+                $consulta = $this->conex->prepare($registro);
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

@@ -6,7 +6,6 @@
     </head>
     <body>
         <?php include('includes/sidebar.php'); ?>
-        
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
             
@@ -14,14 +13,12 @@
                 <div class="page__header">
                     <div class="page__header-titles">
                         <h2 class="page__header-title">Registrar Trámite</h2>
-                        <span class="page__header-subtitle">Gestión del catálogo de trámites legales</span>
+                        <span class="page__header-subtitle">Ingrese los datos para registrar un nuevo trámite legal</span>
                     </div>
                 </div>
                 <div class="page__content">
                     <form action="tramite" id="form" class="row p-4 gy-1" method="POST">
-                        
-                        <input type="text" name="registrarTramite" hidden>
-
+                    
                         <div class="col-md-8">
                             <div class="form-group form-floating">
                                 <input id="nombreTramite" type="text" class="form-control" name="nombreTramite" placeholder="Divorcio..." minlength="3" maxlength="100" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,()\-]{3,100}$" title="El nombre debe contener entre 3 y 100 caracteres. Se permiten letras, números, espacios y caracteres como ( . , - )" autocomplete="off" required>
@@ -43,7 +40,7 @@
                             </div>
                         </div>
 
-                        
+                        <!-- Requisitos del trámite 
                         <div class="col-md-10">
                             <div class="form-group form-floating">
                                 <select class="form-select" name="agregarRequisito" id="agregarRequisito" required>
@@ -86,8 +83,9 @@
                                 ?>
                             </div>
                         </div>
+                        -->
                         <div class="d-flex justify-content-center mt-4 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarTramite">Registrar</button>
                         </div>
                     </form>
                 </div>

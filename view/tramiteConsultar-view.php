@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <?php include ('includes/header.php'); ?>
-        <title>Listado de Archivadores</title>
+        <?php include('includes/header.php'); ?>
+        <title>Consultar Trámites</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
-                        <h2 class="page__header-title">Archivadores</h2>
-                        <span class="page__header-subtitle">Gestión de Archivadores</span>
+                        <h2 class="page__header-title">Consultar Trámites</h2>
+                        <span class="page__header-subtitle">Historial de Trámites registrados</span>
                     </div>
                 </div>
                 <div class="page__content">
@@ -23,7 +23,7 @@
                                 <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
                                 <path d="M10 12h4"/>
                             </svg>
-                            <span>Archivadores Activos</span>
+                            <span>Trámites Activos</span>
                         </button>
                         <button class="page__tab" data-target="panel-inactivos">
                             <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive-x-icon lucide-archive-x">
@@ -31,7 +31,7 @@
                                 <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
                                 <path d="m9.5 17 5-5"/><path d="m9.5 12 5 5"/>
                             </svg>
-                            <span>Archivadores Inactivos</span>
+                            <span>Trámites Inactivos</span>
                         </button>
                     </div>
                     
@@ -40,32 +40,38 @@
                             <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Número de Archivador</th>
-                                        <th>Nombre</th>
+                                        <th>Código Trámite</th>
+                                        <th>Nombre del Trámite</th>
+                                        <th>Monto Base</th>
                                         <th>Descripción</th>
-                                        <th class="text-center">Total de Expedientes</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($data)){ ?>
-                                        <?php foreach($data as $archivador){
-                                            if ($archivador['estatusArchivador'] == "Activo"){ ?>
+                                    <?php if (!empty($data)) {
+                                        foreach ($data as $tramite) {
+                                            if($tramite['estatusTramite'] == "Activo"){ ?>
                                                 <tr class="text-capitalize">
-                                                    <td><?php echo $archivador['codigoArchivador'] ?></td>
-                                                    <td><?php echo $archivador['nombreArchivador'] ?></td>
-                                                    <td><?php echo $archivador['descripcionArchivador'] ?></td>
-                                                    <td class="text-center"><?php echo $archivador['totalExpedientes'] ?></td>
-                                                    <td class="text-center">
+                                                    <td><?php echo $tramite['codigoTramite']; ?></td>
+                                                    <td><?php echo $tramite['nombreTramite']; ?></td>
+                                                    <td><span class="badge rounded-pill bg-success"><?php echo number_format($tramite['montoBaseTramite'], 2); ?></span></td>
+                                                    <td><?php echo $tramite['descripcionTramite']; ?></td>
+                                                    <td>
                                                         <div class="table__buttons">
-                                                            <button class="btn__table-update" title="Modificar Archivador">
+                                                            <button class="btn__table-view" title="Ver Requisitos">
+                                                                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                                                                    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                                                                    <circle cx="12" cy="12" r="3"/>
+                                                                </svg>
+                                                            </button>
+                                                            <button class="btn__table-update" title="Modificar Trámite">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line">
                                                                     <path d="M13 21h8"/>
                                                                     <path d="m15 5 4 4"/>
                                                                     <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                                                 </svg>
                                                             </button>
-                                                            <button class="btn__table-delete" title="Eliminar Archivador">
+                                                            <button class="btn__table-delete" title="Eliminar Trámite">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
                                                                     <path d="M10 11v6"/>
                                                                     <path d="M14 11v6"/>
@@ -88,32 +94,38 @@
                             <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Número de Archivador</th>
-                                        <th>Nombre</th>
+                                        <th>Código Trámite</th>
+                                        <th>Nombre del Trámite</th>
+                                        <th>Monto Base</th>
                                         <th>Descripción</th>
-                                        <th class="text-center">Total de Expedientes</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if (!empty($data)){ ?>
-                                        <?php foreach($data as $archivador){
-                                            if ($archivador['estatusArchivador'] == "Inactivo"){ ?>
+                                    <?php if (!empty($data)) {
+                                        foreach ($data as $tramite) {
+                                            if($tramite['estatusTramite'] == "Inactivo"){ ?>
                                                 <tr class="text-capitalize">
-                                                    <td><?php echo $archivador['codigoArchivador'] ?></td>
-                                                    <td><?php echo $archivador['nombreArchivador'] ?></td>
-                                                    <td><?php echo $archivador['descripcionArchivador'] ?></td>
-                                                    <td class="text-center"><?php echo $archivador['totalExpedientes'] ?></td>
-                                                    <td class="text-center">
+                                                    <td><?php echo $tramite['codigoTramite']; ?></td>
+                                                    <td><?php echo $tramite['nombreTramite']; ?></td>
+                                                    <td><span class="badge rounded-pill bg-success"><?php echo number_format($tramite['montoBaseTramite'], 2); ?></span></td>
+                                                    <td><?php echo $tramite['descripcionTramite']; ?></td>
+                                                    <td>
                                                         <div class="table__buttons">
-                                                            <button class="btn__table-update" title="Modificar Archivador">
+                                                            <button class="btn__table-view" title="Ver Requisitos">
+                                                                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                                                                    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                                                                    <circle cx="12" cy="12" r="3"/>
+                                                                </svg>
+                                                            </button>
+                                                            <button class="btn__table-update" title="Modificar Trámite">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line">
                                                                     <path d="M13 21h8"/>
                                                                     <path d="m15 5 4 4"/>
                                                                     <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                                                 </svg>
                                                             </button>
-                                                            <button class="btn__table-delete" title="Eliminar Archivador">
+                                                            <button class="btn__table-delete" title="Eliminar Trámite">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
                                                                     <path d="M10 11v6"/>
                                                                     <path d="M14 11v6"/>
@@ -135,6 +147,6 @@
                 </div>
             </section>
         </main>
-        <?php include ('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>

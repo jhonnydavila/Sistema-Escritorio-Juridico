@@ -6,10 +6,8 @@
     </head>
     <body>
         <?php include('includes/sidebar.php'); ?>
-        
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
-
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -60,19 +58,14 @@
                                                     <td><?php echo $pago['codigoHonorario']?></td>
                                                     <td><?php echo $pago['conceptoPago']?></td>
                                                     <td><?php echo number_format($pago['montoPago'], 2, '.', '')?></td>
-                                                    
                                                     <td>
                                                         <span class="badge rounded-pill <?php echo ($pago['metodoPago'] == "Transferencia") ? "text-bg-dark" : (($pago['metodoPago'] == "Efectivo") ? "text-bg-secondary" : "text-bg-primary"); ?>">
                                                             <?php echo $pago['metodoPago']?>
                                                         </span>
                                                     </td>
-                                                    
                                                     <td><?php echo date('Y-m-d H:i', strtotime($pago['fechaRegistroPago']))?></td>
-                                                    
                                                     <td><span class="badge rounded-pill text-bg-success"><?php echo $pago['estatusPago']?></span></td>
-                                                    
-                                                    <td><?php echo isset($pago['observacionPago']) ? $pago['observacionPago'] : ''; ?></td>
-                                                    
+                                                    <td class="text-capitalize"><?php echo $pago['observacionesPago'] ?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Pago">
@@ -114,23 +107,14 @@
                                                     <td><?php echo $pago['codigoHonorario']?></td>
                                                     <td><?php echo $pago['conceptoPago']?></td>
                                                     <td><?php echo number_format($pago['montoPago'], 2, '.', '')?></td>
-                                                    
                                                     <td>
                                                         <span class="badge rounded-pill <?php echo ($pago['metodoPago'] == "Transferencia") ? "text-bg-dark" : (($pago['metodoPago'] == "Efectivo") ? "text-bg-secondary" : "text-bg-primary"); ?>">
                                                             <?php echo $pago['metodoPago']?>
                                                         </span>
                                                     </td>
-                                                    
                                                     <td><?php echo date('Y-m-d H:i', strtotime($pago['fechaRegistroPago']))?></td>
-                                                    
-                                                    <td>
-                                                        <span class="badge rounded-pill <?php echo ($pago['estatusPago'] == "Pendiente") ? "text-bg-secondary" : "text-bg-danger"; ?>">
-                                                            <?php echo $pago['estatusPago']?>
-                                                        </span>
-                                                    </td>
-                                                    
-                                                    <td><?php echo isset($pago['observacionPago']) ? $pago['observacionPago'] : ''; ?></td>
-                                                    
+                                                    <td><span class="badge rounded-pill <?php echo ($pago['estatusPago'] == "Pendiente") ? "text-bg-secondary" : "text-bg-danger"; ?>"><?php echo $pago['estatusPago']?></span></td>
+                                                    <td class="text-capitalize"><?php echo $pago['observacionesPago']?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Pago">

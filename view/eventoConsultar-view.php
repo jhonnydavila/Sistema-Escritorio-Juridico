@@ -5,12 +5,9 @@
         <title>Consultar Eventos</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
-        
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include ('includes/topbar.php'); ?>
-
-            
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -58,7 +55,7 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $evento){ 
                                             if($evento['estatusEvento'] != "Suspendido"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $evento['codigoEvento']?></td>
                                                     <td><?php echo $evento['codigoCaso']?></td>
                                                     <td><?php echo $evento['tituloEvento']?></td>
@@ -104,6 +101,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="table__container page__tab-panel w-100" id="panel-suspendidos" style="display: none;">
                             <table id="table" class="table__content" style="width: 100%;">
                                 <thead>
@@ -173,6 +171,6 @@
                 </div>
             </section>
         </main>
-        <?php (include 'view/includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>
