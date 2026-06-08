@@ -3,16 +3,21 @@
 
     class CasoModel extends Conexion {
         private $conex;
+        
+        // Datos del Caso
         private $codigo;
         private $fechaRegistro;
         private $fechaInicio;
         private $fechaFin;
         private $modalidad;
-        
-        private $nacionalidad;
-        private $correo;
+        private $descripcion;
         private $estatus;
-
+        
+        // Datos del Expediente (Relación)
+        private $codigoCliente;
+        private $codigoArchivador;
+        private $codigoExpediente;
+        
         public function __construct(){
             $this->conex = new Conexion();
             $this->conex = $this->conex->Conex();
@@ -20,89 +25,70 @@
 
         public function registrar_caso_model() {
             try {
-                $registro = "INSERT INTO tbl_casos (codigoCaso, fechaRegistroCaso, fechaInicioCaso, fechaFinCaso, modalidadCaso, nacionalidadCaso, correoCaso, estatusCaso) VALUES (:codigo, :fechaRegistro, :fechaInicio, :fechaFin, :modalidad, :nacionalidad, :correo, :estatus)";
-                $strExec = $this->conex->prepare($registro);
-                $strExec->bindParam(':codigo', $this->codigo);
-                $strExec->bindParam(':fechaRegistro', $this->fechaRegistro);
-                $strExec->bindParam(':fechaInicio', $this->fechaInicio);
-                $strExec->bindParam(':fechaFin', $this->fechaFin);
-                $strExec->bindParam(':modalidad', $this->modalidad);
-                $strExec->bindParam(':nacionalidad', $this->nacionalidad);
-                $strExec->bindParam(':correo', $this->correo);
-                $strExec->bindParam(':estatus', $this->estatus);
-                return $strExec->execute();
+                // Iniciar la transacción
+                $this->conex->beginTransaction();
+
+                // 1. Crear el Expediente
+                $sqlExpediente = "INSERT INTO tbl_expedientes (codigoCliente, codigoArchivador) VALUES (:cliente, :archivador)";
+                $stmtExp = $this->conex->prepare($sqlExpediente);
+                $stmtExp->bindParam(':cliente', $this->codigoCliente);
+                $stmtExp->bindParam(':archivador', $this->codigoArchivador);
+                $stmtExp->execute();
+
+                // Capturar el ID generado del expediente (Asumiendo que codigoExpediente es Auto-Incremental en tu BD)
+                $this->codigoExpediente = $this->conex->lastInsertId();
+
+                // 2. Crear el Caso usando el ID del expediente recién creado
+                $sqlCaso = "INSERT INTO tbl_casos 
+                        (codigoCaso, fechaRegistroCaso, fechaInicioCaso, fechaFinCaso, modalidadCaso, descripcionCaso, estatusCaso, codigoExpediente) 
+                        VALUES (:codigo, :fechaRegistro, :fechaInicio, :fechaFin, :modalidad, :descripcion, :estatus, :expediente)";
+                
+                $stmtCaso = $this->conex->prepare($sqlCaso);
+                $stmtCaso->bindParam(':codigo', $this->codigo);
+                $stmtCaso->bindParam(':fechaRegistro', $this->fechaRegistro);
+                $stmtCaso->bindParam(':fechaInicio', $this->fechaInicio);
+                $stmtCaso->bindParam(':fechaFin', $this->fechaFin);
+                $stmtCaso->bindParam(':modalidad', $this->modalidad);
+                $stmtCaso->bindParam(':descripcion', $this->descripcion);
+                $stmtCaso->bindParam(':estatus', $this->estatus);
+                $stmtCaso->bindParam(':expediente', $this->codigoExpediente);
+                $stmtCaso->execute();
+
+                // Si ambos INSERT fueron exitosos, confirmamos los cambios en la BD
+                $this->conex->commit();
+                return true;
+
             } catch (PDOException $e) {
-                error_log('Error en registrar_abogado_model(): ' . $e->getMessage());
-                exit();
+                // Si algo falla, revertimos todos los cambios (ni expediente ni caso se guardarán)
+                $this->conex->rollBack();
+                error_log('Error en registrar_caso_model: ' . $e->getMessage());
+                return false;
             }
         }
 
-        public function consultar_caso_model() {
+        public function consultar_casos_model() {
             try {
-                $registro = "SELECT * FROM tbl_casos";
-                $consulta = $this->conex->prepare($registro);
+                $sql = "SELECT * FROM tbl_casos";
+                $consulta = $this->conex->prepare($sql);
                 $consulta->execute();
-                $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
-                return $datos;
+                return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
-                error_log('Error en consultar_caso_model(): ' . $e->getMessage());
-                exit();
+                error_log('Error en consultar_caso_model: ' . $e->getMessage());
+                return [];
             }
         }
 
-        public function set_Codigo($codigo) { 
-            $this->codigo = $codigo; 
-        }
-        public function get_Codigo() { 
-            return $this->codigo; 
-        }
+        // --- Getters y Setters Caso ---
+        public function set_Codigo($codigo) { $this->codigo = $codigo; }
+        public function set_FechaRegistro($fechaRegistro) { $this->fechaRegistro = $fechaRegistro; }
+        public function set_FechaInicio($fechaInicio) { $this->fechaInicio = $fechaInicio; }
+        public function set_FechaFin($fechaFin) { $this->fechaFin = $fechaFin; }
+        public function set_Modalidad($modalidad) { $this->modalidad = $modalidad; }
+        public function set_Descripcion($descripcion) { $this->descripcion = $descripcion; }
+        public function set_Estatus($estatus) { $this->estatus = $estatus; }
 
-        public function set_FechaRegistro($fechaRegistro) { 
-            $this->fechaRegistro = $fechaRegistro; 
-        }
-        public function get_FechaRegistro() { 
-            return $this->fechaRegistro; 
-        }
-
-        public function set_FechaInicio($fechaInicio) { 
-            $this->fechaInicio = $fechaInicio; 
-        }
-        public function get_FechaInicio() { 
-            return $this->fechaInicio; 
-        }
-
-        public function set_FechaFin($fechaFin) { 
-            $this->fechaFin = $fechaFin; 
-        }
-        public function get_FechaFin() { 
-            return $this->fechaFin; 
-        }
-
-        public function set_Modalidad($modalidad) { 
-            $this->modalidad = $modalidad; 
-        }
-        public function get_Modalidad() { 
-            return $this->modalidad; 
-        }
-        
-        public function set_Correo($correo) { 
-            $this->correo = $correo; 
-        }
-        public function get_Correo() { 
-            return $this->correo; 
-        }
-    
-        public function set_Estatus($estatus) { 
-            $this->estatus = $estatus; 
-        }
-        public function get_Estatus() { 
-            return $this->estatus; 
-        }
-
-        public function set_Nacionalidad($nacionalidad) { 
-            $this->nacionalidad = $nacionalidad; 
-        }
-        public function get_Nacionalidad() { 
-            return $this->nacionalidad; 
-        }
+        // --- Getters y Setters Expediente ---
+        public function set_CodigoCliente($codigoCliente) { $this->codigoCliente = $codigoCliente; }
+        public function set_CodigoArchivador($codigoArchivador) { $this->codigoArchivador = $codigoArchivador; }
     }
+?>

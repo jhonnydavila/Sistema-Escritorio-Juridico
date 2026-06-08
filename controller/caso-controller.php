@@ -1,26 +1,25 @@
 <?php
     require_once('model/caso-model.php');
+    require_once('model/archivador-model.php');
+    require_once('model/cliente-model.php');
+    require_once('model/expediente-model.php');
+
     $objCaso = new CasoModel();
+    $objArchivador = new ArchivadorModel();
+    $objCliente = new ClienteModel();
+    $objExpediente = new ExpedienteModel();
     
     if(isset($_POST['casoRegistrar']) || isset($_POST['registrarCaso'])){
         require_once('view/casoRegistrar-view.php');
         
         if (isset($_POST['registrarCaso'])) {
-            $strNombre = $_POST['nombreAbogado'];
-            $strApellido = $_POST['apellidoAbogado'];
-            $strCedula = $_POST['cedulaAbogado'];
-            $strDireccion = $_POST['direccionAbogado'];
-            $strTelefono = $_POST['telefonoAbogado'];
-            $strNacionalidad = $_POST['nacionalidadAbogado'];
-            $strCorreo = $_POST['correoAbogado'];
+
+            $codigoCliente = $_POST['codigoCliente'];
+            $codigoArchivador = $_POST['codigoArchivador'];
             
-            $objCaso->set_Nombre($strNombre);
-            $objCaso->set_Apellido($strApellido);
-            $objCaso->set_Cedula($strCedula);
-            $objCaso->set_Direccion($strDireccion);
-            $objCaso->set_Telefono($strTelefono);
-            $objCaso->set_Nacionalidad($strNacionalidad);
-            $objCaso->set_Correo($strCorreo);
+            $objExpediente->set_CodigoCliente($codigoCliente);
+            $objExpediente->set_CodigoArchivador($codigoArchivador);
+
             $objCaso->set_Estatus("Activo");
 
             $response = $objCaso->registrar_caso_model();
