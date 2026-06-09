@@ -3,87 +3,52 @@
 
     class ExpedienteModel extends Conexion {
         private $conex;
-        private $codigo;
-        private $numero;
-        private $origen;
-        private $codigoCliente;
-        private $codigoArchivador;
 
         public function __construct(){
             $this->conex = new Conexion();
             $this->conex = $this->conex->Conex();
         }
 
-        public function registrar_expediente_model() {
+        public function consultar_expediente_model() {
             try {
-                $this->generar_codigo_expediente();
-
-                $registro = "INSERT INTO tbl_expedientes (codigoExpediente, numeroExpediente, codigoCliente, codigoArchivador) VALUES (:codigo, :numero, :origen, :caso, :archivador)";
-                $strExec = $this->conex->prepare($registro);
-                $strExec->bindParam(':codigo', $this->codigo);
-                $strExec->bindParam(':numero', $this->numero);
-                $strExec->bindParam(':origen', $this->origen);
-                $strExec->bindParam(':cliente', $this->codigoCliente);
-                $strExec->bindParam(':archivador', $this->codigoArchivador);
-                return $strExec->execute();
-            } catch (PDOException $e) {
-                error_log('Error en registrar_expediente_model(): ' . $e->getMessage());
-                exit();
-            }
-        }
-
-        public function  consultar_expediente_model() {
-            try {
-                $registro = "SELECT * FROM tbl_expedientes";
-                $consulta = $this->conex->prepare($registro);
+                $sql = "SELECT
+                            tbl_expedientes.codigoExpediente,
+                            tbl_expedientes.numeroExpediente,
+                            tbl_expedientes.origenExpediente,
+                            tbl_expedientes.fechaAperturaExpediente,
+                            tbl_expedientes.codigoCliente,
+                            tbl_expedientes.codigoArchivador,
+                            tbl_archivadores.nombreArchivador,
+                            CASE
+                                WHEN tbl_clientes.tipoCliente = 'Natural'
+                                THEN CONCAT(tbl_clientesnaturales.nombreClienteNatural, ' ', tbl_clientesnaturales.apellidoClienteNatural)
+                                ELSE tbl_clientesjuridicos.razonSocialClienteJuridico
+                            END AS nombreCliente
+                        FROM
+                            tbl_expedientes
+                        INNER JOIN
+                            tbl_clientes
+                        ON
+                            tbl_expedientes.codigoCliente = tbl_clientes.codigoCliente
+                        LEFT JOIN
+                            tbl_clientesnaturales
+                        ON
+                            tbl_clientes.codigoCliente = tbl_clientesnaturales.codigoCliente
+                        LEFT JOIN
+                            tbl_clientesjuridicos
+                        ON
+                            tbl_clientes.codigoCliente = tbl_clientesjuridicos.codigoCliente
+                        LEFT JOIN
+                            tbl_archivadores
+                        ON
+                            tbl_expedientes.codigoArchivador = tbl_archivadores.codigoArchivador
+                        ";
+                $consulta = $this->conex->prepare($sql);
                 $consulta->execute();
-                $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
-                return $datos;
+                return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 error_log('Error en consultar_expediente_model(): ' . $e->getMessage());
-                exit();
+                return [];
             }
-        }
-
-        private function generar_codigo_expediente() {
-            $sql = "SELECT codigoExpediente FROM tbl_expedientes ORDER BY codigoExpediente DESC LIMIT 1";
-            $consulta = $this->conex->prepare($sql);
-            $consulta->execute();
-            $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);
-            if ($ultimo) {
-                $partes = explode('-', $ultimo['codigoExpediente']);
-                $nuevoNumero = (int)$partes[1] + 1;
-                $this->codigo = 'EXP-' . str_pad($nuevoNumero, 5, '0', STR_PAD_LEFT);
-            } else {
-                $this->codigo = 'EXP-00001';
-            }
-        }
-
-        public function set_Codigo($codigo) { 
-            $this->codigo = $codigo; 
-        }
-        public function get_Codigo() { 
-            return $this->codigo; 
-        }
-
-        public function set_Origen($origen) { 
-            $this->origen = $origen; 
-        }
-        public function get_Origen() { 
-            return $this->origen; 
-        }
-
-        public function set_CodigoCliente($codigoCliente) { 
-            $this->codigoCliente = $codigoCliente; 
-        }
-        public function get_CodigoCliente() { 
-            return $this->codigoCliente; 
-        }
-
-        public function set_CodigoArchivador($codigoArchivador) { 
-            $this->codigoArchivador = $codigoArchivador; 
-        }
-        public function get_CodigoArchivador() { 
-            return $this->codigoArchivador; 
         }
     }

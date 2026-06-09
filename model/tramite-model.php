@@ -46,7 +46,7 @@
         }
 
         private function generar_codigo_tramite() {
-            $registro = "SELECT codigoTramite FROM tbl_tramites ORDER BY codigoTramite DESC LIMIT 1";
+            $registro = "SELECT codigoTramite FROM tbl_tramites WHERE codigoTramite LIKE 'TRA-%' ORDER BY codigoTramite DESC LIMIT 1";
             $consulta = $this->conex->prepare($registro);
             $consulta->execute();
             $ultimo = $consulta->fetch(PDO::FETCH_ASSOC);

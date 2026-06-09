@@ -5,7 +5,7 @@
     $objEvento = new EventoModel();
     $objCaso = new CasoModel();
     
-    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secrertaria') {
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria') {
         require_once('view/403.php');
 
     }else if (isset($_POST['eventoRegistrar']) || isset($_POST['registrarEvento'])){

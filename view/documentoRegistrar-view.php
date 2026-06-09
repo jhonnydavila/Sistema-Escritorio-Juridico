@@ -42,6 +42,20 @@
                             </div>
                         </div>
 
+                        <div class="col-12">
+                            <div class="form-group form-floating">
+                                <select class="form-select" id="codigoCaso" name="codigoCaso" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <?php if (!empty($dataCaso)) {
+                                        foreach ($dataCaso as $caso) {
+                                            if ($caso['estatusCaso'] == 'Activo') { ?>
+                                                <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
+                                    <?php } } } ?>
+                                </select>
+                                <label for="codigoCaso" class="form-label">Caso Asociado</label>
+                            </div>
+                        </div>
+
                         <div class="col-lg-6 col-md-6 mt-4">
                             <input class="form-control" type="file" id="formFile" name="archivoDocumento" required>
                         </div>

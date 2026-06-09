@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             secciones.forEach(section => {
                 if (section) {
                     section.classList.add('d-none');
-                    section.querySelectorAll('input').forEach(input => input.required = false);
+                    section.querySelectorAll('input, select').forEach(input => input.required = false);
                 }
             });
 
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function mostrarSeccion(seccion) {
         if (seccion) {
             seccion.classList.remove('d-none');
-            seccion.querySelectorAll('input').forEach(input => input.required = true);
+            seccion.querySelectorAll('input, select').forEach(input => input.required = true);
         }
     }
 });
@@ -128,5 +128,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contenedor = document.getElementById('representantes-container');
+    const btnAgregar = document.getElementById('agregarRepresentante');
+    if (!contenedor || !btnAgregar) return;
+
+    btnAgregar.addEventListener('click', function() {
+        const filas = contenedor.querySelectorAll('.representante-row');
+        const nueva = filas[0].cloneNode(true);
+
+        nueva.querySelectorAll('select, input').forEach(campo => {
+            campo.value = '';
+            campo.required = true;
+            campo.classList.remove('is-valid', 'is-invalid');
+        });
+
+        contenedor.appendChild(nueva);
+    });
+
+    contenedor.addEventListener('click', function(evento) {
+        const boton = evento.target.closest('.quitar-representante');
+        if (!boton) return;
+
+        const filas = contenedor.querySelectorAll('.representante-row');
+        if (filas.length > 1) {
+            boton.closest('.representante-row').remove();
+        } else {
+            filas[0].querySelectorAll('select, input').forEach(campo => {
+                campo.value = '';
+                campo.classList.remove('is-valid', 'is-invalid');
+            });
+        }
     });
 });

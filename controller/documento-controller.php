@@ -1,11 +1,14 @@
 <?php
     require_once('model/documento-model.php');
+    require_once('model/caso-model.php');
     $objDocumento = new DocumentoModel();
+    $objCaso = new CasoModel();
     
     if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria') {
         require_once('view/403.php');
 
     } else if (isset($_POST['documentoRegistrar']) || isset($_POST['registrarDocumento'])) {
+        $dataCaso = $objCaso->consultar_caso_model();
         require_once('view/documentoRegistrar-view.php');
 
         if (isset($_POST['registrarDocumento'])) {
@@ -35,6 +38,7 @@
                     $objDocumento->set_Tipo($tipo);
                     $objDocumento->set_Estatus("Activo");
                     $objDocumento->set_Descripcion($descripcion);
+                    $objDocumento->set_CodigoCaso(empty($_POST['codigoCaso']) ? null : $_POST['codigoCaso']);
 
                     $response = $objDocumento->registrar_documento_model();
 

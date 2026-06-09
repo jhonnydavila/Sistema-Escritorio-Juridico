@@ -4,9 +4,9 @@
     if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] !== 'administrador'){
         require_once('view/403.php');
 
-    }else if(isset($_POST['usuarioRegistrar']) || isset($_POST['registrar'])){
+    }else if(isset($_POST['usuarioRegistrar']) || isset($_POST['registrarUsuario'])){
         require_once('view/usuarioRegistrar-view.php');
-        if (isset($_POST['registrar'])) {
+        if (isset($_POST['registrarUsuario'])) {
             $strNombre = $_POST['nombreUsuario'];
             $strApellido = $_POST['apellidoUsuario'];
             $strCedula = $_POST['cedulaUsuario'];
@@ -34,7 +34,7 @@
             $objUsuario->set_Apellido($strApellido);
             $objUsuario->set_Cedula($strCedula);
             $objUsuario->set_Rol($strRol);
-            $objUsuario->set_Clave($strClave);
+            $objUsuario->set_Clave(password_hash($strClave, PASSWORD_DEFAULT));
             $objUsuario->set_Estatus('Activo');
             $objUsuario->set_FechaRegistro($strFechaRegistro);
             

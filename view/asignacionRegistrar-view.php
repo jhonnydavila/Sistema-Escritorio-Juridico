@@ -8,7 +8,6 @@
         <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
-
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -18,27 +17,31 @@
                 </div>
                 <div class="page__content">
                     <form action="asignacion" id="form" class="row p-4 gy-1" method="POST">
-                        <input type="text" name="registrar" hidden required>
-                        
-                        <div class="col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="codigoCaso" required>
+                                <select class="form-select" name="cedulaAbogado" id="cedulaAbogado" required>
                                     <option value="" hidden>Seleccionar...</option>
-                                    <option value="CLI-001">CLI-001</option>
-                                    <option value="CLI-002">CLI-002</option>
+                                    <?php if (!empty($dataAbogados)) {
+                                        foreach ($dataAbogados as $abogado) {
+                                            if ($abogado['estatusAbogado'] == 'Activo') { ?>
+                                                <option value="<?php echo $abogado['cedulaAbogado']?>"><?php echo $abogado['nombreAbogado'].' '.$abogado['apellidoAbogado'].' ('.$abogado['nacionalidadAbogado'].'-'.$abogado['cedulaAbogado'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
-                                <label for="codigoCaso" class="form-label">Caso</label>
+                                <label for="cedulaAbogado" class="form-label">Abogado</label>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="casoAbogado" name="casoAbogado" required>
+                                <select class="form-select" name="codigoCaso" id="codigoCaso" required>
                                     <option value="" hidden>Seleccionar...</option>
-                                    <option value="Asesoria">Asesoría</option>
-                                    <option value="Gestion Juridica">Gestión Jurídica</option>
+                                    <?php if (!empty($dataCasos)) {
+                                        foreach ($dataCasos as $caso) {
+                                            if ($caso['estatusCaso'] == 'Activo') { ?>
+                                                <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
-                                <label for="casoAbogado" class="form-label">Abogado</label>
+                                <label for="codigoCaso" class="form-label">Caso</label>
                             </div>
                         </div>
 
@@ -49,7 +52,6 @@
                 </div>
             </section>
         </main>
-
-        <?php include ('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>

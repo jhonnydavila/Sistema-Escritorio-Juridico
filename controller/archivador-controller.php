@@ -2,7 +2,7 @@
     require_once('model/archivador-model.php');
     $objArchivador = new ArchivadorModel();
 
-    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secrertaria') {
+    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria') {
         require_once('view/403.php');
 
     }else if (isset($_POST['archivadorRegistrar']) || isset($_POST['registrarArchivador'])){

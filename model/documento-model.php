@@ -4,10 +4,10 @@
     class DocumentoModel extends Conexion {
         private $conex;
         private $codigo;
-        private $nombre;
-        private $tipo;
-        private $descripcion;
-        private $estatus;
+        private $nombreDocumento;
+        private $tipoDocumento;
+        private $descripcionDocumento;
+        private $estatusDocumento;
         private $codigoCaso;
 
         public function __construct(){
@@ -22,10 +22,10 @@
                 $registro = "INSERT INTO tbl_documentos (codigoDocumento, nombreDocumento, tipoDocumento, descripcionDocumento, estatusDocumento, codigoCaso) VALUES (:codigo, :nombre, :tipo, :descripcion, :estatus, :caso)";
                 $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':codigo', $this->codigo);
-                $strExec->bindParam(':nombre', $this->nombre);
-                $strExec->bindParam(':tipo', $this->tipo);
-                $strExec->bindParam(':descripcion', $this->descripcion);
-                $strExec->bindParam(':estatus', $this->estatus);
+                $strExec->bindParam(':nombre', $this->nombreDocumento);
+                $strExec->bindParam(':tipo', $this->tipoDocumento);
+                $strExec->bindParam(':descripcion', $this->descripcionDocumento);
+                $strExec->bindParam(':estatus', $this->estatusDocumento);
                 $strExec->bindParam(':caso', $this->codigoCaso);
                 return $strExec->execute();
                 
@@ -70,31 +70,31 @@
         }
 
         public function set_Nombre($nombre) { 
-            $this->nombre = $nombre; 
+            $this->nombreDocumento = $nombre; 
         }
         public function get_Nombre() { 
-            return $this->nombre; 
+            return $this->nombreDocumento; 
         }
 
         public function set_Tipo($tipo) { 
-            $this->tipo = $tipo; 
+            $this->tipoDocumento = $tipo; 
         }
         public function get_Tipo() { 
-            return $this->tipo; 
+            return $this->tipoDocumento; 
         }
 
         public function set_Descripcion($descripcion) { 
-            $this->descripcion = $descripcion; 
+            $this->descripcionDocumento = $descripcion; 
         }
         public function get_Descripcion() { 
-            return $this->descripcion; 
+            return $this->descripcionDocumento; 
         }
 
         public function set_Estatus($estatus) { 
-            $this->estatus = $estatus; 
+            $this->estatusDocumento = $estatus; 
         }
         public function get_Estatus() { 
-            return $this->estatus; 
+            return $this->estatusDocumento; 
         }
 
         public function set_CodigoCaso($caso) { 

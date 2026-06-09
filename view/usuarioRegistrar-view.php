@@ -20,21 +20,21 @@
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="nombreUsuario" type="text" class="form-control" name="nombreUsuario" placeholder="Nombre" autocomplete="off" required pattern="^[A-ZÁÉÍÓÚÑa-záéíóúñ ]+$" title="El nombre solo debe contener letras y espacios.">
+                                <input id="nombreUsuario" type="text" class="form-control" name="nombreUsuario" placeholder="Nombre" autocomplete="off" required>
                                 <label class="form-label" for="nombreUsuario">Nombre</label>
                             </div>
                         </div>
                         
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="apellidoUsuario" type="text" class="form-control" name="apellidoUsuario" placeholder="Apellido" autocomplete="off" required pattern="^[A-ZÁÉÍÓÚÑa-záéíóúñ ]+$" title="El apellido solo debe contener letras y espacios.">
+                                <input id="apellidoUsuario" type="text" class="form-control" name="apellidoUsuario" placeholder="Apellido" autocomplete="off" required>
                                 <label class="form-label" for="apellidoUsuario">Apellido</label>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="cedulaUsuario" type="text" class="form-control" name="cedulaUsuario" placeholder="Cédula" autocomplete="off" required pattern="^[0-9]{6,9}$" title="La cédula debe contener solo números (entre 6 y 9 dígitos) sin puntos ni letras.">
+                                <input id="cedulaUsuario" type="text" class="form-control" name="cedulaUsuario" placeholder="Cédula" autocomplete="off" required>
                                 <label class="form-label" for="cedulaUsuario">Cédula de Identidad</label>
                             </div>
                         </div>
@@ -53,14 +53,14 @@
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="clave1Usuario" type="password" class="form-control" name="clave1Usuario" placeholder="Contraseña" autocomplete="off" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.">
+                                <input id="clave1Usuario" type="password" class="form-control" name="clave1Usuario" placeholder="Contraseña" autocomplete="off" required>
                                 <label class="form-label" for="clave1Usuario">Contraseña</label>
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="clave2Usuario" type="password" class="form-control" name="clave2Usuario" placeholder="Confirmar Contraseña" autocomplete="off" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" title="Repita la contraseña exactamente igual a la anterior.">
+                                <input id="clave2Usuario" type="password" class="form-control" name="clave2Usuario" placeholder="Confirmar Contraseña" autocomplete="off" required>
                                 <label class="form-label" for="clave2Usuario">Confirmar Contraseña</label>
                             </div>
                         </div>

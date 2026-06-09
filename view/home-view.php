@@ -40,7 +40,7 @@
                                 <h3>Clientes</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">20</p>
+                                <p class="stats"><?php echo $totalClientes; ?></p>
                                 <span class="stats-label">Registrados Totales</span>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <h3>Casos</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">12</p>
+                                <p class="stats"><?php echo $casosActivos; ?></p>
                                 <span class="stats-label">Procesos en Desarrollo</span>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                                 <h3>Trámites</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">45</p>
+                                <p class="stats"><?php echo $totalTramites; ?></p>
                                 <span class="stats-label">Registrados en el sistema</span>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                 <h3>Documentos</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">120</p>
+                                <p class="stats"><?php echo $totalDocumentos; ?></p>
                                 <span class="stats-label">Archivos subidos</span>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 <h3>Eventos</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">5</p>
+                                <p class="stats"><?php echo $totalEventos; ?></p>
                                 <span class="stats-label">Próximos en agenda</span>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                                 <h3>Honorarios</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">10</p>
+                                <p class="stats"><?php echo $totalHonorarios; ?></p>
                                 <span class="stats-label">Honorarios pendientes</span>
                             </div>
                         </div>
@@ -166,7 +166,7 @@
                                 <h3>Abogados</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">5</p>
+                                <p class="stats"><?php echo $abogadosActivos; ?></p>
                                 <span class="stats-label">Activos en sistema</span>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                                 <h3>Usuarios</h3>
                             </div>
                             <div class="card__home-body">
-                                <p class="stats">8</p>
+                                <p class="stats"><?php echo $totalUsuarios; ?></p>
                                 <span class="stats-label">Cuentas con acceso</span>
                             </div>
                         </div>

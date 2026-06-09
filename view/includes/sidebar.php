@@ -99,7 +99,23 @@
                 <button type="submit" class="sidebar__nav-item <?php echo isset($_POST['clienteConsultar']) ? 'active' : ''; ?>" name="clienteConsultar"><span>Consultar Clientes</span></button>
             </form>
         </div>
-        
+
+        <div class="sidebar__nav-item-dropdown <?php echo ($pagina_actual == 'representante') ? 'active' : ''; ?>">
+            <div class="sidebar__nav-dropdown">
+                <svg width="1.2rem" height="1.2rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Gestionar Representantes</span>
+                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto;">
+                    <path d="m6 9 6 6 6-6"/>
+                </svg>
+            </div>
+            <form action="representante" method="POST" class="sidebar__nav-dropdown-menu">
+                <button type="submit" class="sidebar__nav-item <?php echo isset($_POST['representanteRegistrar']) ? 'active' : ''; ?>" name="representanteRegistrar"><span>Registrar Representante</span></button>
+                <button type="submit" class="sidebar__nav-item <?php echo isset($_POST['representanteConsultar']) ? 'active' : ''; ?>" name="representanteConsultar"><span>Consultar Representantes</span></button>
+            </form>
+        </div>
+
         <div class="sidebar__nav-item-dropdown <?php echo ($pagina_actual == 'caso') ? 'active' : ''; ?>">
             <div class="sidebar__nav-dropdown">
                 <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale-icon lucide-scale">

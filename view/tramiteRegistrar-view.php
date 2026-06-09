@@ -21,7 +21,7 @@
                     
                         <div class="col-md-8">
                             <div class="form-group form-floating">
-                                <input id="nombreTramite" type="text" class="form-control" name="nombreTramite" placeholder="Divorcio..." minlength="3" maxlength="100" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,()\-]{3,100}$" title="El nombre debe contener entre 3 y 100 caracteres. Se permiten letras, números, espacios y caracteres como ( . , - )" autocomplete="off" required>
+                                <input id="nombreTramite" type="text" class="form-control" name="nombreTramite" placeholder="Divorcio..." minlength="3" maxlength="100" autocomplete="off" required>
                                 <label for="nombreTramite" class="form-label">Nombre del Trámite</label>
                             </div>
                         </div>

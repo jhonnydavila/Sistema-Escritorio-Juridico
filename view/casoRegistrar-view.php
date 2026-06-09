@@ -18,76 +18,62 @@
                 </div>
                 <div class="page__content">
                     <form action="caso" id="form" class="row p-4 gy-1" method="POST">
-                        <input type="text" name="registrar" hidden required>
-                        
-                        <div class="col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="codigoCliente" name="codigoCliente" required>
-                                    <option value="" hidden>Seleccione una opción...</option>
-                                    <?php
-                                        if (!empty($dataClientes)) {
-                                            foreach ($dataClientes as $cliente) {
-                                                // Se usa codigoCliente para el value. 
-                                                // Si en tu consulta combinaste (JOIN) con tbl_clientesnaturales, puedes usar nombre y apellido.
-                                                // De lo contrario, puedes mostrar solo el codigoCliente.
-                                                $nombreMostrar = isset($cliente['nombreClienteNatural']) ? $cliente['nombreClienteNatural'] . ' ' . $cliente['apellidoClienteNatural'] : '';
-                                                echo '<option value="' . htmlspecialchars($cliente['codigoCliente']) . '">' . htmlspecialchars($cliente['codigoCliente'] . ' - ' . $nombreMostrar) . '</option>';
-                                            }
-                                        }
-                                    ?>
+                                <select class="form-select" name="clienteCaso" id="clienteCaso" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <?php if (!empty($clientes)) {
+                                        foreach ($clientes as $cli) {
+                                            if ($cli['estatusCliente'] == 'Activo') { ?>
+                                                <option value="<?php echo $cli['codigoCliente']?>"><?php echo $cli['nombreCliente'].' - '.$cli['documentoCliente'].' ('.$cli['codigoCliente'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
-                                <label for="codigoCliente" class="form-label">Cliente</label>
+                                <label for="clienteCaso" class="form-label">Cliente</label>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="modalidadCaso" name="modalidadCaso" required>
+                                <select class="form-select" name="modalidadCaso" id="modalidadCaso" required>
                                     <option value="" hidden>Seleccionar...</option>
                                     <option value="Asesoria">Asesoría</option>
                                     <option value="Gestion Juridica">Gestión Jurídica</option>
                                 </select>
-                                <label for="modalidadCaso" class="form-label">Tipo de Caso</label>
+                                <label for="modalidadCaso" class="form-label">Modalidad del Caso</label>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group form-floating">
-                                <select class="form-select" id="origenExpediente" name="origenExpediente" required>
-                                    <option value="" hidden>Seleccionar...</option>
-                                    <option value="Asesoria">Extrajudicial</option>
-                                    <option value="Gestion Juridica">Judicial</option>
+                                <input id="origenExpediente" type="text" class="form-control" name="origenExpediente" placeholder="origen" minlength="3" maxlength="15" autocomplete="off" required>
+                                <label class="form-label" for="origenExpediente">Origen del Expediente</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="numeroExpediente" type="text" class="form-control" name="numeroExpediente" placeholder="numero" maxlength="100" autocomplete="off">
+                                <label class="form-label" for="numeroExpediente">Número de Expediente (opcional)</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="form-group form-floating">
+                                <select class="form-select" name="codigoArchivador" id="codigoArchivador">
+                                    <option value="">Sin asignar</option>
+                                    <?php if (!empty($archivadores)) {
+                                        foreach ($archivadores as $arc) {
+                                            if ($arc['estatusArchivador'] == 'Activo') { ?>
+                                                <option value="<?php echo $arc['codigoArchivador']?>"><?php echo $arc['codigoArchivador'].' - '.$arc['nombreArchivador']?></option>
+                                    <?php } } } ?>
                                 </select>
-                                <label for="origenExpediente" class="form-label">Origen para el Expediente</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6">
-                            <div class="form-group form-floating">
-                                <input id="numeroExpediente" type="text" class="form-control" name="numeroExpediente" placeholder="Ej: EXP-2026-X" autocomplete="off" required>
-                                <label class="form-label" for="numeroExpediente">Número de Expediente (Opcional)</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6">
-                            <div class="form-group form-floating">
-                                <select class="form-select" id="codigoArchivador" name="codigoArchivador" required>
-                                    <option value="" hidden>Seleccione una opción...</option>
-                                    <?php
-                                        if (!empty($dataArchivadores)) {
-                                            foreach ($dataArchivadores as $archivador) {
-                                                echo '<option value="' . htmlspecialchars($archivador['codigoArchivador']) . '">' . htmlspecialchars($archivador['codigoArchivador'] . ' - ' . $archivador['nombreArchivador']) . '</option>';
-                                            }
-                                        }
-                                        ?>
-                                </select>
-                                <label for="codigoArchivador" class="form-label">Archivador para el Expediente (Opcional)</label>
+                                <label for="codigoArchivador" class="form-label">Archivador (opcional)</label>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-group form-floating">
-                                <input id="descripcionCaso" type="text" class="form-control" name="descripcionCaso" placeholder="Detalles del caso..." autocomplete="off" required>
+                                <input id="descripcionCaso" type="text" class="form-control" name="descripcionCaso" placeholder="descripcion" minlength="3" maxlength="200" autocomplete="off" required>
                                 <label class="form-label" for="descripcionCaso">Descripción del Caso</label>
                             </div>
                         </div>

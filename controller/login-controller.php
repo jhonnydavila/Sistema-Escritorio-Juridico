@@ -10,7 +10,7 @@
         $usuario = $objUsuario->buscar_usuario_model($cedula);
 
         if($usuario){
-            if($usuario['claveUsuario'] == $clave){
+            if(password_verify($clave, $usuario['claveUsuario']) || $usuario['claveUsuario'] === $clave){
                 if (session_status() === PHP_SESSION_NONE) {
                     session_start(['name' => 'sesion_usuario']);
                 }

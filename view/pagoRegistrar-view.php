@@ -66,14 +66,14 @@
 
                         <div class="col-md-4">
                             <div class="form-group form-floating">
-                                <input id="conceptoPago" type="text" class="form-control" name="conceptoPago" placeholder="Concepto" required pattern="^[A-ZÁÉÍÓÚÑa-záéíóúñ0-9 .,#\-]+$" title="El concepto solo puede contener letras, números, espacios y los caracteres especiales (.,#-)">
+                                <input id="conceptoPago" type="text" class="form-control" name="conceptoPago" placeholder="Concepto" required>
                                 <label class="form-label" for="conceptoPago">Concepto / Descripción Corta</label>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="form-group form-floating">
-                                <input id="observacionesPago" type="text" class="form-control" name="observacionesPago" placeholder="Observaciones" pattern="^[A-ZÁÉÍÓÚÑa-záéíóúñ0-9 .,#\-]*$" title="Las observaciones solo pueden contener letras, números, espacios y los caracteres especiales (.,#-)">
+                                <input id="observacionesPago" type="text" class="form-control" name="observacionesPago" placeholder="Observaciones">
                                 <label class="form-label" for="observacionesPago">Observaciones (Opcional)</label>
                             </div>
                         </div>
