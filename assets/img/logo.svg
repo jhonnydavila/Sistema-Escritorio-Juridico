@@ -1,0 +1,51 @@
+<svg width="560" height="170" viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escritorio Jurídico Familia Jiménez">
+  <defs>
+    <linearGradient id="bgNavy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243449"/>
+      <stop offset="1" stop-color="#101a28"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7c66a"/>
+      <stop offset="1" stop-color="#c49a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Emblema -->
+  <g transform="translate(14,15)">
+    <rect x="0" y="0" width="140" height="140" rx="30" fill="url(#bgNavy)"/>
+    <rect x="3" y="3" width="134" height="134" rx="27" fill="none" stroke="#0d9696" stroke-width="1.5" opacity="0.55"/>
+
+    <!-- Balanza de la justicia -->
+    <g stroke="url(#gold)" fill="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+      <!-- remate superior -->
+      <circle cx="70" cy="30" r="5.5" stroke="none"/>
+      <!-- mastil -->
+      <rect x="67.5" y="33" width="5" height="68" rx="2.5" stroke="none"/>
+      <!-- viga -->
+      <line x1="28" y1="44" x2="112" y2="44" stroke-width="4.5"/>
+      <!-- cadenas izquierda -->
+      <line x1="28" y1="45" x2="17" y2="68" stroke-width="2"/>
+      <line x1="28" y1="45" x2="39" y2="68" stroke-width="2"/>
+      <!-- cadenas derecha -->
+      <line x1="112" y1="45" x2="101" y2="68" stroke-width="2"/>
+      <line x1="112" y1="45" x2="123" y2="68" stroke-width="2"/>
+      <!-- platillo izquierdo -->
+      <path d="M11 67 Q28 90 45 67 Z" stroke="none"/>
+      <line x1="11" y1="67" x2="45" y2="67" stroke-width="2.5"/>
+      <!-- platillo derecho -->
+      <path d="M95 67 Q112 90 129 67 Z" stroke="none"/>
+      <line x1="95" y1="67" x2="129" y2="67" stroke-width="2.5"/>
+      <!-- base -->
+      <path d="M52 101 H88 L96 116 H44 Z" stroke="none"/>
+      <rect x="40" y="116" width="60" height="5" rx="2.5" stroke="none"/>
+    </g>
+  </g>
+
+  <!-- Texto -->
+  <g transform="translate(178,0)">
+    <text x="0" y="66" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#182232">Familia Jiménez</text>
+    <text x="2" y="98" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="6" fill="#c49a3a">ESCRITORIO JURÍDICO</text>
+    <line x1="2" y1="112" x2="360" y2="112" stroke="#0d9696" stroke-width="2"/>
+    <text x="2" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3" fill="#707788">MUNICIPIO JIMÉNEZ &#183; ESTADO LARA</text>
+  </g>
+</svg>

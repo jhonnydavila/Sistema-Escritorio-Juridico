@@ -45,8 +45,12 @@
 
                         <div class="col-lg-4 col-md-6">
                             <div class="form-group form-floating">
-                                <input id="origenExpediente" type="text" class="form-control" name="origenExpediente" placeholder="origen" minlength="3" maxlength="15" autocomplete="off" required>
-                                <label class="form-label" for="origenExpediente">Origen del Expediente</label>
+                                <select class="form-select" name="origenExpediente" id="origenExpediente" required>
+                                    <option value="" hidden>Seleccionar...</option>
+                                    <option value="Judicial">Judicial</option>
+                                    <option value="Extrajudicial">Extrajudicial</option>
+                                </select>
+                                <label for="origenExpediente" class="form-label">Origen del Expediente</label>
                             </div>
                         </div>
 
@@ -57,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4">
                             <div class="form-group form-floating">
                                 <select class="form-select" name="codigoArchivador" id="codigoArchivador">
                                     <option value="">Sin asignar</option>
@@ -85,7 +89,6 @@
                 </div>
             </section>
         </main>
-
         <?php include ('includes/footer.php'); ?>
     </body>
 </html>

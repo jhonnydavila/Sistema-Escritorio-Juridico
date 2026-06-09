@@ -52,15 +52,22 @@
                                 <tbody>
                                     <?php if (!empty($data)){
                                         foreach ($data as $cliente){
-                                            if($cliente['estatusCliente'] == "Activo"){ ?>
+                                            if($cliente['estatusCliente'] == "Activo"){ 
+                                                if($cliente['tipoCliente'] == 'natural'){
+                                                    $nombre = $cliente['nombreClienteNatural'].' '.$cliente['apellidoClienteNatural'];
+                                                    }else{
+                                                    $nombre = $cliente['razonSocialClienteJuridico'];
+                                                }
+                                                ?>
+                                            
                                                 <tr>
                                                     <td><?php echo $cliente['codigoCliente']?></td>
-                                                    <td class="text-capitalize"><?php echo $cliente['nombreCliente']?></td>
+                                                    <td class="text-capitalize"><?php echo $nombre?></td>
                                                     <td><?php echo $cliente['numeroClienteTelefono']?></td>
                                                     <td><?php echo $cliente['correoCliente']?></td>
                                                     <td class="text-capitalize"><?php echo $cliente['direccionCliente']?></td>
                                                     <td class="text-center">
-                                                        <?php if($cliente['tipoCliente'] == "Natural"){ ?>
+                                                        <?php if($cliente['tipoCliente'] == "natural"){ ?>
                                                             <span class="badge rounded-pill text-bg-secondary">Natural</span>
                                                         <?php } else { ?>
                                                             <span class="badge rounded-pill text-bg-dark">Jurídico</span>
@@ -109,15 +116,22 @@
                                 <tbody>
                                     <?php if (!empty($data)){
                                         foreach ($data as $cliente){
-                                            if($cliente['estatusCliente'] == "Inactivo"){ ?>
+                                            if($cliente['estatusCliente'] == "Inactivo"){
+                                                if($cliente['tipoCliente'] == 'natural'){
+                                                    $nombre = $cliente['nombreClienteNatural'].' '.$cliente['apellidoClienteNatural'];
+                                                    }else{
+                                                    $nombre = $cliente['razonSocialClienteJuridico'];
+                                                }
+                                                ?>
+                                            
                                                 <tr>
                                                     <td><?php echo $cliente['codigoCliente']?></td>
-                                                    <td class="text-capitalize"><?php echo $cliente['nombreCliente']?></td>
+                                                    <td class="text-capitalize"><?php echo $nombre?></td>
                                                     <td><?php echo $cliente['numeroClienteTelefono']?></td>
                                                     <td><?php echo $cliente['correoCliente']?></td>
                                                     <td class="text-capitalize"><?php echo $cliente['direccionCliente']?></td>
                                                     <td class="text-center">
-                                                        <?php if($cliente['tipoCliente'] == "Natural"){ ?>
+                                                        <?php if($cliente['tipoCliente'] == "natural"){ ?>
                                                             <span class="badge rounded-pill text-bg-secondary">Natural</span>
                                                         <?php } else { ?>
                                                             <span class="badge rounded-pill text-bg-dark">Jurídico</span>

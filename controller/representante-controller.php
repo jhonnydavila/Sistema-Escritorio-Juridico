@@ -37,11 +37,11 @@
         }
 
     } else if (isset($_POST['representanteConsultar'])) {
-        $data = $objRepresentante->consultar_representante_model();
+        $data = $objRepresentante->consultar_representantes_model();
         require_once('view/representanteConsultar-view.php');
 
     } else {
-        $data = $objRepresentante->consultar_representante_model();
+        $data = $objRepresentante->consultar_representantes_model();
         require_once('view/representanteConsultar-view.php');
 
     }

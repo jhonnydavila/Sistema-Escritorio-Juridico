@@ -30,7 +30,7 @@
             }
         }
 
-        public function consultar_representante_model() {
+        public function consultar_representantes_model() {
             try {
                 $registro = "SELECT
                                 tbl_representantes.cedulaRepresentante,
