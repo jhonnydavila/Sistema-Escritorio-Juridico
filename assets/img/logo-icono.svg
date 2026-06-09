@@ -1,0 +1,31 @@
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Familia Jiménez">
+  <defs>
+    <linearGradient id="bgNavy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#243449"/>
+      <stop offset="1" stop-color="#101a28"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e7c66a"/>
+      <stop offset="1" stop-color="#c49a3a"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10,10)">
+    <rect x="0" y="0" width="140" height="140" rx="32" fill="url(#bgNavy)"/>
+    <rect x="3" y="3" width="134" height="134" rx="29" fill="none" stroke="#0d9696" stroke-width="1.5" opacity="0.55"/>
+    <g stroke="url(#gold)" fill="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="70" cy="30" r="5.5" stroke="none"/>
+      <rect x="67.5" y="33" width="5" height="68" rx="2.5" stroke="none"/>
+      <line x1="28" y1="44" x2="112" y2="44" stroke-width="4.5"/>
+      <line x1="28" y1="45" x2="17" y2="68" stroke-width="2"/>
+      <line x1="28" y1="45" x2="39" y2="68" stroke-width="2"/>
+      <line x1="112" y1="45" x2="101" y2="68" stroke-width="2"/>
+      <line x1="112" y1="45" x2="123" y2="68" stroke-width="2"/>
+      <path d="M11 67 Q28 90 45 67 Z" stroke="none"/>
+      <line x1="11" y1="67" x2="45" y2="67" stroke-width="2.5"/>
+      <path d="M95 67 Q112 90 129 67 Z" stroke="none"/>
+      <line x1="95" y1="67" x2="129" y2="67" stroke-width="2.5"/>
+      <path d="M52 101 H88 L96 116 H44 Z" stroke="none"/>
+      <rect x="40" y="116" width="60" height="5" rx="2.5" stroke="none"/>
+    </g>
+  </g>
+</svg>

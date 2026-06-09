@@ -4,7 +4,7 @@
 <div class="sidebar__container">
     <div class="sidebar__header">
         <div class="sidebar__header-logo">
-            EJFJ
+           <img src="assets/img/logo-icono.svg" alt="Familia Jiménez" style="width:42px;height:42px;">
         </div>
         <div>
             <h3 class="sidebar__header-title">Seguimiento</h3>
