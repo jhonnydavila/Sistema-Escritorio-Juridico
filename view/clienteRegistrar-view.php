@@ -113,13 +113,11 @@
                                 <div class="form-group form-floating">
                                     <select class="form-select" name="cedulaRepresentante" id="cedulaRepresentante">
                                         <option value="" hidden>Seleccione una opción...</option>
-                                        <?php
-                                            if (!empty($dataRepresentantes)) {
-                                                foreach ($dataRepresentantes as $representante) {
-                                                    echo '<option value="' . htmlspecialchars($representante['cedulaRepresentante']) . '">' . htmlspecialchars($representante['cedulaRepresentante'] . ' - ' . $representante['nombreRepresentante'] . ' ' . $representante['apellidoRepresentante']) . '</option>';
-                                                }
-                                            }
-                                        ?>
+                                        <?php if (!empty($dataRepresentantes)) {
+                                            foreach ($dataRepresentantes as $representante) {
+                                                if ($representante['estatusRepresentante'] == 'Activo') { ?>
+                                                    <option value="<?php echo $representante['cedulaRepresentante']?>"><?php echo $representante['nacionalidadRepresentante'].$representante['cedulaRepresentante'].' - '.$representante['nombreRepresentante'].' '.$representante['apellidoRepresentante']?></option>
+                                        <?php } } } ?>
                                     </select>
                                     <label class="form-label" for="cedulaRepresentante">Representante Legal</label>
                                 </div>

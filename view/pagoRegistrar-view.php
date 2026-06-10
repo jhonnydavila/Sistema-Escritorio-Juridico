@@ -22,13 +22,11 @@
                             <div class="form-group form-floating">
                                 <select class="form-select" id="honorarioPago" name="honorarioPago" required title="Seleccione el código del acuerdo de honorario correspondiente">
                                     <option value="" hidden>Seleccionar Honorario...</option>
-                                    <?php 
-                                        if (!empty($dataHonorarios)) {
-                                            foreach($dataHonorarios as $honorario){
-                                                echo '<option value="'.$honorario['codigoHonorario'].'">'.$honorario['codigoHonorario'].' (Caso: '.$honorario['codigoCaso'].')</option>';
-                                            }
-                                        } 
-                                    ?>
+                                    <?php if (!empty($dataHonorarios)) {
+                                        foreach($dataHonorarios as $honorario) {
+                                            if ($honorario['estatusHonorario'] != 'Rechazado') { ?>
+                                                <option value="<?php echo $honorario['codigoHonorario']?>"><?php echo $honorario['codigoHonorario'].' - '.$honorario['codigoCaso'].' ('.$honorario['modalidadCaso'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
                                 <label class="form-label" for="honorarioPago">Código Acuerdo Honorario</label>
                             </div>

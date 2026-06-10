@@ -17,20 +17,15 @@
                 </div>
                 <div class="page__content">
                     <form action="honorario" id="form" class="row p-4 gy-1" method="POST">
-                        
-                        <input type="text" name="registrarHonorario" hidden>
-
                         <div class="col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="codigoCaso" name="codigoCaso" required title="Seleccione el caso legal vinculado a este acuerdo de honorarios">
                                     <option value="" hidden>Seleccionar Caso...</option>
-                                    <?php 
-                                        if (!empty($dataCaso)) {
-                                            foreach($dataCaso as $caso){
-                                                echo '<option value="'.$caso['codigoCaso'].'">'.$caso['codigoCaso'].'</option>';
-                                            }
-                                        } 
-                                    ?>
+                                    <?php if (!empty($dataCasos)) {
+                                        foreach ($dataCasos as $caso) {
+                                            if ($caso['estatusCaso'] == 'Activo') { ?>
+                                                <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
                                 <label for="codigoCaso" class="form-label">Caso Vinculado</label>
                             </div>
@@ -54,7 +49,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center mt-4 w-100">
-                            <button type="submit" class="btn__primary">Registrar</button>
+                            <button type="submit" class="btn__primary" name="registrarHonorario">Registrar</button>
                         </div>
                     </form>
                 </div>

@@ -8,7 +8,6 @@
         <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
             <?php include('includes/topbar.php'); ?>
-
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">

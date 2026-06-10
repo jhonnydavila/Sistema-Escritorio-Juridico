@@ -9,7 +9,7 @@
         require_once('view/403.php');
 
     }else if (isset($_POST['eventoRegistrar']) || isset($_POST['registrarEvento'])){
-        $dataCaso = $objCaso->consultar_caso_model();
+        $dataCasos = $objCaso->consultar_caso_model();
         require_once('view/eventoRegistrar-view.php');
 
         if (isset($_POST['registrarEvento'])) {

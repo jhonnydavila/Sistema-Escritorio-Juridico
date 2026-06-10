@@ -21,13 +21,11 @@
                             <div class="form-group form-floating">
                                 <select class="form-select" id="codigoCaso" name="codigoCaso" required title="Seleccione el caso legal vinculado a este acuerdo de honorarios">
                                     <option value="" hidden>Seleccionar Caso...</option>
-                                    <?php 
-                                        if (!empty($dataCaso)) {
-                                            foreach($dataCaso as $caso){
-                                                echo '<option value="'.$caso['codigoCaso'].'">'.$caso['codigoCaso'].'</option>';
-                                            }
-                                        } 
-                                    ?>
+                                    <?php if (!empty($dataCasos)) {
+                                        foreach ($dataCasos as $caso) {
+                                            if ($caso['estatusCaso'] == 'Activo') { ?>
+                                                <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
+                                    <?php } } } ?>
                                 </select>
                                 <label for="codigoCaso" class="form-label">Caso Vinculado</label>
                             </div>

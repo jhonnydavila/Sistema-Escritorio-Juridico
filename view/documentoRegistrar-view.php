@@ -5,9 +5,9 @@
         <title>Registrar Documento</title>
     </head>
     <body>
-        <?php include ('includes/sidebar.php'); ?>
+        <?php include('includes/sidebar.php'); ?>
         <main class="main-content">
-            <?php include ('includes/topbar.php'); ?>
+            <?php include('includes/topbar.php'); ?>
             <section class="page__container">
                 <div class="page__header">
                     <div class="page__header-titles">
@@ -35,24 +35,24 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
-                            <div class="form-group form-floating">
-                                <input id="descripcionDocumento" type="text" class="form-control" name="descripcionDocumento" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off">
-                                <label class="form-label" for="descripcionDocumento">Descripción</label>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
                                 <select class="form-select" id="codigoCaso" name="codigoCaso" required>
                                     <option value="" hidden>Seleccionar...</option>
-                                    <?php if (!empty($dataCaso)) {
-                                        foreach ($dataCaso as $caso) {
+                                    <?php if (!empty($dataCasos)) {
+                                        foreach ($dataCasos as $caso) {
                                             if ($caso['estatusCaso'] == 'Activo') { ?>
                                                 <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
                                     <?php } } } ?>
                                 </select>
                                 <label for="codigoCaso" class="form-label">Caso Asociado</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group form-floating">
+                                <input id="descripcionDocumento" type="text" class="form-control" name="descripcionDocumento" placeholder="john doe" minlength="3" maxlength="200" autocomplete="off">
+                                <label class="form-label" for="descripcionDocumento">Descripción (Opcional)</label>
                             </div>
                         </div>
 
@@ -67,6 +67,6 @@
                 </div>
             </section>
         </main>
-        <?php include ('includes/footer.php'); ?>
+        <?php include('includes/footer.php'); ?>
     </body>
 </html>

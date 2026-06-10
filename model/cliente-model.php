@@ -61,8 +61,8 @@
         public function consultar_cliente_model() {
             try {
                 $registro = "SELECT c.*, 
-                                    n.nombreClienteNatural, n.apellidoClienteNatural, 
-                                    j.razonSocialClienteJuridico, 
+                                    n.nombreClienteNatural, n.apellidoClienteNatural, n.nacionalidadClienteNatural, n.cedulaClienteNatural,
+                                    j.razonSocialClienteJuridico, j.tipoRifClienteJuridico, j.rifClienteJuridico,
                                     t.numeroClienteTelefono 
                             FROM tbl_clientes c
                             LEFT JOIN tbl_clientesnaturales n ON c.codigoCliente = n.codigoCliente

@@ -11,6 +11,7 @@
             $objRepresentante->set_Nombre($_POST['nombreRepresentante']);
             $objRepresentante->set_Apellido($_POST['apellidoRepresentante']);
             $objRepresentante->set_Telefono($_POST['telefonoRepresentante']);
+            $objRepresentante->set_Estatus('Activo');
 
             $response = $objRepresentante->registrar_representante_model();
             if ($response){

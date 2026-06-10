@@ -8,7 +8,7 @@
         require_once('view/403.php');
 
     } else if (isset($_POST['documentoRegistrar']) || isset($_POST['registrarDocumento'])) {
-        $dataCaso = $objCaso->consultar_caso_model();
+        $dataCasos = $objCaso->consultar_caso_model();
         require_once('view/documentoRegistrar-view.php');
 
         if (isset($_POST['registrarDocumento'])) {

@@ -65,13 +65,13 @@
                                                     <?php if (isset($evento['horaEvento']) && !empty($evento['horaEvento'])) { ?>
                                                         <td><?php echo $evento['horaEvento']?></td>
                                                     <?php } else { ?>
-                                                        <td><span class="text-muted">N/A</span></td>
+                                                        <td><span class="text-muted">- -</span></td>
                                                     <?php } ?>
 
                                                     <?php if (isset($evento['descripcionEvento']) && !empty($evento['descripcionEvento'])) { ?>
                                                         <td><?php echo $evento['descripcionEvento']?></td>
                                                     <?php } else { ?>
-                                                        <td><span class="text-muted">No especificada</span></td>
+                                                        <td><span class="text-muted">- -</span></td>
                                                     <?php } ?>
 
                                                     <td><span class="badge rounded-pill <?php if ($evento['estatusEvento']=="Confirmado") {echo "text-bg-primary";}else{ echo "text-bg-secondary";} ?>"><?php echo $evento['estatusEvento']?></span></td>
@@ -131,13 +131,13 @@
                                                     <?php if (isset($evento['horaEvento']) && !empty($evento['horaEvento'])) { ?>
                                                         <td><?php echo $evento['horaEvento']?></td>
                                                     <?php } else { ?>
-                                                        <td><span class="text-muted">No especificada</span></td>
+                                                        <td><span class="text-muted">- -</span></td>
                                                     <?php } ?>
 
                                                     <?php if (isset($evento['descripcionEvento']) && !empty($evento['descripcionEvento'])) { ?>
                                                         <td><?php echo $evento['descripcionEvento']?></td>
                                                     <?php } else { ?>
-                                                        <td><span class="text-muted">No especificada</span></td>
+                                                        <td><span class="text-muted">- -</span></td>
                                                     <?php } ?>
 
                                                     <td><span class="badge rounded-pill text-bg-danger"><?php echo $evento['estatusEvento']?></span></td>

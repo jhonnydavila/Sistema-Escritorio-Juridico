@@ -24,8 +24,17 @@
                                     <option value="" hidden>Seleccionar...</option>
                                     <?php if (!empty($clientes)) {
                                         foreach ($clientes as $cli) {
-                                            if ($cli['estatusCliente'] == 'Activo') { ?>
-                                                <option value="<?php echo $cli['codigoCliente']?>"><?php echo $cli['nombreCliente'].' - '.$cli['documentoCliente'].' ('.$cli['codigoCliente'].')'?></option>
+                                            if ($cli['estatusCliente'] == 'Activo') { 
+                                                if ($cli['tipoCliente']=='natural') {
+                                                    $nombre = $cli['nombreClienteNatural'].' '.$cli['apellidoClienteNatural'];
+                                                    $documento = $cli['nacionalidadClienteNatural'].$cli['cedulaClienteNatural'];
+                                                }else{
+                                                    $nombre = $cli['razonSocialClienteJuridico'];
+                                                    $documento = $cli['tipoRifClienteJuridico'].$cli['rifClienteJuridico'];
+                                                }
+                                                ?>
+                                                
+                                                <option class="text-capitalize" value="<?php echo $cli['codigoCliente']?>"><?php echo '('.$cli['codigoCliente'].') '.$nombre.' - '.$documento?></option>
                                     <?php } } } ?>
                                 </select>
                                 <label for="clienteCaso" class="form-label">Cliente</label>
@@ -64,11 +73,11 @@
                         <div class="col-lg-4">
                             <div class="form-group form-floating">
                                 <select class="form-select" name="codigoArchivador" id="codigoArchivador">
-                                    <option value="">Sin asignar</option>
+                                    <option value="">Seleccionar...</option>
                                     <?php if (!empty($archivadores)) {
-                                        foreach ($archivadores as $arc) {
-                                            if ($arc['estatusArchivador'] == 'Activo') { ?>
-                                                <option value="<?php echo $arc['codigoArchivador']?>"><?php echo $arc['codigoArchivador'].' - '.$arc['nombreArchivador']?></option>
+                                        foreach ($archivadores as $archivador) {
+                                            if ($archivador['estatusArchivador'] == 'Activo') { ?>
+                                                <option value="<?php echo $archivador['codigoArchivador']?>"><?php echo $archivador['codigoArchivador'].' - '.$archivador['nombreArchivador']?></option>
                                     <?php } } } ?>
                                 </select>
                                 <label for="codigoArchivador" class="form-label">Archivador (opcional)</label>

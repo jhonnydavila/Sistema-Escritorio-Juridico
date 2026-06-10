@@ -8,6 +8,7 @@
         private $nombre;
         private $apellido;
         private $telefono;
+        private $estatus;
 
         public function __construct(){
             $this->conex = new Conexion();
@@ -16,13 +17,14 @@
 
         public function registrar_representante_model() {
             try {
-                $registro = "INSERT INTO tbl_representantes (cedulaRepresentante, nacionalidadRepresentante, nombreRepresentante, apellidoRepresentante, telefonoRepresentante) VALUES (:cedula, :nacionalidad, :nombre, :apellido, :telefono)";
+                $registro = "INSERT INTO tbl_representantes (cedulaRepresentante, nacionalidadRepresentante, nombreRepresentante, apellidoRepresentante, telefonoRepresentante, estatusRepresentante) VALUES (:cedula, :nacionalidad, :nombre, :apellido, :telefono, :estatus)";
                 $strExec = $this->conex->prepare($registro);
                 $strExec->bindParam(':cedula', $this->cedula);
                 $strExec->bindParam(':nacionalidad', $this->nacionalidad);
                 $strExec->bindParam(':nombre', $this->nombre);
                 $strExec->bindParam(':apellido', $this->apellido);
                 $strExec->bindParam(':telefono', $this->telefono);
+                $strExec->bindParam(':estatus', $this->estatus);
                 return $strExec->execute();
             } catch (PDOException $e) {
                 error_log('Error en registrar_representante_model(): ' . $e->getMessage());
@@ -33,11 +35,7 @@
         public function consultar_representantes_model() {
             try {
                 $registro = "SELECT
-                                tbl_representantes.cedulaRepresentante,
-                                tbl_representantes.nacionalidadRepresentante,
-                                tbl_representantes.nombreRepresentante,
-                                tbl_representantes.apellidoRepresentante,
-                                tbl_representantes.telefonoRepresentante,
+                                tbl_representantes.*,
                                 COUNT(tbl_representantesjuridicos.codigoCliente) AS totalClientes
                             FROM
                                 tbl_representantes
@@ -95,5 +93,12 @@
         }
         public function get_Telefono() {
             return $this->telefono;
+        }
+
+        public function set_Estatus($estatus) {
+            $this->estatus = $estatus;
+        }
+        public function get_Estatus() {
+            return $this->estatus;
         }
     }

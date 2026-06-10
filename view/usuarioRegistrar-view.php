@@ -17,7 +17,6 @@
                 </div>
                 <div class="page__content">
                     <form action="usuario" id="form" class="row p-4 gy-1" method="POST">
-
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group form-floating">
                                 <input id="nombreUsuario" type="text" class="form-control" name="nombreUsuario" placeholder="Nombre" autocomplete="off" required>

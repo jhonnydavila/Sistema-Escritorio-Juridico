@@ -35,6 +35,7 @@
             try {
                 if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
                     $registro = "SELECT 
+                                caso.modalidadCaso,
                                 honorario.codigoHonorario, 
                                 honorario.codigoCaso, 
                                 honorario.montoInicialHonorario, 
@@ -48,10 +49,15 @@
                                 tbl_honorariopagos pago 
                             ON 
                                 honorario.codigoHonorario = pago.codigoHonorario 
+                            LEFT JOIN 
+                                tbl_casos caso
+                            ON 
+                                caso.codigoCaso = honorario.codigoCaso
                             WHERE 
                                 honorario.codigoCaso IN 
                                     (SELECT codigoCaso FROM tbl_casosabogados WHERE cedulaAbogado = :cedula)
                             GROUP BY 
+                                caso.modalidadCaso,
                                 honorario.codigoHonorario, 
                                 honorario.codigoCaso, 
                                 honorario.montoInicialHonorario, 
@@ -59,10 +65,11 @@
                                 honorario.estatusHonorario
                         ";
                     $consulta = $this->conex->prepare($registro);
-
                     $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
+
                 } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
                     $registro = "SELECT 
+                                caso.modalidadCaso,
                                 honorario.codigoHonorario, 
                                 honorario.codigoCaso, 
                                 honorario.montoInicialHonorario, 
@@ -76,7 +83,12 @@
                                 tbl_honorariopagos pago 
                             ON 
                                 honorario.codigoHonorario = pago.codigoHonorario 
+                            LEFT JOIN 
+                                tbl_casos caso
+                            ON 
+                                caso.codigoCaso = honorario.codigoCaso
                             GROUP BY 
+                                caso.modalidadCaso,
                                 honorario.codigoHonorario, 
                                 honorario.codigoCaso, 
                                 honorario.montoInicialHonorario, 

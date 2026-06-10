@@ -53,7 +53,7 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $pago){ 
                                             if($pago['estatusPago'] == "Confirmado"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $pago['codigoPago']?></td>
                                                     <td><?php echo $pago['codigoHonorario']?></td>
                                                     <td><?php echo $pago['conceptoPago']?></td>
@@ -65,7 +65,13 @@
                                                     </td>
                                                     <td><?php echo date('Y-m-d H:i', strtotime($pago['fechaRegistroPago']))?></td>
                                                     <td><span class="badge rounded-pill text-bg-success"><?php echo $pago['estatusPago']?></span></td>
-                                                    <td class="text-capitalize"><?php echo $pago['observacionesPago'] ?></td>
+                                                    
+                                                    <?php if (isset($pago['observacionesPago']) && !empty($pago['observacionesPago'])) { ?>
+                                                        <td><?php echo $pago['observacionesPago']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">- -</span></td>
+                                                    <?php } ?>
+
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Pago">
@@ -102,7 +108,7 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $pago){ 
                                             if($pago['estatusPago'] != "Confirmado"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $pago['codigoPago']?></td>
                                                     <td><?php echo $pago['codigoHonorario']?></td>
                                                     <td><?php echo $pago['conceptoPago']?></td>
@@ -114,7 +120,13 @@
                                                     </td>
                                                     <td><?php echo date('Y-m-d H:i', strtotime($pago['fechaRegistroPago']))?></td>
                                                     <td><span class="badge rounded-pill <?php echo ($pago['estatusPago'] == "Pendiente") ? "text-bg-secondary" : "text-bg-danger"; ?>"><?php echo $pago['estatusPago']?></span></td>
-                                                    <td class="text-capitalize"><?php echo $pago['observacionesPago']?></td>
+                                                    
+                                                    <?php if (isset($pago['observacionesPago']) && !empty($pago['observacionesPago'])) { ?>
+                                                        <td><?php echo $pago['observacionesPago']?></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="text-muted">- -</span></td>
+                                                    <?php } ?>
+
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Pago">
