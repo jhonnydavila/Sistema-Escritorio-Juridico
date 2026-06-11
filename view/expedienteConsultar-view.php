@@ -20,11 +20,11 @@
                         <table id="table" class="table__content" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
+                                    <th>Código Exp.</th>
+                                    <th>Código Caso</th>
                                     <th>N° Expediente</th>
                                     <th>Cliente</th>
                                     <th>Origen</th>
-                                    <th>Fecha Apertura</th>
                                     <th>Archivador</th>
                                 </tr>
                             </thead>
@@ -33,10 +33,10 @@
                                     foreach ($data as $expediente){ ?>
                                         <tr>
                                             <td><?php echo $expediente['codigoExpediente']?></td>
+                                            <td><?php echo !empty($expediente['codigoCaso']) ? $expediente['codigoCaso'] : 'Sin asignar'?></td>
                                             <td><?php echo !empty($expediente['numeroExpediente']) ? $expediente['numeroExpediente'] : 'Sin asignar'?></td>
                                             <td class="text-capitalize"><?php echo $expediente['nombreCliente']?></td>
                                             <td class="text-capitalize"><?php echo $expediente['origenExpediente']?></td>
-                                            <td><?php echo $expediente['fechaAperturaExpediente']?></td>
                                             <td><?php echo !empty($expediente['nombreArchivador']) ? $expediente['nombreArchivador'] : 'Sin asignar'?></td>
                                         </tr>
                                 <?php } } ?>

@@ -64,6 +64,7 @@
                                                                     <circle cx="12" cy="12" r="3"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                             <button class="btn__table-update" title="Modificar Trámite">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line">
                                                                     <path d="M13 21h8"/>
@@ -80,6 +81,7 @@
                                                                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -118,6 +120,7 @@
                                                                     <circle cx="12" cy="12" r="3"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                             <button class="btn__table-update" title="Modificar Trámite">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line">
                                                                     <path d="M13 21h8"/>
@@ -134,6 +137,7 @@
                                                                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -45,8 +45,10 @@
                                         <th>Número Teléfonico</th>
                                         <th>Correo Electrónico</th>
                                         <th>Dirección</th>
+                                        <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                         <th class="text-center">Casos Asociados</th>
                                         <th class="text-center">Acciones</th>
+                                        <?php } ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,14 +61,15 @@
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
                                                     <td class="text-capitalize"><?php echo $abogado['direccionAbogado']?></td>
+                                                    <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                     <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Abogado">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/>
-                                                                    <path d="m15 5 4 4"/>
-                                                                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
-                                                                </svg>
+                                                                <path d="m15 5 4 4"/>
+                                                                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
+                                                            </svg>
                                                             </button>
                                                             <button class="btn__table-delete" title="Eliminar Abogado">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
@@ -79,6 +82,7 @@
                                                             </button>
                                                         </div>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>
@@ -96,8 +100,10 @@
                                         <th>Número Teléfonico</th>
                                         <th>Correo Electrónico</th>
                                         <th>Dirección</th>
+                                        <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                         <th class="text-center">Casos Asociados</th>
                                         <th class="text-center">Acciones</th>
+                                        <?php } ?>
                                     </tr>
                                 </thead>
                                 <tbody> 
@@ -110,14 +116,15 @@
                                                     <td><?php echo $abogado['telefonoAbogado']?></td>
                                                     <td><?php echo $abogado['correoAbogado']?></td>
                                                     <td class="text-capitalize"><?php echo $abogado['direccionAbogado']?></td>
+                                                    <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                     <td class="text-center"><?php echo $abogado['totalCasos']?></td>
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Abogado">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/>
-                                                                    <path d="m15 5 4 4"/>
-                                                                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
-                                                                </svg>
+                                                                <path d="m15 5 4 4"/>
+                                                                <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
+                                                            </svg>
                                                             </button>
                                                             <button class="btn__table-delete" title="Eliminar Abogado">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
@@ -130,6 +137,7 @@
                                                             </button>
                                                         </div>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>

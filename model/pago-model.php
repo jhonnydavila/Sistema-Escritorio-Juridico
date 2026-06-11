@@ -37,8 +37,23 @@
 
         public function consultar_pago_model() {
             try {
-                $registro = "SELECT * FROM tbl_honorariopagos";
-                $consulta = $this->conex->prepare($registro);
+                if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'abogado'){
+                    $registro = "SELECT * FROM tbl_honorariopagos 
+                                WHERE codigoHonorario IN (
+                                    SELECT codigoHonorario FROM tbl_honorarios 
+                                    WHERE codigoCaso IN (
+                                        SELECT codigoCaso FROM tbl_casosabogados WHERE cedulaAbogado = :cedula
+                                    )
+                                )";
+                    $consulta = $this->conex->prepare($registro);
+                    $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
+
+                } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
+                    $registro = "SELECT * FROM tbl_honorariopagos";
+                    $consulta = $this->conex->prepare($registro);
+
+                }
+
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

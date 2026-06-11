@@ -40,8 +40,23 @@
 
         public function  consultar_evento_model() {
             try {
-                $registro = "SELECT * FROM tbl_casoeventos";
-                $consulta = $this->conex->prepare($registro);
+                if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
+                    $registro = "SELECT * 
+                            FROM 
+                                tbl_casoeventos
+                            WHERE 
+                                codigoCaso IN 
+                                    (SELECT codigoCaso FROM tbl_casosabogados WHERE cedulaAbogado = :cedula)
+                        ";
+                    $consulta = $this->conex->prepare($registro);
+                    $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
+
+                } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
+                    $registro = "SELECT * 
+                                FROM 
+                                    tbl_casoeventos";
+                    $consulta = $this->conex->prepare($registro);
+                }
                 $consulta->execute();
                 $datos = $consulta->fetchAll(PDO::FETCH_ASSOC);
                 return $datos;

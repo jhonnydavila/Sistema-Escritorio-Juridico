@@ -49,9 +49,16 @@
                         INNER JOIN
                             tbl_casos
                         ON
-                            tbl_casosabogados.codigoCaso = tbl_casos.codigoCaso
-                        ";
-                $consulta = $this->conex->prepare($sql);
+                            tbl_casosabogados.codigoCaso = tbl_casos.codigoCaso";
+
+                if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
+                    $sql .= " WHERE tbl_casosabogados.cedulaAbogado = :cedula";
+                    $consulta = $this->conex->prepare($sql);
+                    $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
+                } else {
+                    $consulta = $this->conex->prepare($sql);
+                }
+
                 $consulta->execute();
                 return $consulta->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

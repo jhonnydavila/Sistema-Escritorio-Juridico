@@ -12,7 +12,6 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 .card__case-header{
-    color: #069e4b;
     padding: 1rem;
     padding-bottom: 1.6rem;
     color: var(--neutral);

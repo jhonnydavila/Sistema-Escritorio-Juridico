@@ -75,12 +75,19 @@
                                                     </td>
                                                     <td>
                                                         <div class="table__buttons">
+                                                            <button class="btn__table-view" title="Ver Perfil">
+                                                                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                                                                    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                                                                    <circle cx="12" cy="12" r="3"/>
+                                                                </svg>
+                                                            </button>
                                                             <button class="btn__table-update" title="Modificar Cliente">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/>
                                                                     <path d="m15 5 4 4"/>
                                                                     <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                             <button class="btn__table-delete" title="Eliminar Cliente">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
                                                                     <path d="M10 11v6"/>
@@ -90,6 +97,7 @@
                                                                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -139,12 +147,19 @@
                                                     </td>
                                                     <td>
                                                         <div class="table__buttons">
+                                                            <button class="btn__table-view" title="Ver Perfil">
+                                                                <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                                                                    <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                                                                    <circle cx="12" cy="12" r="3"/>
+                                                                </svg>
+                                                            </button>
                                                             <button class="btn__table-update" title="Modificar Cliente">
                                                                 <svg width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil-line-icon lucide-pencil-line"><path d="M13 21h8"/>
                                                                     <path d="m15 5 4 4"/>
                                                                     <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php if ($_SESSION['rolUsuario'] == 'administrador') { ?>
                                                             <button class="btn__table-delete" title="Eliminar Cliente">
                                                                 <svg width="0.9rem" height="0.9rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
                                                                     <path d="M10 11v6"/>
@@ -154,6 +169,7 @@
                                                                     <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                                                                 </svg>
                                                             </button>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                 </tr>

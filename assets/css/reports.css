@@ -1,0 +1,196 @@
+.reports__header-title{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+.reports__header-subtitle{
+    font-size: 0.8rem;
+    margin-top: -4px;
+    color: var(--secondary);
+}
+
+
+
+.reports__header-nav-tabs {
+    display: flex;
+    gap: 10px;
+}
+.reports__header-tab-btn {
+    border: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    background: transparent;
+    transition: all 0.2s ease;
+    border-radius: var(--border-small);
+    color: var(--secondary);
+    padding: 8px 14px;
+    font-weight: 500;
+    font-size: 13px;
+    gap: 6px;
+}
+.reports__header-tab-btn:hover {
+    background-color: var(--neutral-container);
+    color: var(--primary);
+}
+.reports__header-tab-btn svg {
+    width: 1rem;
+    height: 1rem;
+}
+.reports__header-tab-btn.active {
+    border: none !important;
+    background-color: var(--primary-background);
+    color: white;
+}
+
+
+
+
+.card__reports-simple {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--body-outline);
+    border-radius: var(--border-large);
+    padding: 0.9rem 1.1rem;
+    gap: 0.9rem;
+}
+.card__reports-simple:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+.card__reports-simple-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: var(--primary);
+    background-color: var(--neutral-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2px;
+}
+.card__reports-simple-icon .lucide {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.card__reports-simple-details {
+    display: flex;
+    flex-direction: column;
+}
+.card__reports-simple-details h4 {
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.card__reports-simple-details span {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1;
+}
+
+
+
+.section__reports{
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid var(--body-outline);
+    border-radius: var(--border-large);
+    transition: transform 0.2s ease;
+    padding: 1.2rem;
+    height: 100%;
+}
+.section__reports:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+.section__reports-header {
+    align-items: center;
+    display: flex;
+    margin-bottom: 1.2rem;
+    gap: 12px;
+}
+.section__reports-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    border-radius: var(--border-large);
+    background-color: var(--neutral-container); 
+}
+.section__reports-icon .lucide {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.section__reports-details{
+    margin-top: 1px;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+}
+.section__reports-details h4 {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--primary);
+}
+.section__reports-details span {
+    font-size: 11px;
+    color: var(--secondary);
+}
+.section__reports-body{
+    justify-content: center;
+    position: relative; 
+    display: flex; 
+    height: 16rem; 
+}
+
+
+/* --- Formularios Minimalistas (Etiqueta arriba, Borde inferior) --- */
+.form-group-minimal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group-minimal label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--secondary);
+    margin-bottom: 2px;
+}
+
+.form-control-minimal {
+    border: none;
+    border-bottom: 2px solid var(--body-outline);
+    border-radius: 0;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--primary);
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+    outline: none;
+    width: 100%;
+}
+
+.form-control-minimal:focus {
+    border-bottom-color: var(--primary-background); /* Resalta con el color oscuro al hacer clic */
+}
+
+/* Ajuste para quitar el borde inferior nativo en select de algunos navegadores */
+select.form-control-minimal {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23586377' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 14px;
+    padding-right: 20px;
+}

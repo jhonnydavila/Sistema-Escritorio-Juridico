@@ -14,4 +14,5 @@
 <link rel="stylesheet" href="assets/css/cards.css"/>
 <link rel="stylesheet" href="assets/css/tables.css"/>
 <link rel="stylesheet" href="assets/css/sections.css"/>
+<link rel="stylesheet" href="assets/css/reports.css"/>
 <link rel="stylesheet" href="assets/css/style.css"/>
