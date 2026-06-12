@@ -28,7 +28,7 @@
                 $objCaso->set_CodigoExpediente($codigoExpedienteGenerado);
                 $objCaso->set_Modalidad($_POST['modalidadCaso']);
                 $objCaso->set_Descripcion($_POST['descripcionCaso']);
-                $objCaso->set_Estatus("Activo");
+                $objCaso->set_Estatus("sin asignación");
 
                 $responseCaso = $objCaso->registrar_caso_model();
                 

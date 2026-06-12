@@ -2,10 +2,7 @@
     require_once('model/tramite-model.php');
     $objTramite = new TramiteModel();
 
-    if (isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria'){
-        require_once('view/403.php');
-
-    } else if (isset($_POST['tramiteRegistrar']) || isset($_POST['registrarTramite'])) {
+    if (isset($_POST['tramiteRegistrar']) || isset($_POST['registrarTramite'])) {
         require_once('view/tramiteRegistrar-view.php');
         
         if (isset($_POST['registrarTramite'])) {

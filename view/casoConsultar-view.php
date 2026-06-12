@@ -46,20 +46,31 @@
                                         <th>N° Expediente</th>
                                         <th>Descripción</th>
                                         <th>Fecha Registro</th>
+                                        <th>Estatus</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php if (!empty($data)){
                                         foreach ($data as $caso){
-                                            if($caso['estatusCaso'] == "Activo"){ ?>
-                                                <tr>
+                                            if($caso['estatusCaso'] != "Inactivo"){ ?>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $caso['codigoCaso']?></td>
-                                                    <td class="text-capitalize"><?php echo $caso['nombreCliente']?></td>
+                                                    <td><?php echo $caso['nombreCliente']?></td>
                                                     <td><?php echo $caso['modalidadCaso']?></td>
                                                     <td><?php echo !empty($caso['numeroExpediente']) ? $caso['numeroExpediente'] : $caso['codigoExpediente']?></td>
-                                                    <td class="text-capitalize"><?php echo $caso['descripcionCaso']?></td>
+                                                    <td><?php echo $caso['descripcionCaso']?></td>
+
                                                     <td><?php echo $caso['fechaRegistroCaso']?></td>
+                                                    
+                                                    <?php if ($caso['estatusCaso']=='en desarrollo') { ?>
+                                                        <td><span class="badge rounded-pill text-bg-primary"><?php echo $caso['estatusCaso']?></span></td>
+                                                    <?php } else if ($caso['estatusCaso']=='pendiente') { ?>
+                                                        <td><span class="badge rounded-pill text-bg-secondary"><?php echo $caso['estatusCaso']?></span></td>
+                                                    <?php } else if ($caso['estatusCaso']=='sin asignación') { ?>
+                                                        <td><span class="badge rounded-pill text-bg-danger"><?php echo $caso['estatusCaso']?></span></td>
+                                                    <?php } ?>
+                                                    
                                                     <td>
                                                         <div class="table__buttons">
                                                             <button class="btn__table-update" title="Modificar Caso">
@@ -106,12 +117,12 @@
                                     <?php if (!empty($data)){
                                         foreach ($data as $caso){
                                             if($caso['estatusCaso'] == "Inactivo"){ ?>
-                                                <tr>
+                                                <tr class="text-capitalize">
                                                     <td><?php echo $caso['codigoCaso']?></td>
-                                                    <td class="text-capitalize"><?php echo $caso['nombreCliente']?></td>
+                                                    <td><?php echo $caso['nombreCliente']?></td>
                                                     <td><?php echo $caso['modalidadCaso']?></td>
                                                     <td><?php echo !empty($caso['numeroExpediente']) ? $caso['numeroExpediente'] : $caso['codigoExpediente']?></td>
-                                                    <td class="text-capitalize"><?php echo $caso['descripcionCaso']?></td>
+                                                    <td><?php echo $caso['descripcionCaso']?></td>
                                                     <td><?php echo $caso['fechaRegistroCaso']?></td>
                                                     <td>
                                                         <div class="table__buttons">

@@ -36,14 +36,9 @@
             try {
                 if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'abogado'){
                     $registro = "SELECT
-                                tbl_casos.codigoCaso,
-                                tbl_casos.fechaRegistroCaso,
-                                tbl_casos.estatusCaso,
-                                tbl_casos.modalidadCaso,
-                                tbl_casos.descripcionCaso,
-                                tbl_casos.codigoExpediente,
-                                tbl_expedientes.numeroExpediente,
-                                tbl_clientes.codigoCliente,
+                                tbl_casos.*,
+                                tbl_expedientes.*,
+                                tbl_clientes.*,
                                 CASE
                                     WHEN tbl_clientes.tipoCliente = 'Natural'
                                     THEN CONCAT(tbl_clientesnaturales.nombreClienteNatural, ' ', tbl_clientesnaturales.apellidoClienteNatural)
@@ -69,19 +64,14 @@
                                 tbl_clientes.codigoCliente = tbl_clientesjuridicos.codigoCliente
                             WHERE 
                                 tbl_casos.codigoCaso IN (SELECT codigoCaso FROM tbl_casosabogados WHERE cedulaAbogado = :cedula)
-                            ";
+                        ";
                     $consulta = $this->conex->prepare($registro);
                     $consulta->bindParam(':cedula', $_SESSION['cedulaUsuario'], PDO::PARAM_INT);
-                } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
+                } else {
                     $registro = "SELECT
-                                tbl_casos.codigoCaso,
-                                tbl_casos.fechaRegistroCaso,
-                                tbl_casos.estatusCaso,
-                                tbl_casos.modalidadCaso,
-                                tbl_casos.descripcionCaso,
-                                tbl_casos.codigoExpediente,
-                                tbl_expedientes.numeroExpediente,
-                                tbl_clientes.codigoCliente,
+                                tbl_casos.*,
+                                tbl_expedientes.*,
+                                tbl_clientes.*,
                                 CASE
                                     WHEN tbl_clientes.tipoCliente = 'Natural'
                                     THEN CONCAT(tbl_clientesnaturales.nombreClienteNatural, ' ', tbl_clientesnaturales.apellidoClienteNatural)
@@ -105,7 +95,7 @@
                                 tbl_clientesjuridicos
                             ON
                                 tbl_clientes.codigoCliente = tbl_clientesjuridicos.codigoCliente
-                            ";
+                        ";
                     $consulta = $this->conex->prepare($registro);
                 }
 

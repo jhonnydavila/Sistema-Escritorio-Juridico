@@ -32,14 +32,9 @@
         public function consultar_asignacion_model() {
             try {
                 $sql = "SELECT
-                            tbl_casosabogados.codigoCaso,
-                            tbl_casosabogados.cedulaAbogado,
-                            tbl_casosabogados.fechaAsignacionCasoAbogado,
-                            tbl_casosabogados.fechaCierreCasoAbogado,
-                            tbl_casosabogados.estatusAsignacionCasoAbogado,
-                            CONCAT(tbl_abogados.nombreAbogado, ' ', tbl_abogados.apellidoAbogado) AS nombreAbogado,
-                            tbl_casos.descripcionCaso,
-                            tbl_casos.modalidadCaso
+                            tbl_abogados.*,
+                            tbl_casosabogados.*,
+                            tbl_casos.*
                         FROM
                             tbl_casosabogados
                         INNER JOIN
@@ -49,8 +44,8 @@
                         INNER JOIN
                             tbl_casos
                         ON
-                            tbl_casosabogados.codigoCaso = tbl_casos.codigoCaso";
-
+                            tbl_casosabogados.codigoCaso = tbl_casos.codigoCaso
+                    ";
                 if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'abogado') {
                     $sql .= " WHERE tbl_casosabogados.cedulaAbogado = :cedula";
                     $consulta = $this->conex->prepare($sql);

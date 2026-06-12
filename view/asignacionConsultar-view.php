@@ -24,19 +24,33 @@
                                     <th>Abogado</th>
                                     <th>Modalidad</th>
                                     <th>Fecha Asignación</th>
+                                    <th>Fecha Cierre</th>
                                     <th class="text-center">Estatus</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php if (!empty($data)){
                                     foreach ($data as $asignacion){ ?>
-                                        <tr>
+                                        <tr class="text-capitalize">
                                             <td><?php echo $asignacion['codigoCaso']?></td>
-                                            <td class="text-capitalize"><?php echo $asignacion['nombreAbogado']?></td>
+                                            <td><?php echo $asignacion['nombreAbogado'].' '.$asignacion['apellidoAbogado']?></td>
                                             <td><?php echo $asignacion['modalidadCaso']?></td>
                                             <td><?php echo $asignacion['fechaAsignacionCasoAbogado']?></td>
+
+                                            <?php if (isset($asignacion['fechaCierreCasoAbogado']) && !empty($asignacion['fechaCierreCasoAbogado'])) { ?>
+                                                <td><?php echo $asignacion['fechaCierreCasoAbogado']?></td>
+                                            <?php } else { ?>
+                                                <td><span class="text-muted">- -</span></td>
+                                            <?php } ?>
+                                            
                                             <td class="text-center">
-                                                <span class="badge rounded-pill text-bg-secondary"><?php echo $asignacion['estatusAsignacionCasoAbogado']?></span>
+                                                <?php if ($asignacion['estatusAsignacionCasoAbogado']=='Activa') { ?>
+                                                    <span class="badge rounded-pill text-bg-success"><?php echo $asignacion['estatusAsignacionCasoAbogado']?></span>
+                                                <?php } else if ($asignacion['estatusAsignacionCasoAbogado']=='pendiente') { ?>
+                                                    <span class="badge rounded-pill text-bg-secondary"><?php echo $asignacion['estatusAsignacionCasoAbogado']?></span>
+                                                <?php } else if ($asignacion['estatusAsignacionCasoAbogado']=='finalizada') { ?>
+                                                    <span class="badge rounded-pill text-bg-danger"><?php echo $asignacion['estatusAsignacionCasoAbogado']?></span>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                 <?php } } ?>

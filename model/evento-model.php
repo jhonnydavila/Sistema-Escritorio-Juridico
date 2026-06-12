@@ -54,7 +54,8 @@
                 } else if (isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] === 'administrador') {
                     $registro = "SELECT * 
                                 FROM 
-                                    tbl_casoeventos";
+                                    tbl_casoeventos
+                        ";
                     $consulta = $this->conex->prepare($registro);
                 }
                 $consulta->execute();

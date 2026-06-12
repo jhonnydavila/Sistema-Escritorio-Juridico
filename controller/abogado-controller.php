@@ -2,10 +2,7 @@
     require_once('model/abogado-model.php');
     $objAbogado = new AbogadoModel();
     
-    if(isset($_SESSION['cedulaUsuario']) && isset($_SESSION['rolUsuario']) && $_SESSION['rolUsuario'] == 'secretaria') {
-        require_once('view/403.php');
-
-    }else if (isset($_POST['abogadoRegistrar']) || isset($_POST['registrarAbogado'])){
+    if (isset($_POST['abogadoRegistrar']) || isset($_POST['registrarAbogado'])){
         require_once('view/abogadoRegistrar-view.php');
 
         if (isset($_POST['registrarAbogado'])) {

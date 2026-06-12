@@ -41,7 +41,7 @@
                                     <option value="" hidden>Seleccionar...</option>
                                     <?php if (!empty($dataCasos)) {
                                         foreach ($dataCasos as $caso) {
-                                            if ($caso['estatusCaso'] == 'Activo') { ?>
+                                            if ($caso['estatusCaso'] != 'sin asignación' && $caso['estatusCaso'] != 'Inactivo') { ?>
                                                 <option value="<?php echo $caso['codigoCaso']?>"><?php echo $caso['codigoCaso'].' - '.$caso['nombreCliente'].' ('.$caso['modalidadCaso'].')'?></option>
                                     <?php } } } ?>
                                 </select>

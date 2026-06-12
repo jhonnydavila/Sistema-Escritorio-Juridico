@@ -2,7 +2,7 @@
 <html lang="es">
     <head>
         <?php include('includes/header.php'); ?>
-        <title>Reportes | Familia Jiménez</title>
+        <title>Sistema - Reportes</title>
     </head>
     <body>
         <?php include('includes/sidebar.php'); ?>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col">
                             <div class="card__reports-simple">
-                                <div class="card__reports-simple-icon" style="color: #0d8b61; background-color: #e6f5ef;">
+                                <div class="card__reports-simple-icon" style="color: #0d8b61; background-color: #e6f5ef; padding-right: 1px;">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
                                 </div>
                                 <div class="card__reports-simple-details">
@@ -79,7 +79,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                                 </div>
                                 <div class="card__reports-simple-details">
-                                    <h4>Nuevos Clientes</h4>
+                                    <h4>Nuevos Clientes (Mes)</h4>
                                     <span>18</span>
                                 </div>
                             </div>
@@ -103,7 +103,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-12 col-lg-4">
                             <div class="section__reports">
                                 <div class="section__reports-header">
@@ -167,7 +166,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-12 col-lg-6">
                             <div class="section__reports">
                                 <div class="section__reports-header">
@@ -184,20 +182,19 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-12 col-lg-6">
                             <div class="section__reports">
                                 <div class="section__reports-header">
                                     <div class="section__reports-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-pie-icon lucide-chart-pie"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers"><path d="m12 3-10 5 10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
                                     </div>
                                     <div class="section__reports-details">
-                                        <h4>Estatus Global de Casos</h4>
-                                        <span>Distribución actual del despacho.</span>
+                                        <h4>Rendimiento Global del Despacho</h4>
+                                        <span>Porcentaje comparativo de metas mensuales alcanzadas.</span>
                                     </div>
                                 </div>
                                 <div class="section__reports-body">
-                                    <canvas id="estatusChart"></canvas>
+                                    <canvas id="rendimientoGlobalChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +202,6 @@
                 </div>
 
                 <div class="page__tab-panel w-100" id="panel-casos" style="display: none;">
-    
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3 mb-3">
                         <div class="col">
                             <div class="card__reports-simple">
@@ -220,11 +216,11 @@
                         </div>
                         <div class="col">
                             <div class="card__reports-simple">
-                                <div class="card__reports-simple-icon" style="color: #2288cc; background-color: #e8f3fa;">
+                                <div class="card__reports-simple-icon" style="color: #2288cc; background-color: #e8f3fa; padding-right: 1px;">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale"><path d="M12 3v18"/><path d="m19 8 3 8a5 5 0 0 1-6 0zV7"/><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1"/><path d="m5 8 3 8a5 5 0 0 1-6 0zV7"/><path d="M7 21h10"/></svg>
                                 </div>
                                 <div class="card__reports-simple-details">
-                                    <h4>En Desarrollo</h4>
+                                    <h4>Casos en Desarrollo</h4>
                                     <span>14</span>
                                 </div>
                             </div>
@@ -235,7 +231,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gavel"><path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3l8.384-8.381"/><path d="m16 16 6-6"/><path d="m21.5 10.5-8-8"/><path d="m8 8 6-6"/><path d="m8.5 7.5 8 8"/></svg>
                                 </div>
                                 <div class="card__reports-simple-details">
-                                    <h4>Pendientes</h4>
+                                    <h4>Casos Pendientes</h4>
                                     <span>8</span>
                                 </div>
                             </div>
@@ -246,7 +242,7 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
                                 </div>
                                 <div class="card__reports-simple-details">
-                                    <h4>Cerrados</h4>
+                                    <h4>Casos sin Asignación</h4>
                                     <span>112</span>
                                 </div>
                             </div>
@@ -254,7 +250,7 @@
                     </div>
 
                     <div class="row g-3">
-                        <div class="col-12 col-lg-7">
+                        <div class="col-12 col-lg-8">
                             <div class="section__reports">
                                 <div class="section__reports-header">
                                     <div class="section__reports-icon">
@@ -270,12 +266,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-12 col-lg-5">
+                        <div class="col-12 col-lg-4">
                             <div class="section__reports">
                                 <div class="section__reports-header">
                                     <div class="section__reports-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-pie-icon lucide-chart-pie"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-pie"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"/><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/></svg>
                                     </div>
                                     <div class="section__reports-details">
                                         <h4>Estatus Global de Casos</h4>
@@ -283,10 +278,10 @@
                                     </div>
                                 </div>
                                 <div class="section__reports-body">
+                                    <canvas id="estatusCasosTabChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="col-12">
                             <div class="section__container">
                                 <div class="section__header">
@@ -348,10 +343,257 @@
                     </div>
                 </div>
 
+                <div class="page__tab-panel w-100" id="panel-tramites" style="display: none;">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3 mb-3">
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-check"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Trámites Finalizados</h4>
+                                    <span>28</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #2288cc; background-color: #e8f3fa; padding-right: 1px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Trámites Disponibles</h4>
+                                    <span>14</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #f17108; background-color: #fdf1e6;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Trámites en Proceso</h4>
+                                    <span>8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #6024a5; background-color: #f3ebfc;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-archive"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Cerrados</h4>
+                                    <span>112</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-12 col-lg-8">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Tendencia Semestral de Trámites</h4>
+                                        <span>Evolución de los trámites iniciados en los últimos 6 meses.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="tendenciaTramitesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-4">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-horizontal"><path d="M3 3v18h18"/><path d="M7 16h8"/><path d="M7 11h12"/><path d="M7 6h3"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Total Histórico</h4>
+                                        <span>Distribución global por tipo.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="totalHistoricoTramitesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="page__tab-panel w-100" id="panel-abogados" style="display: none;">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3 mb-3">
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Total Abogados</h4>
+                                    <span>12</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #0d8b61; background-color: #e6f5ef;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Promedio Resolución</h4>
+                                    <span>88%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #2288cc; background-color: #e8f3fa;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Casos en Gestión</h4>
+                                    <span>48</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #6024a5; background-color: #f3ebfc;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gavel"><path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3l8.384-8.381"/><path d="m16 16 6-6"/><path d="m21.5 10.5-8-8"/><path d="m8 8 6-6"/><path d="m8.5 7.5 8 8"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Casos Cerrados (Mes)</h4>
+                                    <span>35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-12 col-lg-7">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-3"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Rendimiento Mensual</h4>
+                                        <span>Casos resueltos por abogado en el mes actual.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="rendimientoAbogadosChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-percent"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Eficacia de Resoluciones</h4>
+                                        <span>Porcentaje de éxito y cierre de casos civiles.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="porcentajeResolucionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="page__tab-panel w-100" id="panel-clientes" style="display: none;">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3 mb-3">
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Total Clientes</h4>
+                                    <span>142</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #2288cc; background-color: #e8f3fa;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Naturales</h4>
+                                    <span>98</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #f17108; background-color: #fdf1e6;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Jurídicos</h4>
+                                    <span>44</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card__reports-simple">
+                                <div class="card__reports-simple-icon" style="color: #0d8b61; background-color: #e6f5ef;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+                                </div>
+                                <div class="card__reports-simple-details">
+                                    <h4>Nuevos (Mes)</h4>
+                                    <span>18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-12 col-lg-6">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Tipo de Cliente</h4>
+                                        <span>Proporción del registro global.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="tipoClientesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="section__reports">
+                                <div class="section__reports-header">
+                                    <div class="section__reports-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                                    </div>
+                                    <div class="section__reports-details">
+                                        <h4>Captación Mensual</h4>
+                                        <span>Nuevos clientes registrados en el último semestre.</span>
+                                    </div>
+                                </div>
+                                <div class="section__reports-body">
+                                    <canvas id="captacionClientesChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </section>
